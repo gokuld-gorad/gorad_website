@@ -71,16 +71,40 @@ gorad_website/
 
 ## ⚙️ Configuration & Important Steps
 
-### 1. Activating the Contact Form
-The contact form is built to work seamlessly without a backend using **Formspree**. To receive emails from visitors:
+### 1. Activating the Contact Form (Google Sheets via Apps Script)
 
-1. Create a free account at [Formspree](https://formspree.io/).
-2. Create a new form to get your unique Form ID endpoint.
-3. Open `src/components/Contact.jsx`.
-4. Update the `FORMSPREE_ENDPOINT` constant at the top of the file:
+The contact form is wired to submit leads directly into **your own Google Sheet** — completely free, with no submission limits, forever. This requires a one-time setup in Google Apps Script.
+
+**Step 1: Create the Google Sheet**
+1. Go to [sheets.google.com](https://sheets.google.com) and create a new blank spreadsheet.
+2. Name it something like `Gorad Website Leads`.
+3. Copy the **Spreadsheet ID** from the URL bar:
+   `https://docs.google.com/spreadsheets/d/`**`SPREADSHEET_ID`**`/edit`
+
+**Step 2: Set up the Apps Script**
+1. In the spreadsheet, go to **Extensions → Apps Script**.
+2. Delete any existing boilerplate code.
+3. Open `docs/google-apps-script.js` from this project and paste its entire contents into the Apps Script editor.
+4. Replace `YOUR_SPREADSHEET_ID_HERE` near the top with the Spreadsheet ID you copied.
+5. Click **Save** (Ctrl+S).
+
+**Step 3: Deploy as a Web App**
+1. Click **Deploy → New Deployment**.
+2. Under "Select type", choose **Web app**.
+3. Set **Execute as** → `Me`.
+4. Set **Who has access** → `Anyone`.
+5. Click **Deploy** and authorize the permissions when prompted.
+6. Copy the generated **Web app URL**.
+
+**Step 4: Wire it to the website**
+1. Open `src/components/Contact.jsx`.
+2. Replace the placeholder with your Web app URL:
    ```javascript
-   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID' // ← Paste your ID here
+   const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_ID/exec'
    ```
+
+> **Note:** Every time you modify the Apps Script code, you must create a **New Deployment** (not just save) for changes to take effect.
+
 
 ### 2. Deploying to GitHub Pages
 

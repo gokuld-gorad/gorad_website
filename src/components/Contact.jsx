@@ -1,29 +1,48 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, MapPin, Send } from 'lucide-react'
+import { Mail, MapPin, Send, Loader } from 'lucide-react'
 
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID' // ← Replace with your Formspree endpoint
+// ─────────────────────────────────────────────────────────────────────────────
+// Paste your deployed Google Apps Script Web App URL below.
+// See docs/google-apps-script.js for full setup instructions.
+// ─────────────────────────────────────────────────────────────────────────────
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxi9YNhvQoa2DrSnp1ujVxt-NWw-cBRs9LoC8tGKFqQT0QXXUI5-Eu7lWLyM9wrP8Ku/exec'
 
 export default function Contact() {
     const [activeTab, setActiveTab] = useState('enquiry')
     const [submitted, setSubmitted] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const formData = new FormData(e.target)
-        formData.append('_form_type', activeTab)
+        setLoading(true)
+
+        const form = e.target
+        const payload = {
+            formType: activeTab,
+            name: form.name.value,
+            email: form.email.value,
+            message: form.message.value,
+            ...(activeTab === 'demo' && {
+                company: form.company?.value || '',
+                phone: form.phone?.value || '',
+            }),
+        }
 
         try {
-            await fetch(FORMSPREE_ENDPOINT, {
+            await fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
-                body: formData,
-                headers: { Accept: 'application/json' },
+                // Google Apps Script requires text/plain to avoid CORS preflight on free tier
+                headers: { 'Content-Type': 'text/plain' },
+                body: JSON.stringify(payload),
             })
             setSubmitted(true)
-            e.target.reset()
-            setTimeout(() => setSubmitted(false), 4000)
+            form.reset()
+            setTimeout(() => setSubmitted(false), 5000)
         } catch {
-            alert('Something went wrong. Please try again.')
+            alert('Something went wrong. Please check your connection and try again.')
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -129,11 +148,19 @@ export default function Contact() {
 
                                 {submitted ? (
                                     <div style={{ color: 'var(--accent)', fontWeight: 600, textAlign: 'center', padding: '14px 0' }}>
-                                        ✓ Message sent successfully!
+                                        ✓ Message sent successfully! We'll be in touch soon.
                                     </div>
                                 ) : (
-                                    <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                                        <Send size={16} /> {activeTab === 'demo' ? 'Request Demo' : 'Send Message'}
+                                    <button
+                                        type="submit"
+                                        className="btn btn-primary"
+                                        style={{ width: '100%', justifyContent: 'center' }}
+                                        disabled={loading}
+                                    >
+                                        {loading
+                                            ? <><Loader size={16} style={{ animation: 'spin 1s linear infinite' }} /> Sending...</>
+                                            : <><Send size={16} /> {activeTab === 'demo' ? 'Request Demo' : 'Send Message'}</>
+                                        }
                                     </button>
                                 )}
                             </form>
