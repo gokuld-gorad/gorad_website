@@ -28,7 +28,7 @@
  *       (not an update) or use "Deploy" → "Manage deployments" → Edit → New version.
  */
 
-const SPREADSHEET_ID = 'YOUR_SPREADSHEET_ID_HERE' // ← Paste your Google Sheet ID here
+const SPREADSHEET_ID = 'https://docs.google.com/spreadsheets/d/1XZ2wlejT5jZQd1LcRtH21gA3_m_ZmhjunFzAnMmJECg/edit' // ← Paste your Google Sheet ID here
 
 // Sheet names — these will be auto-created if they don't exist.
 const ENQUIRY_SHEET = 'General Enquiries'

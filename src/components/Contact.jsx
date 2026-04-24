@@ -6,7 +6,7 @@ import { Mail, MapPin, Send, Loader } from 'lucide-react'
 // Paste your deployed Google Apps Script Web App URL below.
 // See docs/google-apps-script.js for full setup instructions.
 // ─────────────────────────────────────────────────────────────────────────────
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxi9YNhvQoa2DrSnp1ujVxt-NWw-cBRs9LoC8tGKFqQT0QXXUI5-Eu7lWLyM9wrP8Ku/exec'
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwQbbpJhkqEIBnOhg-PWQmz5sRXkmF8R5-fguk_FUsMXeESiSS0voTP9bSEf0lhFAFK/exec'
 
 export default function Contact() {
     const [activeTab, setActiveTab] = useState('enquiry')
