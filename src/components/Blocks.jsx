@@ -80,9 +80,9 @@ export function CtaBand({ title = 'See it on your parts', text }) {
                                 'Book a 30-minute demo, or tell us about the station that causes you the most trouble.'}
                         </p>
                     </div>
-                    <div className="btn-row">
-                        <a href="/contact/" className="btn btn-primary">Book a demo</a>
-                        <a href="/pilot/" className="btn btn-secondary">Join the pilot programme</a>
+                    <div className="btn-row cta-actions">
+                        <a href="/contact/" className="btn btn-primary btn-lg">Book a demo</a>
+                        <TextLink href="/pilot/">Join the pilot programme</TextLink>
                     </div>
                 </div>
             </div>

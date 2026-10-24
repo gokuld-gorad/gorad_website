@@ -1,4 +1,5 @@
 import UseCaseIcon from '../components/UseCaseIcon.jsx'
+import UseCaseArt from '../components/UseCaseArt.jsx'
 import { CheckList, CtaBand, PageHero, SectionHead } from '../components/Blocks.jsx'
 import { inspectionUseCases, platformUseCases } from '../content/useCases.js'
 
@@ -7,7 +8,9 @@ function UseCase({ u, alt }) {
         <section id={u.id} className={`section uc${alt ? ' alt' : ''}`} aria-labelledby={`${u.id}-title`}>
             <div className="container uc-grid">
                 <div>
-                    <div className="card-icon"><UseCaseIcon name={u.icon} /></div>
+                    {u.group === 'inspection'
+                        ? <div className="uc-art-frame"><UseCaseArt id={u.id} /></div>
+                        : <div className="card-icon"><UseCaseIcon name={u.icon} /></div>}
                     <span className="eyebrow">{u.industry}</span>
                     <h3 className="uc-title" id={`${u.id}-title`}>{u.title}</h3>
                     <p className="lead" style={{ marginTop: 14 }}>{u.problem}</p>

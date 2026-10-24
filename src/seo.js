@@ -1,5 +1,5 @@
 import { SITE_URL, COMPANY, PLATFORM, EMAIL_INFO, FOUNDER } from './site.js'
-import { faqs } from './content/faqs.js'
+import { homeFaqs } from './content/faqs.js'
 
 const esc = (s) =>
     String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
@@ -45,7 +45,7 @@ function jsonLd(route) {
     if (route.page === 'home') {
         graph.push({
             '@type': 'FAQPage',
-            mainEntity: faqs.map((f) => ({
+            mainEntity: homeFaqs.map((f) => ({
                 '@type': 'Question',
                 name: f.q,
                 acceptedAnswer: { '@type': 'Answer', text: f.a },

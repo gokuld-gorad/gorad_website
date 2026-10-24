@@ -1,11 +1,6 @@
+import { Check, Minus } from 'lucide-react'
 import { CheckList, CtaBand, Faq, PageHero, SectionHead } from '../components/Blocks.jsx'
-
-const steps = [
-    { title: 'Qualify', text: 'A call about the station, the parts, the defects and your PLC, to check that Gorad is the right fit.' },
-    { title: 'Prove on samples', text: 'You send sample parts, good and bad. We show you how the inspection would work on them.' },
-    { title: 'Pilot on one station', text: 'We install on one real station with you, commission it and train your team.' },
-    { title: 'Decide together', text: 'We review the results on your line together. You decide whether to roll out, with the evidence in front of you.' },
-]
+import { fitNo, fitYes, pilotSteps as steps } from '../content/pilot.js'
 
 const pilotFaqs = [
     { q: 'Why a pilot programme?', a: 'The Factory Platform is built and tested in software. The last step before general release is proving it on real stations, with real parts, cameras and PLCs. Pilot plants get early access and direct work with the people who built it.' },
@@ -64,7 +59,25 @@ export default function Pilot() {
                 </div>
             </section>
 
-            <section className="section">
+            <section className="section" id="fit">
+                <div className="container">
+                    <SectionHead eyebrow="Honest fit" title="Where Gorad fits, and where it does not">
+                        We would rather tell you now than after a pilot.
+                    </SectionHead>
+                    <div className="grid grid-2">
+                        <div className="card fit yes">
+                            <h3><Check size={20} aria-hidden="true" /> A good fit</h3>
+                            <CheckList items={fitYes} />
+                        </div>
+                        <div className="card fit no">
+                            <h3><Minus size={20} aria-hidden="true" /> Not a fit today</h3>
+                            <ul>{fitNo.map((t) => <li key={t}>{t}</li>)}</ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="section alt">
                 <div className="container">
                     <SectionHead eyebrow="Questions" title="About the pilot" center />
                     <Faq items={pilotFaqs} />

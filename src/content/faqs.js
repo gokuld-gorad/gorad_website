@@ -1,16 +1,20 @@
-// Plain-text answers: shown on the homepage and published as FAQPage structured data.
+// Plain-text answers. The homepage shows the ones marked `home` and publishes exactly
+// those as FAQPage structured data (Google requires the two to match).
 // Keep every claim within docs/sales/PLATFORM_OVERVIEW.md of the platform repo.
 export const faqs = [
     {
         q: 'Which PLCs does Gorad work with?',
+        home: true,
         a: 'Gorad Vision and Gorad Connect talk to PLCs over Modbus TCP, Siemens S7 and OPC UA (as a client). EtherNet/IP and an OPC UA server are not available today.',
     },
     {
         q: 'Does the platform need the internet or a cloud account?',
+        home: true,
         a: 'No. Everything runs on-premise, and an air-gapped plant can run it fully offline: the licence activates offline, and programs, updates and backups move by USB from the web interface.',
     },
     {
         q: 'What happens if a camera or the software fails during inspection?',
+        home: true,
         a: 'The part is rejected. A cycle is OK only when every expected view reports OK; an error, timeout or missing view produces NG. The result is written to the journal before the PLC output.',
     },
     {
@@ -23,6 +27,7 @@ export const faqs = [
     },
     {
         q: 'Can we start with one app?',
+        home: true,
         a: 'Yes. Each app stands on its own and shares the platform core. Most plants start with Vision or Connect and add SPC, NCR/CAPA or Line Performance later on the same platform.',
     },
     {
@@ -31,6 +36,9 @@ export const faqs = [
     },
     {
         q: 'Is the platform ready for production?',
-        a: 'The Factory Platform is in early access. Every app is built and tested in software, and Gorad is now running pilots on real stations before general release.',
+        home: true,
+        a: 'The Factory Platform is in early access. Every app is built and tested in software, and the pilot programme proves it on real stations before general release.',
     },
 ]
+
+export const homeFaqs = faqs.filter((f) => f.home)

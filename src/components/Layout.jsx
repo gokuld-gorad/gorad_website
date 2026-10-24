@@ -105,6 +105,7 @@ function Navbar({ path }) {
                 <nav aria-label="Main">
                     <ul className="nav-links">
                         <PlatformsMenu path={path} />
+                        <li><a href="/factory-platform/use-cases/" aria-current={current('/factory-platform/use-cases/')}>Use cases</a></li>
                         <li><a href="/pilot/" aria-current={current('/pilot/')}>Pilot programme</a></li>
                         <li><a href="/about/" aria-current={current('/about/')}>About</a></li>
                         <li><a href="/contact/" aria-current={current('/contact/')}>Contact</a></li>
