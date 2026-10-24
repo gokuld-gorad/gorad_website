@@ -1,101 +1,211 @@
 /**
- * Gorad Pvt Ltd — Google Apps Script Web App
+ * Gorad Pvt Ltd — Website contact-form backend
  *
- * PURPOSE:
- *   Acts as a serverless backend endpoint. When the website's contact
- *   form submits data, this script receives it and writes a new row
- *   into the target Google Sheet.
+ * Receives website submissions, stores them in Google Sheets, and sends
+ * a notification email. Deploy this project as a Web App:
  *
- * SETUP INSTRUCTIONS:
- *   1. Go to https://sheets.google.com and create a new spreadsheet.
- *      Name it "Gorad Website Leads" (or whatever you prefer).
- *   2. Go to Extensions → Apps Script.
- *   3. Delete any boilerplate code and paste the entire contents of
- *      THIS file into the editor.
- *   4. At the top of this file, replace SPREADSHEET_ID with the actual
- *      ID from your Google Sheet URL:
- *        https://docs.google.com/spreadsheets/d/SPREADSHEET_ID/edit
- *   5. Click "Save" (Ctrl+S).
- *   6. Click "Deploy" → "New Deployment".
- *   7. Under "Select type", choose "Web app".
- *   8. Set "Execute as" to "Me".
- *   9. Set "Who has access" to "Anyone".
- *  10. Click "Deploy". Authorize the permissions when prompted.
- *  11. Copy the generated "Web app URL" — this is your GOOGLE_SCRIPT_URL.
- *  12. Paste it into src/components/Contact.jsx as the GOOGLE_SCRIPT_URL constant.
+ *   Execute as: Me
+ *   Who has access: Anyone
  *
- * NOTE: Any time you modify this script, you must create a NEW deployment
- *       (not an update) or use "Deploy" → "Manage deployments" → Edit → New version.
+ * After changing this file, create a new deployment version. If you create
+ * an entirely new deployment, update GOOGLE_SCRIPT_URL in Contact.jsx.
  */
 
-const SPREADSHEET_ID = 'https://docs.google.com/spreadsheets/d/1XZ2wlejT5jZQd1LcRtH21gA3_m_ZmhjunFzAnMmJECg/edit' // ← Paste your Google Sheet ID here
-
-// Sheet names — these will be auto-created if they don't exist.
+const SPREADSHEET_ID = '1XZ2wlejT5jZQd1LcRtH21gA3_m_ZmhjunFzAnMmJECg'
 const ENQUIRY_SHEET = 'General Enquiries'
 const DEMO_SHEET = 'Demo Requests'
+const NOTIFICATION_EMAIL = 'sales@gorad.in'
 
 /**
- * Handles incoming HTTP POST requests from the website contact form.
+ * Handles POST requests from the website contact form.
  */
 function doPost(e) {
     try {
+        if (!e || !e.postData || !e.postData.contents) {
+            throw new Error('Request body is missing.')
+        }
+
         const data = JSON.parse(e.postData.contents)
-
-        const ss = SpreadsheetApp.openById(SPREADSHEET_ID)
         const isDemo = data.formType === 'demo'
-        const sheetName = isDemo ? DEMO_SHEET : ENQUIRY_SHEET
+        const name = cleanValue(data.name, 150)
+        const email = cleanValue(data.email, 254)
+        const company = cleanValue(data.company, 200)
+        const phone = cleanValue(data.phone, 50)
+        const message = cleanValue(data.message, 5000)
 
-        let sheet = ss.getSheetByName(sheetName)
-
-        // Auto-create the sheet with a header row if it doesn't exist yet.
-        if (!sheet) {
-            sheet = ss.insertSheet(sheetName)
-            if (isDemo) {
-                sheet.appendRow(['Timestamp', 'Name', 'Email', 'Company', 'Phone', 'Message'])
-            } else {
-                sheet.appendRow(['Timestamp', 'Name', 'Email', 'Message'])
-            }
-            // Bold the header row
-            sheet.getRange(1, 1, 1, sheet.getLastColumn()).setFontWeight('bold')
+        if (!name || !email || !message) {
+            throw new Error('Name, email and message are required.')
         }
 
-        const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
-
-        if (isDemo) {
-            sheet.appendRow([
-                timestamp,
-                data.name || '',
-                data.email || '',
-                data.company || '',
-                data.phone || '',
-                data.message || '',
-            ])
-        } else {
-            sheet.appendRow([
-                timestamp,
-                data.name || '',
-                data.email || '',
-                data.message || '',
-            ])
+        if (!isValidEmail(email)) {
+            throw new Error('Invalid email address.')
         }
 
-        return ContentService
-            .createTextOutput(JSON.stringify({ result: 'success' }))
-            .setMimeType(ContentService.MimeType.JSON)
+        const timestamp = Utilities.formatDate(
+            new Date(),
+            'Asia/Kolkata',
+            'dd/MM/yyyy HH:mm:ss'
+        )
 
-    } catch (err) {
-        return ContentService
-            .createTextOutput(JSON.stringify({ result: 'error', error: err.toString() }))
-            .setMimeType(ContentService.MimeType.JSON)
+        saveLead({
+            isDemo,
+            timestamp,
+            name,
+            email,
+            company,
+            phone,
+            message,
+        })
+
+        // A mail failure must not invalidate a lead already saved to the sheet.
+        let emailSent = true
+
+        try {
+            sendLeadNotification({
+                isDemo,
+                timestamp,
+                name,
+                email,
+                company,
+                phone,
+                message,
+            })
+        } catch (mailError) {
+            emailSent = false
+            console.error('Lead saved, but notification email failed:', mailError)
+        }
+
+        return jsonResponse({
+            result: 'success',
+            emailSent,
+        })
+    } catch (error) {
+        console.error('Contact-form submission failed:', error)
+
+        return jsonResponse({
+            result: 'error',
+            message: error.message || 'Unable to process submission.',
+        })
     }
 }
 
 /**
- * Handles GET requests — useful for testing that the deployment is live.
- * Visit the Web App URL in a browser to verify it's working.
+ * Saves one lead while preventing simultaneous submissions from colliding.
+ */
+function saveLead(lead) {
+    const lock = LockService.getScriptLock()
+    lock.waitLock(10000)
+
+    try {
+        const spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID)
+        const sheetName = lead.isDemo ? DEMO_SHEET : ENQUIRY_SHEET
+        let sheet = spreadsheet.getSheetByName(sheetName)
+
+        if (!sheet) {
+            sheet = spreadsheet.insertSheet(sheetName)
+
+            const headers = lead.isDemo
+                ? ['Timestamp', 'Name', 'Email', 'Company', 'Phone', 'Message']
+                : ['Timestamp', 'Name', 'Email', 'Message']
+
+            sheet.appendRow(headers)
+            sheet
+                .getRange(1, 1, 1, headers.length)
+                .setFontWeight('bold')
+                .setBackground('#00f0ff')
+                .setFontColor('#050505')
+            sheet.setFrozenRows(1)
+        }
+
+        const row = lead.isDemo
+            ? [
+                lead.timestamp,
+                safeSheetValue(lead.name),
+                safeSheetValue(lead.email),
+                safeSheetValue(lead.company),
+                safeSheetValue(lead.phone),
+                safeSheetValue(lead.message),
+            ]
+            : [
+                lead.timestamp,
+                safeSheetValue(lead.name),
+                safeSheetValue(lead.email),
+                safeSheetValue(lead.message),
+            ]
+
+        sheet.appendRow(row)
+        SpreadsheetApp.flush()
+    } finally {
+        lock.releaseLock()
+    }
+}
+
+/**
+ * Emails the lead details to the sales inbox.
+ */
+function sendLeadNotification(lead) {
+    const subject = lead.isDemo
+        ? 'New Demo / POC Request — Gorad Website'
+        : 'New General Enquiry — Gorad Website'
+
+    const lines = [
+        'A new website lead has been received.',
+        '',
+        'Type: ' + (lead.isDemo ? 'Demo / POC Request' : 'General Enquiry'),
+        'Received: ' + lead.timestamp,
+        'Name: ' + lead.name,
+        'Email: ' + lead.email,
+    ]
+
+    if (lead.isDemo) {
+        lines.push('Company: ' + (lead.company || 'Not provided'))
+        lines.push('Phone: ' + (lead.phone || 'Not provided'))
+    }
+
+    lines.push('')
+    lines.push('Message:')
+    lines.push(lead.message)
+    lines.push('')
+    lines.push('This submission has also been saved to Google Sheets.')
+
+    MailApp.sendEmail({
+        to: NOTIFICATION_EMAIL,
+        subject,
+        body: lines.join('\n'),
+        replyTo: lead.email,
+        name: 'Gorad Website',
+    })
+}
+
+/**
+ * Normalizes user input and limits payload size.
+ */
+function cleanValue(value, maxLength) {
+    return String(value || '').trim().substring(0, maxLength)
+}
+
+/**
+ * Prevents spreadsheet-formula injection in cells populated by visitors.
+ */
+function safeSheetValue(value) {
+    return /^[=+\-@]/.test(value) ? "'" + value : value
+}
+
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+}
+
+function jsonResponse(data) {
+    return ContentService
+        .createTextOutput(JSON.stringify(data))
+        .setMimeType(ContentService.MimeType.JSON)
+}
+
+/**
+ * Visit the Web App URL in a browser to confirm the deployment is live.
  */
 function doGet() {
-    return ContentService
-        .createTextOutput(JSON.stringify({ status: 'Gorad Apps Script is running ✓' }))
-        .setMimeType(ContentService.MimeType.JSON)
+    return jsonResponse({
+        status: 'Gorad Apps Script is running',
+    })
 }
