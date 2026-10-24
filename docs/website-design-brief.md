@@ -8,7 +8,7 @@ Get a qualified plant into a conversation: a **demo** (anyone) or the **pilot pr
 
 ## Audience and market
 
-- **India first, Europe second.** English only for now. Avoid India-only phrasing; contact form asks for country.
+- **Global market** (changed 2026-10-25, previously India and Europe). Based in Bengaluru, serving plants worldwide. English only for now; avoid region-only phrasing. The contact form asks for country as free text.
 - Buyer: plant / quality head. Evaluator: automation engineer / integrator. Gatekeeper: plant IT.
 
 ## Brand architecture

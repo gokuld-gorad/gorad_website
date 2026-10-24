@@ -186,7 +186,7 @@ function Footer() {
                 </div>
                 <div className="footer-bottom">
                     <span>© {COMPANY}. All rights reserved.</span>
-                    <span>Bengaluru, India · Serving plants in India and Europe</span>
+                    <span>Based in Bengaluru, India · Serving plants worldwide</span>
                 </div>
             </div>
         </footer>

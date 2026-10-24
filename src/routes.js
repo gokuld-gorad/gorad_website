@@ -52,7 +52,7 @@ export const routes = [
         page: 'about',
         title: 'About Gorad — factory software you can trust on the line',
         description:
-            'Gorad Pvt Ltd is an engineering company in Bengaluru, India, building the Gorad Factory Platform for discrete manufacturers in India and Europe.',
+            'Gorad Pvt Ltd is an engineering company based in Bengaluru, India, building the Gorad Factory Platform for discrete manufacturers around the world.',
     },
     {
         path: '/security/',
@@ -66,7 +66,7 @@ export const routes = [
         page: 'pilot',
         title: 'Pilot programme — Gorad Factory Platform',
         description:
-            'Gorad is selecting a small number of plants in India and Europe to pilot the Factory Platform on a real station. See who it is for and how a pilot works.',
+            'Gorad is selecting a small number of plants worldwide to pilot the Factory Platform on a real station. See who it is for and how a pilot works.',
     },
     {
         path: '/contact/',

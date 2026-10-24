@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { Loader, Send } from 'lucide-react'
 import { GOOGLE_SCRIPT_URL, EMAIL_SALES } from '../site.js'
 
-const COUNTRIES = ['India', 'Germany', 'Sweden', 'Netherlands', 'Italy', 'France', 'United Kingdom', 'Other country in Europe', 'Other']
 const INTERESTS = ['Gorad Vision (inspection)', 'Gorad Connect (machine data)', 'Quality apps (SPC, NCR/CAPA)', 'Production apps (OEE, maintenance)', 'Not sure yet']
 const CAMERAS = ['1', '2–4', '5–10', 'More than 10', 'Not sure']
 const PLCS = ['Siemens (S7)', 'Modbus TCP', 'OPC UA', 'Other', 'Not sure']
@@ -108,7 +107,10 @@ export default function ContactForm() {
                     </div>
                 </div>
                 <div className="field-row">
-                    <Select name="country" label="Country" options={COUNTRIES} />
+                    <div className="field">
+                        <label htmlFor="f-country">Country <span className="opt">(optional)</span></label>
+                        <input id="f-country" name="country" autoComplete="country-name" />
+                    </div>
                     <Select name="interest" label="Interested in" options={INTERESTS} />
                 </div>
 

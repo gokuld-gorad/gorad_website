@@ -39,7 +39,7 @@ export default function Home() {
                             <a href="/contact/" className="btn btn-primary">Book a demo</a>
                             <a href="/pilot/" className="btn btn-secondary">Join the pilot programme</a>
                         </div>
-                        <p className="hero-note"><ShieldCheck size={16} aria-hidden="true" /> Built in Bengaluru for plants in India and Europe</p>
+                        <p className="hero-note"><ShieldCheck size={16} aria-hidden="true" /> Built in Bengaluru for plants around the world</p>
                     </div>
                     <LiveVerdictDemo />
                 </div>

@@ -10,7 +10,7 @@ const steps = [
 const pilotFaqs = [
     { q: 'Why a pilot programme?', a: 'The Factory Platform is built and tested in software. The last step before general release is proving it on real stations, with real parts, cameras and PLCs. Pilot plants get early access and direct work with the people who built it.' },
     { q: 'How many plants are you taking?', a: 'A small number, so that each pilot gets proper engineering attention. We select plants where the station is a good fit.' },
-    { q: 'Do you take pilots outside India?', a: 'Yes. We welcome applications from plants in India and Europe.' },
+    { q: 'Do you take pilots outside India?', a: 'Yes. We welcome applications from plants anywhere in the world.' },
     { q: 'What if it is not a fit?', a: 'We will tell you at the qualify step, before you spend time on samples or installation.' },
 ]
 
@@ -23,7 +23,7 @@ export default function Pilot() {
                 title="Prove it on your own line before you commit"
                 actions={<><a href="/contact/?type=pilot" className="btn btn-primary">Apply for the pilot</a><a href="/contact/" className="btn btn-secondary">Book a demo first</a></>}
             >
-                Gorad is selecting a small number of plants in India and Europe to pilot the Factory Platform on a
+                Gorad is selecting a small number of plants worldwide to pilot the Factory Platform on a
                 real station. You see results on your own parts before you decide anything.
             </PageHero>
 

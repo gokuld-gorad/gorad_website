@@ -113,7 +113,7 @@ export default function Security() {
                         <ul>
                             <li>No IEC 62443 certification or compliance claim. The design follows its principles; it has not been formally assessed.</li>
                             <li>No third-party penetration test yet. One will be done before broad rollout, or earlier when a customer requires it.</li>
-                            <li>GDPR and India’s DPDP Act may apply to user data in your plant. We will work through them with you.</li>
+                            <li>Data protection laws such as the GDPR or India’s DPDP Act may apply to user data in your plant. We will work through the ones that apply to you.</li>
                         </ul>
                         <div className="callout" style={{ marginTop: 20 }}>
                             <p>To report a security issue, email <a href={`mailto:${EMAIL_INFO}`}>{EMAIL_INFO}</a> with “Security” in the subject.</p>

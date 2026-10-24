@@ -34,9 +34,10 @@ export default function Privacy() {
 
                 <h2>Your rights</h2>
                 <p>
-                    You can ask us to show, correct or delete the data we hold about you, or to stop using it. If you are in the
-                    European Union or the United Kingdom, you have these rights under the GDPR; in India, under the Digital Personal
-                    Data Protection Act, 2023. Email <a href={`mailto:${EMAIL_INFO}`}>{EMAIL_INFO}</a> and we will respond.
+                    You can ask us to show, correct or delete the data we hold about you, or to stop using it, wherever you are.
+                    Depending on where you live, data protection laws such as the GDPR (European Union and United Kingdom) or
+                    India’s Digital Personal Data Protection Act, 2023 may give you further rights. Email{' '}
+                    <a href={`mailto:${EMAIL_INFO}`}>{EMAIL_INFO}</a> and we will respond.
                 </p>
 
                 <h2>Changes</h2>

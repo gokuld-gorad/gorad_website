@@ -1,6 +1,6 @@
 # Gorad
 
-> Gorad Pvt Ltd (Bengaluru, India) builds the Gorad Factory Platform: composable, on-premise manufacturing software for visual inspection, machine data and quality. It serves discrete manufacturers in India and Europe. The platform is in early access, with a pilot programme running before general release.
+> Gorad Pvt Ltd (Bengaluru, India) builds the Gorad Factory Platform: composable, on-premise manufacturing software for visual inspection, machine data and quality. It serves discrete manufacturers worldwide. The platform is in early access, with a pilot programme running before general release.
 
 Key facts:
 

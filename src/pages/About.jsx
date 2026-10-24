@@ -19,8 +19,8 @@ export default function About() {
                 eyebrow="About Gorad"
                 title="Factory software you can trust on the line"
             >
-                Gorad Pvt Ltd is an engineering company in Bengaluru, India. We build the Gorad Factory Platform
-                for discrete manufacturers in India and Europe.
+                Gorad Pvt Ltd is an engineering company based in Bengaluru, India. We build the Gorad Factory
+                Platform for discrete manufacturers around the world.
             </PageHero>
 
             <section className="section">
@@ -61,8 +61,8 @@ export default function About() {
             <section className="section">
                 <div className="container grid grid-2" style={{ gap: 40 }}>
                     <div>
-                        <SectionHead eyebrow="Where we are" title="Built in Bengaluru, for India and Europe">
-                            Plants in India and Europe can work with us directly. For robot cells and larger lines, we work alongside your integrator.
+                        <SectionHead eyebrow="Where we are" title="Built in Bengaluru, for plants everywhere">
+                            Plants anywhere can work with us directly. The platform runs on-premise and fully offline, so it fits plants wherever they are. For robot cells and larger lines, we work alongside your integrator.
                         </SectionHead>
                     </div>
                     <div className="card" style={{ display: 'flex', gap: 14 }}>
