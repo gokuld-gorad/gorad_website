@@ -1,5 +1,15 @@
+import { appPages } from './content/appPages.js'
+
 // One entry per page: URL, search title and description. Paths end in "/" because
 // each page is served from <path>/index.html on GitHub Pages.
+const appRoutes = appPages.map((a) => ({
+    path: `/factory-platform/${a.slug}/`,
+    page: 'app',
+    slug: a.slug,
+    title: `${a.fullName} — ${a.tagline}`,
+    description: a.description,
+}))
+
 export const routes = [
     {
         path: '/',
@@ -35,6 +45,21 @@ export const routes = [
         title: 'Use cases — Gorad Factory Platform',
         description:
             'Example applications: connecting rod inspection, catalyst blockage, PCB assembly, IGBT variant check, bearing pin count, brick damage, label checks, OEE from machine signals and a closed quality loop.',
+    },
+    ...appRoutes,
+    {
+        path: '/about/',
+        page: 'about',
+        title: 'About Gorad — factory software you can trust on the line',
+        description:
+            'Gorad Pvt Ltd is an engineering company in Bengaluru, India, building the Gorad Factory Platform for discrete manufacturers in India and Europe.',
+    },
+    {
+        path: '/security/',
+        page: 'security',
+        title: 'Security & trust — Gorad Factory Platform',
+        description:
+            'On-premise, no outbound connection, signed programs and updates, server-side roles, an audit log, SBOM and a licence-clean dependency policy. Designed with IEC 62443 principles.',
     },
     {
         path: '/pilot/',

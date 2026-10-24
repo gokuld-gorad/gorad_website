@@ -246,6 +246,13 @@ a.card:hover { border-color: var(--signal); text-decoration: none; }
     position: absolute; top: calc(100% + 8px); left: -8px; width: 320px; list-style: none; padding: 8px;
     background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow);
 }
+/* Centred under the navbar so it never runs off either edge. */
+.nav-mega {
+    position: fixed; top: 60px; left: 50%; transform: translateX(-50%);
+    display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 8px; width: min(920px, calc(100vw - 48px));
+}
+.nav-mega ul { list-style: none; padding: 0; }
+.nav-mega ul + ul { border-left: 1px solid var(--border); padding-left: 8px; }
 .nav-menu-label { padding: 8px 12px 4px; font: 500 0.7rem var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-subtle); }
 .nav-menu a { display: block; padding: 10px 12px; border-radius: var(--radius-sm); color: var(--text); }
 .nav-menu a:hover { background: var(--surface-sunken); text-decoration: none; }
@@ -394,6 +401,14 @@ a.card:hover { border-color: var(--signal); text-decoration: none; }
 .uc-cards .card { display: flex; flex-direction: column; gap: 8px; }
 .uc-cards .card h3 { margin: 0; }
 @media (max-width: 900px) { .uc-grid { grid-template-columns: 1fr; gap: 24px; } }
+
+/* ── App pages ────────────────────────────────────────────────────────── */
+.app-intro { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: center; }
+.app-status p { font-size: 0.9rem; margin-top: 10px; }
+.works-with { display: flex; flex-direction: column; gap: 2px; padding: 14px 18px; }
+.works-with strong { color: var(--text); }
+.works-with span { font-size: 0.88rem; color: var(--text-muted); }
+@media (max-width: 800px) { .app-intro { grid-template-columns: 1fr; gap: 20px; } }
 
 /* ── Two doors ────────────────────────────────────────────────────────── */
 .door { display: flex; flex-direction: column; gap: 12px; padding: 28px; }

@@ -91,15 +91,21 @@ export default function FactoryPlatform() {
                         <div key={g.name} style={{ marginBottom: 32 }}>
                             <h3 style={{ marginBottom: 14 }}>{g.name}</h3>
                             <div className="grid grid-3">
-                                {g.apps.map((a) => (
-                                    <div className="card" key={a.name}>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, alignItems: 'start', marginBottom: 8 }}>
-                                            <h4>{a.name}</h4>
-                                            <StatusBadge status={a.status} />
-                                        </div>
-                                        <p>{a.text}</p>
-                                    </div>
-                                ))}
+                                {g.apps.map((a) => {
+                                    const body = (
+                                        <>
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, alignItems: 'start', marginBottom: 8 }}>
+                                                <h4>{a.name}</h4>
+                                                <StatusBadge status={a.status} />
+                                            </div>
+                                            <p>{a.text}</p>
+                                            {a.slug && <span className="text-link" style={{ marginTop: 10 }}>Learn more →</span>}
+                                        </>
+                                    )
+                                    return a.slug
+                                        ? <a className="card" key={a.name} href={`/factory-platform/${a.slug}/`}>{body}</a>
+                                        : <div className="card" key={a.name}>{body}</div>
+                                })}
                             </div>
                         </div>
                     ))}

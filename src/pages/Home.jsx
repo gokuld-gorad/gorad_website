@@ -145,7 +145,9 @@ export default function Home() {
                                 <ul className="check-list" style={{ marginTop: 12 }}>
                                     {g.apps.map((a) => (
                                         <li key={a.name} style={{ justifyContent: 'space-between' }}>
-                                            <span style={{ color: 'var(--text)' }}>{a.name}</span>
+                                            {a.slug
+                                                ? <a href={`/factory-platform/${a.slug}/`} style={{ color: 'var(--text)' }}>{a.name}</a>
+                                                : <span style={{ color: 'var(--text)' }}>{a.name}</span>}
                                             <StatusBadge status={a.status} />
                                         </li>
                                     ))}
@@ -159,7 +161,9 @@ export default function Home() {
 
             <section className="section alt">
                 <div className="container">
-                    <SectionHead eyebrow="Built for plants" title="Made for the shop floor and for plant IT" />
+                    <SectionHead eyebrow="Built for plants" title="Made for the shop floor and for plant IT">
+                        Plant IT has to approve new software. <a href="/security/">See how the platform handles security</a>.
+                    </SectionHead>
                     <div className="grid grid-3">
                         {plantFeatures.map(({ icon: Icon, title, text }) => (
                             <div className="card" key={title}>

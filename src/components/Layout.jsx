@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { ChevronDown, Menu, Moon, Sun, X } from 'lucide-react'
 import { ADDRESS_LINES, COMPANY, EMAIL_INFO, EMAIL_SALES } from '../site.js'
+import { appPages } from '../content/appPages.js'
+
+const APP_GROUPS = ['Quality', 'Production', 'Compliance & logistics']
 
 export function Logo({ size = 28 }) {
     return (
@@ -62,17 +65,29 @@ function PlatformsMenu({ path }) {
                 Platforms <ChevronDown size={15} />
             </button>
             {open && (
-                <ul className="nav-menu" id="platforms-menu">
-                    <li className="nav-menu-label">Gorad Factory Platform</li>
-                    {platformLinks.map((l) => (
-                        <li key={l.href}>
-                            <a href={l.href} aria-current={path === l.href ? 'page' : undefined}>
-                                {l.label}
-                                <span>{l.note}</span>
-                            </a>
-                        </li>
+                <div className="nav-menu nav-mega" id="platforms-menu">
+                    <ul>
+                        <li className="nav-menu-label">Gorad Factory Platform</li>
+                        {platformLinks.map((l) => (
+                            <li key={l.href}>
+                                <a href={l.href} aria-current={path === l.href ? 'page' : undefined}>
+                                    {l.label}
+                                    <span>{l.note}</span>
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                    {APP_GROUPS.map((g) => (
+                        <ul key={g}>
+                            <li className="nav-menu-label">{g}</li>
+                            {appPages.filter((a) => a.group === g).map((a) => (
+                                <li key={a.slug}>
+                                    <a href={`/factory-platform/${a.slug}/`} aria-current={path === `/factory-platform/${a.slug}/` ? 'page' : undefined}>{a.name}</a>
+                                </li>
+                            ))}
+                        </ul>
                     ))}
-                </ul>
+                </div>
             )}
         </li>
     )
@@ -91,6 +106,7 @@ function Navbar({ path }) {
                     <ul className="nav-links">
                         <PlatformsMenu path={path} />
                         <li><a href="/pilot/" aria-current={current('/pilot/')}>Pilot programme</a></li>
+                        <li><a href="/about/" aria-current={current('/about/')}>About</a></li>
                         <li><a href="/contact/" aria-current={current('/contact/')}>Contact</a></li>
                     </ul>
                 </nav>
@@ -114,7 +130,12 @@ function Navbar({ path }) {
                     <a className="sub" href="/factory-platform/vision/">Gorad Vision</a>
                     <a className="sub" href="/factory-platform/connect/">Gorad Connect</a>
                     <a className="sub" href="/factory-platform/use-cases/">Use cases</a>
+                    {appPages.map((a) => (
+                        <a key={a.slug} className="sub" href={`/factory-platform/${a.slug}/`}>{a.name}</a>
+                    ))}
                     <a href="/pilot/">Pilot programme</a>
+                    <a href="/about/">About</a>
+                    <a href="/security/">Security & trust</a>
                     <a href="/contact/">Contact</a>
                     <a href="/contact/" className="btn btn-primary">Book a demo</a>
                 </div>
@@ -142,11 +163,14 @@ function Footer() {
                             <li><a href="/factory-platform/vision/">Gorad Vision</a></li>
                             <li><a href="/factory-platform/connect/">Gorad Connect</a></li>
                             <li><a href="/factory-platform/use-cases/">Use cases</a></li>
+                            <li><a href="/factory-platform/#apps">All apps</a></li>
                         </ul>
                     </nav>
                     <nav aria-label="Company">
                         <h2>Company</h2>
                         <ul>
+                            <li><a href="/about/">About</a></li>
+                            <li><a href="/security/">Security & trust</a></li>
                             <li><a href="/pilot/">Pilot programme</a></li>
                             <li><a href="/contact/">Contact</a></li>
                             <li><a href="/privacy/">Privacy</a></li>
