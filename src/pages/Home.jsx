@@ -2,6 +2,7 @@ import { Camera, CircleSlash, Cpu, FileLock2, HardDrive, ShieldCheck, Unplug, Us
 import LiveVerdictDemo from '../components/LiveVerdictDemo.jsx'
 import CycleDiagram from '../components/CycleDiagram.jsx'
 import PlatformLayers from '../components/PlatformLayers.jsx'
+import Comparison from '../components/Comparison.jsx'
 import { CheckList, CtaBand, Faq, SectionHead, StatusBadge, TextLink } from '../components/Blocks.jsx'
 import { appGroups } from '../content/apps.js'
 
@@ -105,7 +106,16 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="section alt">
+            <section className="section alt" id="why-gorad">
+                <div className="container">
+                    <SectionHead eyebrow="Why Gorad" title="How Gorad compares">
+                        Plants usually choose between a smart camera, a custom vision project from an integrator, or separate tools for inspection and quality. Here is where Gorad differs.
+                    </SectionHead>
+                    <Comparison />
+                </div>
+            </section>
+
+            <section className="section">
                 <div className="container">
                     <SectionHead eyebrow="Apps" title="Grow into quality and production">
                         Each app works on its own and shares the platform core. All apps are in early access while we run pilots.
@@ -129,7 +139,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="section">
+            <section className="section alt">
                 <div className="container">
                     <SectionHead eyebrow="Built for plants" title="Made for the shop floor and for plant IT" />
                     <div className="grid grid-3">
@@ -144,7 +154,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="section alt">
+            <section className="section">
                 <div className="container">
                     <SectionHead eyebrow="Honest fit" title="Where Gorad fits, and where it does not">
                         We would rather tell you now than after a pilot.
@@ -172,7 +182,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="section">
+            <section className="section alt">
                 <div className="container">
                     <SectionHead eyebrow="Questions" title="Frequently asked questions" center />
                     <Faq />

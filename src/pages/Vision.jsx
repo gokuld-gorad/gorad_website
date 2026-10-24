@@ -1,6 +1,13 @@
 import CycleDiagram from '../components/CycleDiagram.jsx'
 import LiveVerdictDemo from '../components/LiveVerdictDemo.jsx'
-import { CheckList, CtaBand, PageHero, SectionHead } from '../components/Blocks.jsx'
+import { CheckList, CtaBand, PageHero, SectionHead, TextLink } from '../components/Blocks.jsx'
+
+const different = [
+    { title: 'Fail-closed by design', text: 'Any error, timeout or missing view is NG. Never a silent pass.' },
+    { title: 'Signed programs', text: 'Only signed, verified programs go live, after a golden-sample check.' },
+    { title: 'Classical + AI together', text: 'Rule-based tools and AI models in one program, one verdict.' },
+    { title: 'Part of a platform', text: 'NG results feed SPC, NCR/CAPA and OEE on the same platform.' },
+]
 
 const rules = [
     { title: 'Every view must pass', text: 'A cycle is OK only if every expected view reports OK. Error, timeout, missing, empty or unknown results are NG.' },
@@ -29,6 +36,21 @@ export default function Vision() {
                 Multi-camera inspection with a PLC handshake, signed programs and a journal you can trust.
                 Classical and AI tools in one program, a clear verdict for the operator, and a reason for every NG.
             </PageHero>
+
+            <section className="section tight alt">
+                <div className="container">
+                    <h2 className="sr-only">What makes Gorad Vision different</h2>
+                    <div className="grid grid-4">
+                        {different.map((d) => (
+                            <div className="card" key={d.title}>
+                                <h3>{d.title}</h3>
+                                <p>{d.text}</p>
+                            </div>
+                        ))}
+                    </div>
+                    <div style={{ marginTop: 20 }}><TextLink href="/#why-gorad">Compare Gorad with smart cameras and custom projects</TextLink></div>
+                </div>
+            </section>
 
             <section className="section">
                 <div className="container">
