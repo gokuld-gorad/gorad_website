@@ -1,5 +1,6 @@
 // Small shared building blocks used across pages.
-import { ArrowRight, Check } from 'lucide-react'
+import { ArrowRight, Check, FileDown } from 'lucide-react'
+import { DOWNLOADS } from '../site.js'
 import { faqs } from '../content/faqs.js'
 import { STATUS } from '../content/apps.js'
 
@@ -53,6 +54,19 @@ export function StatusBadge({ status }) {
 
 export function TextLink({ href, children }) {
     return <a className="text-link" href={href}>{children} <ArrowRight size={16} aria-hidden="true" /></a>
+}
+
+export function Downloads({ items = ['brochure', 'datasheet'] }) {
+    return (
+        <div className="downloads">
+            {items.map((k) => (
+                <a key={k} className="download" href={DOWNLOADS[k].href} download>
+                    <FileDown size={18} aria-hidden="true" />
+                    <span><strong>{DOWNLOADS[k].label}</strong><span>{DOWNLOADS[k].note}</span></span>
+                </a>
+            ))}
+        </div>
+    )
 }
 
 export function Faq({ items = faqs }) {

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Loader, Send } from 'lucide-react'
 import { GOOGLE_SCRIPT_URL, EMAIL_SALES } from '../site.js'
 
-const INTERESTS = ['Gorad Vision (inspection)', 'Gorad Connect (machine data)', 'Quality apps (SPC, NCR/CAPA)', 'Production apps (OEE, maintenance)', 'Not sure yet']
+const INTERESTS = ['Gorad Vision (inspection)', 'Gorad Connect (machine data)', 'Quality apps (SPC, NCR/CAPA)', 'Production apps (OEE, maintenance)', 'Partnership (integrator / machine builder)', 'Not sure yet']
 const CAMERAS = ['1', '2–4', '5–10', 'More than 10', 'Not sure']
 const PLCS = ['Siemens (S7)', 'Modbus TCP', 'OPC UA', 'Other', 'Not sure']
 

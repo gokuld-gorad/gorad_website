@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { ChevronDown, Menu, Moon, Sun, X } from 'lucide-react'
 import { ADDRESS_LINES, COMPANY, EMAIL_INFO, EMAIL_SALES } from '../site.js'
-import { appPages } from '../content/appPages.js'
+import { appIndex as appPages } from '../content/appIndex.js'
 
 const APP_GROUPS = ['Quality', 'Production', 'Compliance & logistics']
 
@@ -137,6 +137,7 @@ function Navbar({ path }) {
                     <a href="/pilot/">Pilot programme</a>
                     <a href="/about/">About</a>
                     <a href="/security/">Security & trust</a>
+                    <a href="/partners/">Integrators & machine builders</a>
                     <a href="/contact/">Contact</a>
                     <a href="/contact/" className="btn btn-primary">Book a demo</a>
                 </div>
@@ -165,6 +166,8 @@ function Footer() {
                             <li><a href="/factory-platform/connect/">Gorad Connect</a></li>
                             <li><a href="/factory-platform/use-cases/">Use cases</a></li>
                             <li><a href="/factory-platform/#apps">All apps</a></li>
+                            <li><a href="/downloads/gorad-factory-platform-brochure.pdf" download>Brochure (PDF)</a></li>
+                            <li><a href="/downloads/gorad-factory-platform-datasheet.pdf" download>Datasheet (PDF)</a></li>
                         </ul>
                     </nav>
                     <nav aria-label="Company">
@@ -172,6 +175,7 @@ function Footer() {
                         <ul>
                             <li><a href="/about/">About</a></li>
                             <li><a href="/security/">Security & trust</a></li>
+                            <li><a href="/partners/">Integrators & machine builders</a></li>
                             <li><a href="/pilot/">Pilot programme</a></li>
                             <li><a href="/contact/">Contact</a></li>
                             <li><a href="/privacy/">Privacy</a></li>

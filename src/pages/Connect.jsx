@@ -88,7 +88,15 @@ export default function Connect() {
                 </div>
             </section>
 
-            <CtaBand title="Machine builder or integrator?" text="Connect can ship on its own as the data gateway for your machines. Tell us what you build and we will show you how it fits." />
+            <section className="section tight">
+                <div className="container">
+                    <div className="callout">
+                        <p>Machine builder or integrator? Connect can ship on its own as the data gateway for your machines. <a href="/partners/">See how partnering works</a>.</p>
+                    </div>
+                </div>
+            </section>
+
+            <CtaBand title="Get your machine data out of the PLC" text="Tell us which machines and PLCs you have, and we will show you what Connect would read." />
         </>
     )
 }

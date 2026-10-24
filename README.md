@@ -40,6 +40,14 @@ To add a page: add it to `src/routes.js`, create the component in `src/pages/`, 
 
 Pushing to `main` runs `.github/workflows/deploy-pages.yml`, which builds and publishes `dist/` to GitHub Pages at www.gorad.in. Work on a branch and merge to `main` to go live.
 
+## Brochure and datasheet
+
+`print/brochure.html` and `print/datasheet.html` are A4 print pages. After editing one, run `./scripts/make-pdfs.sh` (needs Chrome or Chromium) and commit the PDFs it writes to `public/downloads/`.
+
+## Analytics
+
+Off by default. To turn on cookie-free Cloudflare Web Analytics, create a site in Cloudflare Web Analytics and save its token as the repository secret `CF_BEACON_TOKEN`. The deploy workflow passes it to the build, which adds the beacon to every page.
+
 ## Contact form
 
 The form posts to a Google Apps Script web app that saves leads to a Google Sheet and emails sales@gorad.in. The script is in [docs/google-apps-script.js](docs/google-apps-script.js); its URL is `GOOGLE_SCRIPT_URL` in `src/site.js`. After changing the script, deploy a new version in Apps Script.

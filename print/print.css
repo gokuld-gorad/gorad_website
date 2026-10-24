@@ -1,0 +1,50 @@
+/* Shared A4 print styles for the brochure and the datasheet (rendered to PDF by
+   scripts/make-pdfs.sh with headless Chrome). Same tokens as the site, light theme. */
+@font-face { font-family: "Inter"; src: url("../public/fonts/inter/Inter-Variable.woff2") format("woff2"); font-weight: 100 900; }
+@font-face { font-family: "JetBrains Mono"; src: url("../public/fonts/jetbrains-mono/JetBrainsMono-Medium.woff2") format("woff2"); font-weight: 500; }
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Inter", sans-serif; color: #15161a; font-size: 9.6pt; line-height: 1.45; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 210mm; height: 297mm; padding: 16mm 16mm 14mm; position: relative; page-break-after: always; overflow: hidden; }
+.page:last-child { page-break-after: auto; }
+.top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8mm; }
+.logo { display: flex; align-items: center; gap: 8px; font-weight: 700; letter-spacing: 0.08em; font-size: 12pt; }
+.logo svg { color: #2e5bff; }
+.doc-tag { font: 500 7.5pt "JetBrains Mono", monospace; letter-spacing: 0.08em; text-transform: uppercase; color: #696e7b; }
+.eyebrow { font: 500 7.5pt "JetBrains Mono", monospace; letter-spacing: 0.1em; text-transform: uppercase; color: #2e5bff; margin-bottom: 2.5mm; display: block; }
+h1 { font-size: 30pt; line-height: 1.05; letter-spacing: -0.03em; font-weight: 700; margin-bottom: 4mm; }
+h2 { font-size: 13pt; letter-spacing: -0.015em; font-weight: 650; margin-bottom: 2.5mm; }
+h3 { font-size: 10pt; font-weight: 650; margin-bottom: 1mm; }
+p { color: #555a66; }
+.lead { font-size: 11.5pt; color: #3b3f48; max-width: 150mm; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5mm; }
+.box { border: 1px solid #e4e5e9; border-radius: 3mm; padding: 3.6mm 4mm; background: #fff; }
+.box.tint { background: #f4f6ff; border-color: #d9e1ff; }
+.mt { margin-top: 7mm; }
+.mt-s { margin-top: 4mm; }
+ul { padding-left: 4.5mm; color: #555a66; }
+li { margin-top: 1mm; }
+ol.steps { list-style: none; counter-reset: s; display: grid; grid-template-columns: repeat(5, 1fr); gap: 3mm; }
+ol.steps li { counter-increment: s; margin: 0; border-top: 2px solid #2e5bff; padding-top: 2mm; }
+ol.steps li.ng { border-top-color: #d92d20; }
+ol.steps li::before { content: "0" counter(s); display: block; font: 500 7.5pt "JetBrains Mono", monospace; color: #2e5bff; }
+ol.steps li.ng::before { color: #d92d20; }
+ol.steps.four { grid-template-columns: repeat(4, 1fr); }
+ol.steps strong { display: block; font-size: 9.5pt; color: #15161a; margin: 0.5mm 0; }
+ol.steps span { font-size: 8.4pt; color: #555a66; }
+table { width: 100%; border-collapse: collapse; font-size: 8.8pt; }
+th, td { text-align: left; vertical-align: top; padding: 1.4mm 2.5mm; border-bottom: 1px solid #e4e5e9; }
+th { width: 34%; font-weight: 600; color: #15161a; }
+td { color: #3b3f48; }
+table.compact th { width: 28%; }
+.section-title { font: 500 7.5pt "JetBrains Mono", monospace; letter-spacing: 0.1em; text-transform: uppercase; color: #2e5bff; margin: 5mm 0 2mm; }
+.chips { display: flex; flex-wrap: wrap; gap: 1.5mm; margin-top: 2mm; }
+.chip { font-size: 8pt; padding: 0.8mm 2.5mm; border-radius: 99px; border: 1px solid #d1d3d9; color: #3b3f48; }
+.footer { position: absolute; left: 16mm; right: 16mm; bottom: 10mm; display: flex; justify-content: space-between; font-size: 8pt; color: #696e7b; border-top: 1px solid #e4e5e9; padding-top: 3mm; }
+.footer strong { color: #15161a; }
+.founder { display: flex; gap: 4mm; align-items: center; }
+.founder img { width: 14mm; height: 14mm; border-radius: 50%; object-fit: cover; }
+.note { font-size: 8pt; color: #696e7b; margin-top: 2mm; }
+.ok { color: #14935b; font-weight: 600; }
+.ng-text { color: #d92d20; font-weight: 600; }

@@ -32,6 +32,9 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          # Optional: set this repository secret to turn on Cloudflare Web Analytics.
+          CF_BEACON_TOKEN: ${{ secrets.CF_BEACON_TOKEN }}
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

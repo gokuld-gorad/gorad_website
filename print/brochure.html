@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Gorad Factory Platform — Brochure</title>
+<link rel="stylesheet" href="print.css" />
+</head>
+<body>
+<!-- Keep claims in line with the website (src/content) and docs/website-design-brief.md. -->
+<section class="page">
+    <div class="top">
+        <div class="logo">
+            <svg width="22" height="22" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20.5" stroke="currentColor" stroke-width="3"/><path d="M24 11.5A12.5 12.5 0 1 0 36.5 24H30" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="24" r="4" fill="currentColor"/></svg>
+            GORAD
+        </div>
+        <span class="doc-tag">Gorad Factory Platform · Early access</span>
+    </div>
+
+    <span class="eyebrow">Brochure</span>
+    <h1>Factory software<br />that fails safe.</h1>
+    <p class="lead">Visual inspection, machine data and quality apps on one on-premise platform. If a camera, a check or the software fails, the part is rejected, never quietly passed.</p>
+
+    <div class="grid3 mt">
+        <div class="box"><h3>Manual inspection drifts</h3><p>People get tired, standards vary between shifts, and nothing records why a part was passed.</p></div>
+        <div class="box"><h3>Vision projects are fragile</h3><p>Every change needs the original integrator, and a fault can quietly pass parts that should have been rejected.</p></div>
+        <div class="box"><h3>Machine data stays in the PLC</h3><p>Counts, states and alarms stay on the machine, so OEE and quality reports are built by hand.</p></div>
+    </div>
+
+    <div class="section-title">Fail-closed by design</div>
+    <h2>Never pass a part because the system was broken</h2>
+    <p>A part is OK only when every expected view reports OK. Errors, timeouts and missing views all mean NG (rejected), and the result is written down before the PLC hears it.</p>
+    <ol class="steps mt-s">
+        <li><strong>Trigger</strong><span>The PLC signals a part. Line safety is checked on every trigger.</span></li>
+        <li><strong>Capture every view</strong><span>Each camera runs the checks in the signed program.</span></li>
+        <li class="ng"><strong>A view faults</strong><span>A camera times out. A missing result counts as a failed one.</span></li>
+        <li><strong>Write the journal</strong><span>Verdict and reason are recorded first.</span></li>
+        <li class="ng"><strong>NG to the PLC</strong><span>Only then does the PLC get the result.</span></li>
+    </ol>
+
+    <div class="section-title">Why Gorad</div>
+    <div class="grid2">
+        <div class="box tint">
+            <h3>Compared with a smart camera or a custom project</h3>
+            <ul>
+                <li>Multi-camera stations with one verdict per part</li>
+                <li>Signed, versioned programs, changed from the browser without the original integrator</li>
+                <li>Classical and AI checks in one program</li>
+                <li>Inspection results feed SPC, NCR/CAPA and OEE on the same platform</li>
+                <li>Air-gapped updates by USB, from the web interface</li>
+            </ul>
+        </div>
+        <div class="box">
+            <h3>Who builds it</h3>
+            <div class="founder mt-s">
+                <img src="../public/images/founder.webp" alt="" />
+                <p><strong style="color:#15161a">Gokulramesh Dhanasekar</strong>, founder, has built and deployed more than 30 production vision inspection systems in aerospace, automotive and heavy engineering.</p>
+            </div>
+            <p class="note">Gorad Pvt Ltd · based in Bengaluru, India · serving plants worldwide</p>
+        </div>
+    </div>
+
+    <div class="footer"><span><strong>gorad.in</strong> · sales@gorad.in</span><span>1 / 2</span></div>
+</section>
+
+<section class="page">
+    <div class="top">
+        <div class="logo">
+            <svg width="22" height="22" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20.5" stroke="currentColor" stroke-width="3"/><path d="M24 11.5A12.5 12.5 0 1 0 36.5 24H30" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="24" r="4" fill="currentColor"/></svg>
+            GORAD
+        </div>
+        <span class="doc-tag">Gorad Factory Platform · Early access</span>
+    </div>
+
+    <span class="eyebrow">One platform</span>
+    <h2>Start with one app. Grow without replacing anything.</h2>
+    <div class="grid3 mt-s">
+        <div class="box"><h3>Gorad Vision</h3><p>Fail-closed visual inspection with a PLC handshake, signed programs, and classical and AI tools in one program.</p></div>
+        <div class="box"><h3>Gorad Connect</h3><p>Reads PLCs and meters over Modbus TCP, Siemens S7 and OPC UA, and keeps every event through network drops.</p></div>
+        <div class="box"><h3>Platform Core</h3><p>One login, roles, offline licensing, plant structure, audit trail, updates and backup.</p></div>
+    </div>
+    <div class="grid3 mt-s">
+        <div class="box"><h3>Quality</h3><p>SPC · NCR / CAPA · Calibration &amp; MSA</p></div>
+        <div class="box"><h3>Production</h3><p>Line Performance (OEE, Andon) · Maintenance · Tool &amp; Fixture Life</p></div>
+        <div class="box"><h3>Compliance &amp; logistics</h3><p>Traceability · Label &amp; Dispatch · Skills &amp; Training</p></div>
+    </div>
+    <p class="note">All apps are in early access: built and tested in software, and being proven with pilot plants.</p>
+
+    <div class="section-title">What it is built to inspect</div>
+    <div class="grid3">
+        <div class="box"><h3>Connecting rods</h3><p>Chip-off, voids, dents, burrs and machining defects on every face.</p></div>
+        <div class="box"><h3>Catalyst blockage</h3><p>Blocked-cell percentage against your threshold.</p></div>
+        <div class="box"><h3>PCB assembly</h3><p>Component presence, location and polarity.</p></div>
+        <div class="box"><h3>IGBT module variants</h3><p>The right variant for the batch, from markings and features.</p></div>
+        <div class="box"><h3>Bearing pin count</h3><p>Every pin counted, a missing one marked.</p></div>
+        <div class="box"><h3>Brick damage</h3><p>Cracks, chipped edges and broken corners on a moving line.</p></div>
+    </div>
+
+    <div class="grid2 mt">
+        <div>
+            <div class="section-title" style="margin-top:0">Built for plants</div>
+            <ul>
+                <li>On-premise: Ubuntu appliance, VM or your RHEL server</li>
+                <li>Air-gap ready: offline licence, USB release, updates from the UI</li>
+                <li>Signed programs, server-side roles, append-only audit trail</li>
+                <li>PLCs: Modbus TCP, Siemens S7, OPC UA</li>
+                <li>Cameras: GenICam / GigE Vision and USB</li>
+            </ul>
+        </div>
+        <div>
+            <div class="section-title" style="margin-top:0">Pilot programme</div>
+            <ol class="steps four">
+                <li><strong>Qualify</strong><span>Is Gorad the right fit?</span></li>
+                <li><strong>Samples</strong><span>Proof on your parts.</span></li>
+                <li><strong>One station</strong><span>Installed with your team.</span></li>
+                <li><strong>Decide</strong><span>With the evidence.</span></li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="box tint mt-s">
+        <h3>Book a demo or apply for the pilot</h3>
+        <p><strong style="color:#15161a">gorad.in/contact</strong> · sales@gorad.in · Gorad Pvt Ltd, Bengaluru, India</p>
+    </div>
+
+    <div class="footer"><span><strong>gorad.in</strong> · sales@gorad.in</span><span>2 / 2</span></div>
+</section>
+</body>
+</html>

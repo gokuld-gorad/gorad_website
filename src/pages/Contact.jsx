@@ -1,5 +1,6 @@
 import { Mail, MapPin } from 'lucide-react'
 import ContactForm from '../components/ContactForm.jsx'
+import { Downloads } from '../components/Blocks.jsx'
 import { ADDRESS_LINES, COMPANY, EMAIL_INFO, EMAIL_SALES } from '../site.js'
 
 export default function Contact() {
@@ -13,7 +14,11 @@ export default function Contact() {
                         Tell us about your station: the part, the defects you need to catch, or the machine data you need.
                         A demo takes about 30 minutes, online.
                     </p>
-                    <div className="card" style={{ marginTop: 32 }}>
+                    <div style={{ marginTop: 28 }}>
+                        <h2 style={{ fontSize: '1rem', marginBottom: 10 }}>Share it with your team</h2>
+                        <Downloads />
+                    </div>
+                    <div className="card" style={{ marginTop: 24 }}>
                         <div style={{ display: 'flex', gap: 14 }}>
                             <div className="card-icon" style={{ flex: 'none' }}><Mail size={18} aria-hidden="true" /></div>
                             <div>

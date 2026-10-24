@@ -1,4 +1,4 @@
-import { appPages } from './content/appPages.js'
+import { appIndex as appPages } from './content/appIndex.js'
 
 // One entry per page: URL, search title and description. Paths end in "/" because
 // each page is served from <path>/index.html on GitHub Pages.
@@ -60,6 +60,13 @@ export const routes = [
         title: 'Security & trust — Gorad Factory Platform',
         description:
             'On-premise, no outbound connection, signed programs and updates, server-side roles, an audit log, SBOM and a licence-clean dependency policy. Designed with IEC 62443 principles.',
+    },
+    {
+        path: '/partners/',
+        page: 'partners',
+        title: 'For integrators & machine builders — Gorad Factory Platform',
+        description:
+            'Build inspection and robot cells on Gorad Vision: one product for every customer, a standard PLC signal map over Modbus TCP, S7 or OPC UA, and programs you can hand over.',
     },
     {
         path: '/pilot/',

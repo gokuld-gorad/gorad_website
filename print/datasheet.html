@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Gorad Factory Platform — Technical datasheet</title>
+<link rel="stylesheet" href="print.css" />
+</head>
+<body>
+<!-- Facts from the platform repo: CLAUDE.md, docs/07_SECURITY.md, docs/vision/PLC_FUNCTION_BLOCKS.md,
+     docs/sales/PLATFORM_OVERVIEW.md. Update this file when those change. -->
+<section class="page">
+    <div class="top">
+        <div class="logo">
+            <svg width="22" height="22" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20.5" stroke="currentColor" stroke-width="3"/><path d="M24 11.5A12.5 12.5 0 1 0 36.5 24H30" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="24" r="4" fill="currentColor"/></svg>
+            GORAD
+        </div>
+        <span class="doc-tag">Technical datasheet · Early access</span>
+    </div>
+
+    <span class="eyebrow">Gorad Factory Platform</span>
+    <h1 style="font-size:24pt">Technical datasheet</h1>
+    <p class="lead">Deployment, integration, inspection and security facts for engineers and plant IT.</p>
+
+    <div class="section-title">Deployment</div>
+    <table>
+        <tr><th>Server</th><td>Ubuntu appliance, virtual machine or customer RHEL server</td></tr>
+        <tr><th>Station (Gorad Vision)</th><td>Industrial PC on Ubuntu; NVIDIA GPU for stations that run heavier AI tools</td></tr>
+        <tr><th>User interface</th><td>One web application in any modern browser: LIVE screens for operators, SETUP for engineers</td></tr>
+        <tr><th>Topologies</th><td>Standalone on the machine network, or a connected site server</td></tr>
+        <tr><th>Internet</th><td>Not required. No outbound connection, no telemetry by default</td></tr>
+        <tr><th>Network exposure</th><td>HTTPS (443) only; TLS between browser, station and server; customer certificates supported</td></tr>
+        <tr><th>Data stores</th><td>PostgreSQL for platform and app data; SQLite (WAL) journals on the station</td></tr>
+        <tr><th>Updates and release</th><td>Signed update and program bundles, over the network or by USB, from the web interface</td></tr>
+        <tr><th>Licensing</th><td>Offline activation; per-app entitlements. Licence state never affects inspection or the PLC output</td></tr>
+    </table>
+
+    <div class="section-title">Integration</div>
+    <table>
+        <tr><th>PLC protocols</th><td>Modbus TCP, Siemens S7, OPC UA (client)</td></tr>
+        <tr><th>Vision handshake signals</th><td>Ready, Trigger, ResultOK / ResultNG (written after the journal and read back), Heartbeat (toggles every 0.5 s while healthy), LineUnsafe, PartToken, ProgramSelect, Ack; InPosition / CaptureDone per position for robot cells</td></tr>
+        <tr><th>Cameras</th><td>GenICam / GigE Vision industrial cameras; USB cameras</td></tr>
+        <tr><th>Machine data (Gorad Connect)</th><td>Tags mapped to standard events: machine.state, production.count, measurement, alarm. Store-and-forward through network drops. Read-only by default</td></tr>
+        <tr><th>Events between apps</th><td>MQTT, or HTTP ingest when no broker is used</td></tr>
+    </table>
+
+    <div class="section-title">Apps (early access)</div>
+    <table class="compact">
+        <tr><th>Quality</th><td>SPC · NCR / CAPA · Calibration &amp; MSA</td></tr>
+        <tr><th>Production</th><td>Line Performance (OEE, Andon, downtime) · Maintenance · Tool &amp; Fixture Life</td></tr>
+        <tr><th>Compliance &amp; logistics</th><td>Traceability · Label &amp; Dispatch · Skills &amp; Training</td></tr>
+        <tr><th>Reports</th><td>PDF and Excel across the apps</td></tr>
+    </table>
+
+    <div class="footer"><span><strong>gorad.in</strong> · sales@gorad.in</span><span>1 / 2</span></div>
+</section>
+
+<section class="page">
+    <div class="top">
+        <div class="logo">
+            <svg width="22" height="22" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20.5" stroke="currentColor" stroke-width="3"/><path d="M24 11.5A12.5 12.5 0 1 0 36.5 24H30" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="24" r="4" fill="currentColor"/></svg>
+            GORAD
+        </div>
+        <span class="doc-tag">Technical datasheet · Early access</span>
+    </div>
+
+    <div class="section-title" style="margin-top:0">Inspection (Gorad Vision)</div>
+    <table>
+        <tr><th>Verdict rule</th><td>OK only if every expected view reports OK; error, timeout, missing, empty or unknown results are NG</td></tr>
+        <tr><th>Classical tools</th><td>Presence and count, measurement, colour, barcodes and data matrix codes, polarity and position</td></tr>
+        <tr><th>AI tools</th><td>Anomaly detection, object detection, OCR, classification, segmentation</td></tr>
+        <tr><th>Model families (licence-clean)</th><td>PatchCore (anomaly), YOLOX (detection), RapidOCR / PaddleOCR (OCR), torchvision (classification), U-Net (segmentation)</td></tr>
+        <tr><th>Station types</th><td>Static; stop-and-go with variants and barcode-driven program selection; multi-position robot cells</td></tr>
+        <tr><th>Programs</th><td>Signed and verified before activation; golden-sample check; versioned with rollback</td></tr>
+    </table>
+
+    <div class="section-title">Security</div>
+    <table>
+        <tr><th>Posture</th><td>Designed with IEC 62443 principles in mind. No certification or compliance is claimed; no third-party penetration test yet</td></tr>
+        <tr><th>Authentication</th><td>Local users, Argon2 password hashing, sign-in throttling; personal 6-digit PIN for operators on shared kiosks</td></tr>
+        <tr><th>Authorization</th><td>Roles checked on the server for every request; re-authentication for production-changing actions</td></tr>
+        <tr><th>Roles</th><td>Operator, supervisor, engineer, quality, maintenance, admin, viewer</td></tr>
+        <tr><th>Signing</th><td>Ed25519; separate keys for programs, updates and licences; private keys kept offline; stations hold public keys</td></tr>
+        <tr><th>Audit</th><td>Append-only audit log of configuration changes</td></tr>
+        <tr><th>Supply chain</th><td>SBOM (CycloneDX) per release; dependency and secrets scans in CI; licence register; no AGPL, SSPL or GPL code shipped; no non-commercial model weights</td></tr>
+        <tr><th>Customer data</th><td>Images and results stay in the plant; no transfer to Gorad without explicit consent; exports audited; remote access off by default</td></tr>
+    </table>
+
+    <div class="section-title">Not available today</div>
+    <ul>
+        <li>EtherNet/IP; Gorad Connect acting as an OPC UA server</li>
+        <li>Native Windows server install (the web interface works on Windows PCs)</li>
+        <li>Cloud hosting and multi-site fleet management</li>
+        <li>Full solder-joint AOI, 3D inspection and very high-speed line-scan web inspection</li>
+        <li>MES, ERP or WMS replacement</li>
+    </ul>
+
+    <div class="box tint mt-s">
+        <h3>Status</h3>
+        <p>The Gorad Factory Platform is in early access. Every app is built and tested in software; the pilot programme proves it on real stations before general release. Details in this datasheet can change; ask us for the current version.</p>
+    </div>
+
+
+    <div class="footer"><span><strong>gorad.in</strong> · sales@gorad.in</span><span>2 / 2</span></div>
+</section>
+</body>
+</html>

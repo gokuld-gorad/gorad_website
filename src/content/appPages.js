@@ -1,17 +1,14 @@
+import { appIndex } from './appIndex.js'
+
 // One entry per app page. Every claim comes from the platform's docs/apps/<app>.md.
 // Plain JS (no JSX): routes.js reads it to build the page list.
 export const APP_STATUS_NOTE =
     'Early access. Built and tested in software, not yet proven on a plant line. Available to pilot plants.'
 
-export const appPages = [
+const details = [
     {
         slug: 'spc',
-        name: 'SPC',
-        fullName: 'Gorad SPC',
-        group: 'Quality',
-        tagline: 'Statistical process control that fills itself',
         lead: 'SPC fed automatically by Gorad Vision measurements and PLC tags through Gorad Connect, plus manual gauge entry. Out-of-control conditions are flagged within seconds, against locked limits you can defend in an audit.',
-        description: 'Real-time SPC fed by Vision measurements, PLC tags and manual entry. Western Electric and Nelson rules, locked limits, Cp/Cpk and an audit pack.',
         problem: 'Measurements sit in spreadsheets and gauges, charts are drawn after the fact, and a drift is found when the parts are already made.',
         features: [
             { title: 'Data arrives by itself', text: 'Vision measurements and verdicts, Connect tags and manual gauge readings feed the same characteristics.' },
@@ -32,12 +29,7 @@ export const appPages = [
     },
     {
         slug: 'ncr-capa',
-        name: 'NCR / CAPA',
-        fullName: 'Gorad NCR / CAPA',
-        group: 'Quality',
-        tagline: 'Non-conformances that close, with evidence',
         lead: 'Raise NCRs by hand or automatically from Vision and SPC, work them through containment, investigation and corrective action with an 8D template, and check whether the fix worked.',
-        description: 'NCR and 8D CAPA raised from Vision or SPC, with containment, evidence, a before-and-after check and PDF and Excel reports.',
         problem: 'Rejects are counted, but the link from a reject to its cause, its action and its proof lives in emails and memory.',
         features: [
             { title: 'Raised from the line', text: 'Rules raise an NCR from a count of NG results, an NG rate above your limit, or an SPC violation. Rules are off until quality turns them on.' },
@@ -58,12 +50,7 @@ export const appPages = [
     },
     {
         slug: 'calibration-msa',
-        name: 'Calibration & MSA',
-        fullName: 'Gorad Calibration & MSA',
-        group: 'Quality',
-        tagline: 'Gauges you can trust, studies you can defend',
         lead: 'A gauge register, a calibration due list and Gauge R&R studies, with gauge status shared with SPC.',
-        description: 'Gauge register, calibration due list, quarantine of failed gauges and Gauge R&R (ANOVA and average-range), with PDF and Excel reports.',
         problem: 'Calibration dates live in a spreadsheet, an overdue gauge is still in use, and Gauge R&R studies are done once and lost.',
         features: [
             { title: 'Gauge register', text: 'Every gauge with its calibrations, as-found and as-left values and certificates.' },
@@ -82,12 +69,7 @@ export const appPages = [
     },
     {
         slug: 'line-performance',
-        name: 'Line Performance',
-        fullName: 'Gorad Line Performance',
-        group: 'Production',
-        tagline: 'One honest OEE per line',
         lead: 'Andon, OEE with drill-down and downtime, from machine signals read by Gorad Connect, with quality from part counts or Vision verdicts.',
-        description: 'Andon, OEE with drill-down and downtime from PLC signals, with honest handling of missing data and shift reports in PDF and Excel.',
         problem: 'OEE is calculated by hand after the shift, missing data is quietly counted as running, and nobody agrees on the number.',
         features: [
             { title: 'Live line view', text: 'Machine states and Andon calls as they happen, on a screen, a tablet or a TV board.' },
@@ -107,12 +89,7 @@ export const appPages = [
     },
     {
         slug: 'maintenance',
-        name: 'Maintenance',
-        fullName: 'Gorad Maintenance',
-        group: 'Production',
-        tagline: 'Maintenance that starts when the machine stops',
         lead: 'Work orders, preventive maintenance plans and spares, with breakdown orders opened from Line Performance or a Connect fault signal, and a technician page that works offline.',
-        description: 'Work orders, PM plans and spares, with breakdowns opened from Andon or PLC fault signals and an offline technician page.',
         problem: 'Breakdowns are reported by phone, PM is tracked on paper, and the spare part is never in stock when it is needed.',
         features: [
             { title: 'Breakdowns open themselves', text: 'An Andon call, a downtime or a PLC fault signal opens a work order. One stop is one order.' },
@@ -132,12 +109,7 @@ export const appPages = [
     },
     {
         slug: 'tool-life',
-        name: 'Tool & Fixture Life',
-        fullName: 'Gorad Tool & Fixture Life',
-        group: 'Production',
-        tagline: 'Know the life left in every tool',
         lead: 'Stroke and shot counts for tools, dies, moulds and fixtures, read from PLC counters through Gorad Connect, with warning and stop limits, service records and cost per part.',
-        description: 'Stroke and shot counts for tools, dies and moulds from PLC counters, with limits, service records and a cost-per-part report.',
         problem: 'Tool life is estimated, counters are reset by hand, and a die runs past its limit because nobody was watching the count.',
         features: [
             { title: 'Counts follow the tool', text: 'Strokes belong to the tool mounted at that moment, multiplied by its cavities, and stay with it when it moves between presses.' },
@@ -156,12 +128,7 @@ export const appPages = [
     },
     {
         slug: 'traceability',
-        name: 'Traceability',
-        fullName: 'Gorad Traceability',
-        group: 'Compliance & logistics',
-        tagline: 'Find every affected part, fast',
         lead: 'Part genealogy across stations, from receiving to shipping, with Vision results and process data linked to each item.',
-        description: 'Part genealogy from receiving to shipping, with Vision results and process data per item and a recall report in PDF and Excel.',
         problem: 'When a problem is found, nobody can say quickly which parts, batches and shipments are affected, so the recall is either too big or too small.',
         features: [
             { title: 'Receive, build, ship', text: 'Lots in, work in progress, shipments out, with parent-child links between items.' },
@@ -181,12 +148,7 @@ export const appPages = [
     },
     {
         slug: 'label-dispatch',
-        name: 'Label & Dispatch',
-        fullName: 'Gorad Label & Dispatch',
-        group: 'Compliance & logistics',
-        tagline: 'The right label on every box',
         lead: 'Print labels at packing and verify them with a Gorad Vision station before the box ships.',
-        description: 'Label printing at packing with camera verification by a Gorad Vision station, packing lists and records, and printer status monitoring.',
         problem: 'Labels are printed by hand, checked by eye, and a wrong label is found by the customer.',
         features: [
             { title: 'Templates and printing', text: 'Label templates printed to industrial label printers over the network.' },
@@ -205,12 +167,7 @@ export const appPages = [
     },
     {
         slug: 'skills',
-        name: 'Skills & Training',
-        fullName: 'Gorad Skills & Training',
-        group: 'Compliance & logistics',
-        tagline: 'The right person at the right station',
         lead: 'A skill matrix, qualifications with levels and expiry dates, training records, and a check when a person signs in at a station.',
-        description: 'Skill matrix, qualifications with levels and expiry, training records and a sign-in check at the station, with time-limited overrides.',
         problem: 'Who is qualified for which station lives in a spreadsheet, qualifications expire unnoticed, and an auditor’s question takes a day to answer.',
         features: [
             { title: 'Skill matrix', text: 'People and skills, with levels: in training, supervised, qualified and trainer.' },
@@ -228,6 +185,9 @@ export const appPages = [
         reports: 'Matrix, expiries and station audit, in PDF and Excel',
     },
 ]
+
+// Full page content: the index fields plus the details above.
+export const appPages = appIndex.map((a) => ({ ...a, ...details.find((d) => d.slug === a.slug) }))
 
 export function findAppPage(slug) {
     return appPages.find((a) => a.slug === slug)

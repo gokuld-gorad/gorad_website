@@ -18,5 +18,11 @@ export const FOUNDER = {
     linkedin: 'https://www.linkedin.com/in/gokulramesh-d/',
 }
 
+// PDFs rendered from print/*.html by scripts/make-pdfs.sh
+export const DOWNLOADS = {
+    brochure: { href: '/downloads/gorad-factory-platform-brochure.pdf', label: 'Brochure', note: '2 pages, PDF' },
+    datasheet: { href: '/downloads/gorad-factory-platform-datasheet.pdf', label: 'Technical datasheet', note: '2 pages, PDF' },
+}
+
 export const GOOGLE_SCRIPT_URL =
     'https://script.google.com/macros/s/AKfycbwQbbpJhkqEIBnOhg-PWQmz5sRXkmF8R5-fguk_FUsMXeESiSS0voTP9bSEf0lhFAFK/exec'

@@ -1,4 +1,4 @@
-import { appPages } from '../content/appPages.js'
+import { appIndex as appPages } from '../content/appIndex.js'
 
 // The platform as three layers. All text is in the markup; hover and focus only highlight.
 const core = ['Users & roles', 'Offline licence', 'Site → line → station', 'Audit trail', 'Event bus', 'Updates & backup']

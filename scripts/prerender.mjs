@@ -6,7 +6,12 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const dist = path.join(root, 'dist')
-const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8')
+// Cookie-free visitor statistics (Cloudflare Web Analytics), only when a token is set,
+// e.g. from a GitHub Actions secret. Without it the site ships no analytics at all.
+const beacon = process.env.CF_BEACON_TOKEN
+    ? `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='${JSON.stringify({ token: process.env.CF_BEACON_TOKEN })}'></script>\n  </body>`
+    : '</body>'
+const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8').replace('</body>', beacon)
 const { render, routes, notFound } = await import(
     pathToFileURL(path.join(root, 'dist-ssr', 'entry-server.js')).href
 )

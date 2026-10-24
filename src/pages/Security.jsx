@@ -1,5 +1,5 @@
 import { FileLock2, KeyRound, Network, PackageCheck, ScrollText, Users } from 'lucide-react'
-import { CheckList, CtaBand, PageHero, SectionHead } from '../components/Blocks.jsx'
+import { CheckList, CtaBand, Downloads, PageHero, SectionHead } from '../components/Blocks.jsx'
 import { EMAIL_INFO } from '../site.js'
 
 // Every claim here comes from the platform's docs/07_SECURITY.md and
@@ -93,6 +93,7 @@ export default function Security() {
                             </div>
                         ))}
                     </div>
+                    <div className="section-foot"><Downloads items={['datasheet']} /></div>
                 </div>
             </section>
 
