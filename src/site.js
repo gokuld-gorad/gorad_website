@@ -13,7 +13,7 @@ export const ADDRESS_LINES = [
 
 export const FOUNDER = {
     name: 'Gokulramesh Dhanasekar',
-    initials: 'GD',
+    photo: '/images/founder.webp',
     title: 'Founder',
     linkedin: 'https://www.linkedin.com/in/gokulramesh-d/',
 }

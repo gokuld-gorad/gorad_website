@@ -412,10 +412,9 @@ a.card:hover { border-color: var(--signal); text-decoration: none; }
 
 /* ── Founder ──────────────────────────────────────────────────────────── */
 .founder { display: flex; gap: 28px; align-items: flex-start; padding: 32px; max-width: 860px; }
-.founder-avatar {
-    flex: none; width: 88px; height: 88px; border-radius: 50%; display: grid; place-items: center;
-    background: var(--signal-soft); color: var(--signal); font: 650 1.6rem var(--font-sans); letter-spacing: 0.02em;
-    border: 1px solid color-mix(in srgb, var(--signal) 35%, transparent);
+.founder-photo {
+    flex: none; width: 144px; height: 144px; border-radius: 50%; object-fit: cover;
+    border: 2px solid color-mix(in srgb, var(--signal) 35%, transparent);
 }
 .founder h3 { font-size: 1.3rem; }
 .founder-title { font-size: 0.9rem; color: var(--text-subtle); margin: 2px 0 14px; }

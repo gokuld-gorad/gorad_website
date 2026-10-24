@@ -16,6 +16,7 @@ const organization = {
         '@type': 'Person',
         name: FOUNDER.name,
         jobTitle: FOUNDER.title,
+        image: `${SITE_URL}${FOUNDER.photo}`,
         sameAs: [FOUNDER.linkedin],
     },
     address: {

@@ -49,7 +49,7 @@ export default function About() {
                 <div className="container">
                     <SectionHead eyebrow="Who is behind Gorad" title="Founded by a vision engineer" />
                     <div className="card founder">
-                        <div className="founder-avatar" aria-hidden="true">{FOUNDER.initials}</div>
+                        <img className="founder-photo" src={FOUNDER.photo} alt={`Portrait of ${FOUNDER.name}`} width="144" height="144" loading="lazy" />
                         <div>
                             <h3>{FOUNDER.name}</h3>
                             <p className="founder-title">{FOUNDER.title}, {COMPANY}</p>
