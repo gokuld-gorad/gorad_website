@@ -363,7 +363,7 @@ a.card:hover { border-color: var(--signal); text-decoration: none; }
 .cycle-steps strong { display: block; color: var(--text); font-weight: 600; }
 .cycle-steps span { font-size: 0.92rem; color: var(--text-muted); }
 .cycle-stage { position: sticky; top: 88px; }
-.cycle-svg text { font-family: var(--font-sans); }
+.cycle-svg text, .explainer-svg text { font-family: var(--font-sans); }
 .cycle-controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; }
 .cycle-controls p { font-size: 0.85rem; color: var(--text-subtle); }
 /* On narrow screens the diagram goes first so it stays in view while the steps change. */

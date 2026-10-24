@@ -1,6 +1,15 @@
 import { FileText, ShieldCheck } from 'lucide-react'
 import { CheckList, CtaBand, PageHero, SectionHead, StatusBadge } from '../components/Blocks.jsx'
 import { APP_STATUS_NOTE, appPages, findAppPage } from '../content/appPages.js'
+import SpcExplainer from '../components/explainers/SpcExplainer.jsx'
+import NcrExplainer from '../components/explainers/NcrExplainer.jsx'
+import CalibrationExplainer from '../components/explainers/CalibrationExplainer.jsx'
+import OeeExplainer from '../components/explainers/OeeExplainer.jsx'
+import MaintenanceExplainer from '../components/explainers/MaintenanceExplainer.jsx'
+import ToolLifeExplainer from '../components/explainers/ToolLifeExplainer.jsx'
+import TraceExplainer from '../components/explainers/TraceExplainer.jsx'
+import LabelExplainer from '../components/explainers/LabelExplainer.jsx'
+import SkillsExplainer from '../components/explainers/SkillsExplainer.jsx'
 
 // Names and links for apps and the two "ways in", used by "Works with".
 const linkTargets = {
@@ -9,8 +18,21 @@ const linkTargets = {
     ...Object.fromEntries(appPages.map((a) => [a.slug, { name: a.name, href: `/factory-platform/${a.slug}/`, note: a.tagline }])),
 }
 
+const explainers = {
+    spc: SpcExplainer,
+    'ncr-capa': NcrExplainer,
+    'calibration-msa': CalibrationExplainer,
+    'line-performance': OeeExplainer,
+    maintenance: MaintenanceExplainer,
+    'tool-life': ToolLifeExplainer,
+    traceability: TraceExplainer,
+    'label-dispatch': LabelExplainer,
+    skills: SkillsExplainer,
+}
+
 export default function AppPage({ slug }) {
     const app = findAppPage(slug)
+    const Explainer = explainers[slug]
     return (
         <>
             <PageHero
@@ -37,6 +59,13 @@ export default function AppPage({ slug }) {
 
             <section className="section">
                 <div className="container">
+                    <SectionHead eyebrow="How it works" title={`${app.name}, step by step`} />
+                    <Explainer />
+                </div>
+            </section>
+
+            <section className="section alt">
+                <div className="container">
                     <SectionHead eyebrow="What it does" title={`What ${app.name} does`} />
                     <div className="grid grid-3">
                         {app.features.map((f) => (
@@ -54,7 +83,7 @@ export default function AppPage({ slug }) {
                 </div>
             </section>
 
-            <section className="section alt">
+            <section className="section">
                 <div className="container grid grid-2" style={{ gap: 40 }}>
                     <div>
                         <SectionHead eyebrow="Rules it keeps" title="Built to stay honest">
