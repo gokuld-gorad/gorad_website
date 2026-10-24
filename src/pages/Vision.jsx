@@ -111,6 +111,7 @@ export default function Vision() {
                             </div>
                         ))}
                     </div>
+                    <div style={{ marginTop: 24 }}><TextLink href="/factory-platform/use-cases/">See example applications: modules, PCB assembly, robot cells</TextLink></div>
                 </div>
             </section>
 

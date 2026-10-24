@@ -4,6 +4,7 @@ import Home from './pages/Home.jsx'
 import FactoryPlatform from './pages/FactoryPlatform.jsx'
 import Vision from './pages/Vision.jsx'
 import Connect from './pages/Connect.jsx'
+import UseCases from './pages/UseCases.jsx'
 import Pilot from './pages/Pilot.jsx'
 import Contact from './pages/Contact.jsx'
 import Privacy from './pages/Privacy.jsx'
@@ -14,6 +15,7 @@ const pages = {
     platform: FactoryPlatform,
     vision: Vision,
     connect: Connect,
+    usecases: UseCases,
     pilot: Pilot,
     contact: Contact,
     privacy: Privacy,

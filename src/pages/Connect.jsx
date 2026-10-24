@@ -1,5 +1,5 @@
 import StoreForwardDiagram from '../components/StoreForwardDiagram.jsx'
-import { CheckList, CtaBand, PageHero, SectionHead } from '../components/Blocks.jsx'
+import { CheckList, CtaBand, PageHero, SectionHead, TextLink } from '../components/Blocks.jsx'
 
 const events = [
     { name: 'machine.state', text: 'Running, idle, stopped or faulted, with the time it changed.' },
@@ -65,6 +65,7 @@ export default function Connect() {
                             </div>
                         ))}
                     </div>
+                    <div style={{ marginTop: 24 }}><TextLink href="/factory-platform/use-cases/#oee-from-machine-signals">Example: OEE from machine signals</TextLink></div>
                 </div>
             </section>
 

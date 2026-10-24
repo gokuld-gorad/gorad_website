@@ -30,6 +30,13 @@ export const routes = [
             'Read PLCs and meters over Modbus TCP, Siemens S7 and OPC UA, map tags to standard events and keep every event when the network drops.',
     },
     {
+        path: '/factory-platform/use-cases/',
+        page: 'usecases',
+        title: 'Use cases — Gorad Factory Platform',
+        description:
+            'Example applications: power electronics modules, PCB assembly, forged and machined parts in a robot cell, label checks at packing, OEE from machine signals and a closed quality loop.',
+    },
+    {
         path: '/pilot/',
         page: 'pilot',
         title: 'Pilot programme — Gorad Factory Platform',

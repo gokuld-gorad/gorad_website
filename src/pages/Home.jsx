@@ -3,6 +3,8 @@ import LiveVerdictDemo from '../components/LiveVerdictDemo.jsx'
 import CycleDiagram from '../components/CycleDiagram.jsx'
 import PlatformLayers from '../components/PlatformLayers.jsx'
 import Comparison from '../components/Comparison.jsx'
+import UseCaseIcon from '../components/UseCaseIcon.jsx'
+import { useCases } from '../content/useCases.js'
 import { CheckList, CtaBand, Faq, SectionHead, StatusBadge, TextLink } from '../components/Blocks.jsx'
 import { appGroups } from '../content/apps.js'
 
@@ -93,6 +95,22 @@ export default function Home() {
                             <p>Gorad Connect reads your PLCs and meters and publishes clean events for OEE, SPC and your own systems, even through network drops.</p>
                             <span className="text-link">Gorad Connect →</span>
                         </a>
+                    </div>
+
+                    <div style={{ marginTop: 64 }}>
+                        <SectionHead eyebrow="Example applications" title="What it is built for">
+                            Typical stations and problems the platform is designed for. Examples, not customer stories.
+                        </SectionHead>
+                        <div className="grid grid-3 uc-cards">
+                            {useCases.map((u) => (
+                                <a className="card" key={u.id} href={`/factory-platform/use-cases/#${u.id}`}>
+                                    <div className="card-icon" style={{ marginBottom: 4 }}><UseCaseIcon name={u.icon} /></div>
+                                    <h3>{u.title}</h3>
+                                    <p>{u.short}</p>
+                                </a>
+                            ))}
+                        </div>
+                        <div style={{ marginTop: 24 }}><TextLink href="/factory-platform/use-cases/">See all use cases in detail</TextLink></div>
                     </div>
                 </div>
             </section>

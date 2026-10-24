@@ -16,6 +16,7 @@ const platformLinks = [
     { href: '/factory-platform/', label: 'Factory Platform overview', note: 'Core, Connect, Vision and the apps' },
     { href: '/factory-platform/vision/', label: 'Gorad Vision', note: 'Fail-closed visual inspection' },
     { href: '/factory-platform/connect/', label: 'Gorad Connect', note: 'PLC and meter data gateway' },
+    { href: '/factory-platform/use-cases/', label: 'Use cases', note: 'Example applications' },
 ]
 
 function ThemeToggle() {
@@ -112,6 +113,7 @@ function Navbar({ path }) {
                     <a href="/factory-platform/">Gorad Factory Platform</a>
                     <a className="sub" href="/factory-platform/vision/">Gorad Vision</a>
                     <a className="sub" href="/factory-platform/connect/">Gorad Connect</a>
+                    <a className="sub" href="/factory-platform/use-cases/">Use cases</a>
                     <a href="/pilot/">Pilot programme</a>
                     <a href="/contact/">Contact</a>
                     <a href="/contact/" className="btn btn-primary">Book a demo</a>
@@ -139,6 +141,7 @@ function Footer() {
                             <li><a href="/factory-platform/">Overview</a></li>
                             <li><a href="/factory-platform/vision/">Gorad Vision</a></li>
                             <li><a href="/factory-platform/connect/">Gorad Connect</a></li>
+                            <li><a href="/factory-platform/use-cases/">Use cases</a></li>
                         </ul>
                     </nav>
                     <nav aria-label="Company">
