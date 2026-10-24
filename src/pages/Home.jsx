@@ -4,7 +4,7 @@ import CycleDiagram from '../components/CycleDiagram.jsx'
 import PlatformLayers from '../components/PlatformLayers.jsx'
 import Comparison from '../components/Comparison.jsx'
 import UseCaseIcon from '../components/UseCaseIcon.jsx'
-import { useCases } from '../content/useCases.js'
+import { inspectionUseCases } from '../content/useCases.js'
 import { CheckList, CtaBand, Faq, SectionHead, StatusBadge, TextLink } from '../components/Blocks.jsx'
 import { appGroups } from '../content/apps.js'
 
@@ -102,7 +102,7 @@ export default function Home() {
                             Typical stations and problems the platform is designed for. Examples, not customer stories.
                         </SectionHead>
                         <div className="grid grid-3 uc-cards">
-                            {useCases.map((u) => (
+                            {inspectionUseCases.map((u) => (
                                 <a className="card" key={u.id} href={`/factory-platform/use-cases/#${u.id}`}>
                                     <div className="card-icon" style={{ marginBottom: 4 }}><UseCaseIcon name={u.icon} /></div>
                                     <h3>{u.title}</h3>

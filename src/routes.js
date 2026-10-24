@@ -34,7 +34,7 @@ export const routes = [
         page: 'usecases',
         title: 'Use cases — Gorad Factory Platform',
         description:
-            'Example applications: power electronics modules, PCB assembly, forged and machined parts in a robot cell, label checks at packing, OEE from machine signals and a closed quality loop.',
+            'Example applications: connecting rod inspection, catalyst blockage, PCB assembly, IGBT variant check, bearing pin count, brick damage, label checks, OEE from machine signals and a closed quality loop.',
     },
     {
         path: '/pilot/',

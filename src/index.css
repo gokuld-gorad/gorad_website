@@ -382,7 +382,10 @@ a.card:hover { border-color: var(--signal); text-decoration: none; }
 .uc-index { display: flex; flex-wrap: wrap; gap: 8px; }
 .uc-index .chip { color: var(--text); font-size: 0.88rem; padding: 6px 12px; }
 .uc-index .chip:hover { border-color: var(--signal); text-decoration: none; }
-.uc { scroll-margin-top: 64px; }
+.uc, .uc-group { scroll-margin-top: 64px; }
+.uc-group { border-top: 1px solid var(--border); }
+.uc-group .section-head { margin-bottom: 24px; }
+.uc-title { font-size: clamp(1.5rem, 2.6vw, 2rem); }
 .uc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
 .uc-facts { margin-top: 24px; display: grid; gap: 12px; }
 .uc-facts dt { font: 500 0.72rem var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-subtle); }

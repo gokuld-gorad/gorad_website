@@ -1,6 +1,16 @@
-import { Cog, Cpu, Gauge, Package, Repeat, Zap } from 'lucide-react'
+import { BrickWall, CircleDot, Cpu, Filter, Gauge, Package, Repeat, Wrench, Zap } from 'lucide-react'
 
-const icons = { zap: Zap, cpu: Cpu, cog: Cog, package: Package, gauge: Gauge, repeat: Repeat }
+const icons = {
+    wrench: Wrench,
+    filter: Filter,
+    cpu: Cpu,
+    zap: Zap,
+    'circle-dot': CircleDot,
+    'brick-wall': BrickWall,
+    package: Package,
+    gauge: Gauge,
+    repeat: Repeat,
+}
 
 export default function UseCaseIcon({ name, size = 20 }) {
     const Icon = icons[name]

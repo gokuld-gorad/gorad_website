@@ -18,6 +18,6 @@ Key facts:
 - [Gorad Factory Platform](https://www.gorad.in/factory-platform/): layers, Platform Core, app catalogue
 - [Gorad Vision](https://www.gorad.in/factory-platform/vision/): inspection cycle, safety rules, tools, station types, PLC and cameras
 - [Gorad Connect](https://www.gorad.in/factory-platform/connect/): protocols, standard events, store-and-forward
-- [Use cases](https://www.gorad.in/factory-platform/use-cases/): example applications (not customer stories): power electronics modules, PCB assembly, forged and machined parts in a robot cell, label and packing check, OEE from machine signals, closing the quality loop
+- [Use cases](https://www.gorad.in/factory-platform/use-cases/): example applications (not customer stories): connecting rod complete inspection (chip-off, voids, dents, burrs, machining defects), air filter catalyst blockage percentage, PCB assembly (presence, location, polarity), IGBT module variant check, bearing pin count, brick damage, label and packing check, OEE from machine signals, closing the quality loop
 - [Pilot programme](https://www.gorad.in/pilot/): who it is for and how a pilot works
 - [Contact](https://www.gorad.in/contact/): book a demo or apply for the pilot; sales@gorad.in
