@@ -1,6 +1,6 @@
-import { MapPin } from 'lucide-react'
+import { Linkedin, MapPin } from 'lucide-react'
 import { CtaBand, PageHero, SectionHead } from '../components/Blocks.jsx'
-import { ADDRESS_LINES, COMPANY } from '../site.js'
+import { ADDRESS_LINES, COMPANY, FOUNDER } from '../site.js'
 
 const principles = [
     { title: 'Proof before claims', text: 'We say something works when it has been shown to work on real hardware, not before. Until then we say "early access", and we mean it.' },
@@ -30,9 +30,10 @@ export default function About() {
                     </div>
                     <div className="stack">
                         <p className="lead" style={{ color: 'var(--text)' }}>
-                            Gorad started by building visual inspection systems for production lines. The hard lesson was
-                            that features are easy to ship. What plants actually need is proof that the system behaves
-                            safely when things go wrong: a camera fails, a model is missing, the network drops.
+                            Gorad’s founder built and deployed more than 30 production vision inspection systems in
+                            aerospace, automotive and heavy engineering. The lesson: the hard part is not the AI. It is the
+                            software around it. Most vision systems are built as one-off projects for one machine, are hard
+                            to change, keep no audit trail, and can fail silently and pass bad parts.
                         </p>
                         <p>
                             So we built the Factory Platform around that. Every fault leads to a rejected part, never a
@@ -46,6 +47,28 @@ export default function About() {
 
             <section className="section alt">
                 <div className="container">
+                    <SectionHead eyebrow="Who is behind Gorad" title="Founded by a vision engineer" />
+                    <div className="card founder">
+                        <div className="founder-avatar" aria-hidden="true">{FOUNDER.initials}</div>
+                        <div>
+                            <h3>{FOUNDER.name}</h3>
+                            <p className="founder-title">{FOUNDER.title}, {COMPANY}</p>
+                            <p>
+                                {FOUNDER.name.split(' ')[0]} has built and deployed more than 30 production vision inspection
+                                systems across aerospace, automotive and heavy engineering. Gorad turns that experience into one
+                                platform: fail-closed inspection, clean machine data and the quality apps around them, so plants
+                                no longer need a vendor engineer for every change.
+                            </p>
+                            <a className="text-link" href={FOUNDER.linkedin} rel="noopener" target="_blank">
+                                <Linkedin size={16} aria-hidden="true" /> {FOUNDER.name.split(' ')[0]} on LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="section">
+                <div className="container">
                     <SectionHead eyebrow="How we work" title="Our principles" />
                     <div className="grid grid-3">
                         {principles.map((p) => (
@@ -58,7 +81,7 @@ export default function About() {
                 </div>
             </section>
 
-            <section className="section">
+            <section className="section alt">
                 <div className="container grid grid-2" style={{ gap: 40 }}>
                     <div>
                         <SectionHead eyebrow="Where we are" title="Built in Bengaluru, for plants everywhere">

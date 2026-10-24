@@ -11,5 +11,12 @@ export const ADDRESS_LINES = [
     'Bengaluru 560047, India',
 ]
 
+export const FOUNDER = {
+    name: 'Gokulramesh Dhanasekar',
+    initials: 'GD',
+    title: 'Founder',
+    linkedin: 'https://www.linkedin.com/in/gokulramesh-d/',
+}
+
 export const GOOGLE_SCRIPT_URL =
     'https://script.google.com/macros/s/AKfycbwQbbpJhkqEIBnOhg-PWQmz5sRXkmF8R5-fguk_FUsMXeESiSS0voTP9bSEf0lhFAFK/exec'

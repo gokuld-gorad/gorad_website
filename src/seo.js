@@ -1,4 +1,4 @@
-import { SITE_URL, COMPANY, PLATFORM, EMAIL_INFO } from './site.js'
+import { SITE_URL, COMPANY, PLATFORM, EMAIL_INFO, FOUNDER } from './site.js'
 import { faqs } from './content/faqs.js'
 
 const esc = (s) =>
@@ -12,6 +12,12 @@ const organization = {
     url: SITE_URL,
     logo: `${SITE_URL}/favicon.svg`,
     email: EMAIL_INFO,
+    founder: {
+        '@type': 'Person',
+        name: FOUNDER.name,
+        jobTitle: FOUNDER.title,
+        sameAs: [FOUNDER.linkedin],
+    },
     address: {
         '@type': 'PostalAddress',
         streetAddress: 'Booth No. 100, 38, 2nd Main, Ashwini Layout, Viveka Nagar',

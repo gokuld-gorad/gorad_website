@@ -4,6 +4,7 @@
 
 Key facts:
 
+- Founder: Gokulramesh Dhanasekar (https://www.linkedin.com/in/gokulramesh-d/), who has built and deployed more than 30 production vision inspection systems in aerospace, automotive and heavy engineering.
 - Platform Core: users and roles, offline licensing, site/line/station master data, append-only audit trail, event bus, updates and backup from the web interface.
 - Gorad Vision: fail-closed visual inspection. A part is OK only if every expected view reports OK; errors, timeouts and missing views produce NG. The verdict is journaled before the PLC output. Only signed, verified programs go live. Classical tools (presence, measurement, colour, codes, polarity) and AI tools (anomaly, detection, OCR, classification, segmentation) in one program.
 - Gorad Connect: PLC and meter gateway. Modbus TCP, Siemens S7 and OPC UA (client). Maps tags to standard events (machine.state, production.count, measurement, alarm) with store-and-forward through network outages. Read-only by default.
@@ -21,6 +22,6 @@ Key facts:
 - [Use cases](https://www.gorad.in/factory-platform/use-cases/): example applications (not customer stories): connecting rod complete inspection (chip-off, voids, dents, burrs, machining defects), air filter catalyst blockage percentage, PCB assembly (presence, location, polarity), IGBT module variant check, bearing pin count, brick damage, label and packing check, OEE from machine signals, closing the quality loop
 - App pages: [SPC](https://www.gorad.in/factory-platform/spc/), [NCR / CAPA](https://www.gorad.in/factory-platform/ncr-capa/), [Calibration & MSA](https://www.gorad.in/factory-platform/calibration-msa/), [Line Performance](https://www.gorad.in/factory-platform/line-performance/), [Maintenance](https://www.gorad.in/factory-platform/maintenance/), [Tool & Fixture Life](https://www.gorad.in/factory-platform/tool-life/), [Traceability](https://www.gorad.in/factory-platform/traceability/), [Label & Dispatch](https://www.gorad.in/factory-platform/label-dispatch/), [Skills & Training](https://www.gorad.in/factory-platform/skills/)
 - [Security & trust](https://www.gorad.in/security/): on-premise, no outbound connection required, signed programs/updates/licences (Ed25519), server-side roles, audit log, SBOM, licence-clean dependencies; designed with IEC 62443 principles, no certification claimed
-- [About](https://www.gorad.in/about/): company, principles, location
+- [About](https://www.gorad.in/about/): company, founder, principles, location
 - [Pilot programme](https://www.gorad.in/pilot/): who it is for and how a pilot works
 - [Contact](https://www.gorad.in/contact/): book a demo or apply for the pilot; sales@gorad.in
