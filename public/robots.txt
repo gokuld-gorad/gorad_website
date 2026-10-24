@@ -1,0 +1,18 @@
+# Everyone, including AI assistants' crawlers, may read the whole site
+# (decided 2026-10-25; see docs/website-design-brief.md).
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.gorad.in/sitemap.xml

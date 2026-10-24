@@ -1,31 +1,31 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import VisionMission from './components/VisionMission'
-import Philosophy from './components/Philosophy'
-import Industries from './components/Industries'
-import Capabilities from './components/Capabilities'
-import TechIntegration from './components/TechIntegration'
-import Deployment from './components/Deployment'
-import Roadmap from './components/Roadmap'
-import Advantages from './components/Advantages'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+import Layout from './components/Layout.jsx'
+import { findRoute } from './routes.js'
+import Home from './pages/Home.jsx'
+import FactoryPlatform from './pages/FactoryPlatform.jsx'
+import Vision from './pages/Vision.jsx'
+import Connect from './pages/Connect.jsx'
+import Pilot from './pages/Pilot.jsx'
+import Contact from './pages/Contact.jsx'
+import Privacy from './pages/Privacy.jsx'
+import NotFound from './pages/NotFound.jsx'
 
-export default function App() {
+const pages = {
+    home: Home,
+    platform: FactoryPlatform,
+    vision: Vision,
+    connect: Connect,
+    pilot: Pilot,
+    contact: Contact,
+    privacy: Privacy,
+    notfound: NotFound,
+}
+
+export default function App({ path }) {
+    const route = findRoute(path)
+    const Page = pages[route.page]
     return (
-        <>
-            <Navbar />
-            <Hero />
-            <VisionMission />
-            <Philosophy />
-            <Industries />
-            <Capabilities />
-            <TechIntegration />
-            <Deployment />
-            <Roadmap />
-            <Advantages />
-            <Contact />
-            <Footer />
-        </>
+        <Layout path={route.path}>
+            <Page />
+        </Layout>
     )
 }

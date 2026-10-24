@@ -1,0 +1,22 @@
+# Gorad
+
+> Gorad Pvt Ltd (Bengaluru, India) builds the Gorad Factory Platform: composable, on-premise manufacturing software for visual inspection, machine data and quality. It serves discrete manufacturers in India and Europe. The platform is in early access, with a pilot programme running before general release.
+
+Key facts:
+
+- Platform Core: users and roles, offline licensing, site/line/station master data, append-only audit trail, event bus, updates and backup from the web interface.
+- Gorad Vision: fail-closed visual inspection. A part is OK only if every expected view reports OK; errors, timeouts and missing views produce NG. The verdict is journaled before the PLC output. Only signed, verified programs go live. Classical tools (presence, measurement, colour, codes, polarity) and AI tools (anomaly, detection, OCR, classification, segmentation) in one program.
+- Gorad Connect: PLC and meter gateway. Modbus TCP, Siemens S7 and OPC UA (client). Maps tags to standard events (machine.state, production.count, measurement, alarm) with store-and-forward through network outages. Read-only by default.
+- Apps (early access): SPC, NCR/CAPA, Line Performance (OEE, Andon, downtime), Traceability, Maintenance, Tool & Fixture Life, Label & Dispatch, Skills & Training, Calibration & MSA. Energy & Carbon is planned.
+- Deployment: Ubuntu appliance, virtual machine or customer RHEL server; browser user interface. Runs fully offline in air-gapped plants (offline licence, USB program release).
+- Cameras: GenICam / GigE Vision industrial cameras and USB cameras.
+- Not available today: EtherNet/IP, OPC UA server, native Windows server install, 3D inspection, full solder-joint AOI, very high-speed line-scan web inspection, MES/ERP replacement.
+
+## Pages
+
+- [Home](https://www.gorad.in/): overview, fail-closed inspection, apps, FAQ
+- [Gorad Factory Platform](https://www.gorad.in/factory-platform/): layers, Platform Core, app catalogue
+- [Gorad Vision](https://www.gorad.in/factory-platform/vision/): inspection cycle, safety rules, tools, station types, PLC and cameras
+- [Gorad Connect](https://www.gorad.in/factory-platform/connect/): protocols, standard events, store-and-forward
+- [Pilot programme](https://www.gorad.in/pilot/): who it is for and how a pilot works
+- [Contact](https://www.gorad.in/contact/): book a demo or apply for the pilot; sales@gorad.in
