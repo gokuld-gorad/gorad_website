@@ -1294,3 +1294,5 @@ html { scrollbar-width: thin; scrollbar-color: var(--border-strong) var(--bg); }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-subtle); }
+/* The principle cards keep their cyan icon tiles (legacy style, bb4c6b5). */
+.principle-icon { background: var(--signal-soft); color: var(--signal); border: 0; }
