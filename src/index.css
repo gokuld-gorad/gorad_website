@@ -1267,3 +1267,30 @@ section[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 60px); }
 .reveal-on main > section .roadmap > li { transform: translateX(-28px); }
 .reveal-on main > section.is-in .roadmap > li { transform: none; }
 .ind-tile-open { border-color: var(--card-border-hover); }
+
+/* ── Legacy details, step 3: glass form fields, tinted hero grid, scrollbar ─── */
+/* 10. Form: small uppercase labels, glass inputs, a soft cyan focus glow */
+.field label { font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); }
+.field label .opt { text-transform: none; letter-spacing: 0; }
+.field input, .field select, .field textarea { background: var(--card-bg); border: 1px solid var(--card-border-hover); border-radius: 10px; transition: border-color 0.3s, box-shadow 0.3s; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--signal); box-shadow: 0 0 0 3px color-mix(in srgb, var(--signal) 15%, transparent); }
+.field input::placeholder, .field textarea::placeholder { color: var(--text-subtle); }
+.form-tabs { border-radius: 999px; background: var(--card-bg); border: 1px solid var(--card-border); }
+.form-tab { border-radius: 999px; transition: background-color 0.3s, color 0.3s; }
+.form-tab[aria-pressed="true"] { background: color-mix(in srgb, var(--signal) 14%, transparent); color: var(--signal); box-shadow: none; }
+
+/* 11. The homepage hero grid takes a faint cyan tint */
+.hero-home::before {
+    background:
+        radial-gradient(700px 380px at 50% 18%, var(--glow), transparent 70%),
+        radial-gradient(500px 300px at 85% 70%, var(--glow-2), transparent 70%),
+        linear-gradient(color-mix(in srgb, var(--signal) 12%, transparent) 1px, transparent 1px) 0 0 / 60px 60px,
+        linear-gradient(90deg, color-mix(in srgb, var(--signal) 12%, transparent) 1px, transparent 1px) 0 0 / 60px 60px;
+}
+
+/* 12. A thin, dark scrollbar */
+html { scrollbar-width: thin; scrollbar-color: var(--border-strong) var(--bg); }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-subtle); }

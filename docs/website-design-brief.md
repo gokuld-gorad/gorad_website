@@ -155,3 +155,18 @@ Added after comparing the redesign with the old gorad.in, which felt calmer. Kee
 - **Cyan is rare:** buttons, the hero accent, small labels, active states and diagram cameras. Icons and text links are neutral.
 - **Motion:** sections fade in once on scroll (`reveal-on`, added by script after load, so the HTML is always fully visible); none with reduced motion. Purposeful animations only (hero scan, app explainers, application diagrams).
 - **Homepage targets:** about 17 content links, under 20 bordered elements.
+
+## Details carried over from the first gorad.in
+
+Taken from the legacy site (`docs/reference/gorad_website-main`), without its unbacked claims:
+
+- Bold (700) headings over neutral grey text (#8e8e93 in dark).
+- Pill buttons with a soft cyan glow; the main button lifts on hover.
+- Hero entrance: pill, headline, subtitle and buttons rise in one after another; the subtitle is light (300).
+- Clickable cards brighten and glow faintly cyan on hover.
+- Section labels as small cyan pills on the homepage and page heroes; plain text deeper in pages.
+- 72 px top bar; a cyan underline grows under nav links on hover.
+- Homepage industries as a bento grid; roadmap and deployment steps with glowing numbered dots on a cyan-to-indigo line.
+- Motion: heading first, then items 80 ms apart, easing `cubic-bezier(0.25, 0.46, 0.45, 0.94)`.
+- Forms: small uppercase labels, glass inputs, cyan focus ring. Thin dark scrollbar.
+- Homepage item descriptions about 10 words or fewer.

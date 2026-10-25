@@ -15,28 +15,28 @@ import { industries } from '../content/industries.js'
 const pillars = [
     {
         icon: ScanEye, word: 'See', product: 'Gorad Vision',
-        text: 'Cameras and AI check every part. Anything doubtful is rejected, never passed.',
+        text: 'Cameras and AI check every part. Doubtful parts are rejected.',
         href: '/factory-platform/vision/',
     },
     {
         icon: Cable, word: 'Connect', product: 'Gorad Connect',
-        text: 'Counts, stops and alarms are read straight from your machines. No manual logging.',
+        text: 'Counts, stops and alarms, read straight from your machines.',
         href: '/factory-platform/connect/',
     },
     {
         icon: BarChart3, word: 'Improve', product: 'Quality and production apps',
-        text: 'Process control, non-conformances, OEE, maintenance and traceability on the same data.',
+        text: 'Quality and production apps, all on the same data.',
         href: '/factory-platform/',
     },
 ]
 
 // Each advantage must be backed by something the product actually does.
 const advantages = [
-    { title: 'Bad parts don’t slip through when something breaks', text: 'If a camera or a check fails, the part is rejected. Never quietly passed.' },
-    { title: 'Every decision has proof', text: 'The image and the reason are recorded for every part, before the machine acts on it.' },
-    { title: 'Change it yourself', text: 'Adjust inspections from a browser. No waiting for a vendor engineer to visit.' },
-    { title: 'Works without the internet', text: 'Everything runs inside your plant. Your images and data stay with you.' },
-    { title: 'Start small, grow later', text: 'Begin with one station or one app, and add more on the same platform.' },
+    { title: 'Bad parts don’t slip through when something breaks', text: 'A fault rejects the part. It never passes it.' },
+    { title: 'Every decision has proof', text: 'Image and reason saved for every part, before the machine acts.' },
+    { title: 'Change it yourself', text: 'Adjust inspections from a browser. No vendor visit needed.' },
+    { title: 'Works without the internet', text: 'Runs inside your plant. Your data stays with you.' },
+    { title: 'Start small, grow later', text: 'One station first. Add more later.' },
 ]
 
 function IndustryTile({ ind }) {
@@ -68,7 +68,7 @@ export default function Home() {
             <section className="section proof" aria-label="How Gorad inspects, in one picture">
                 <div className="container">
                     <HeroScan />
-                    <p className="proof-caption">A camera checks every part. Good parts go on; anything doubtful is rejected, with the image and the reason saved.</p>
+                    <p className="proof-caption">Good parts go on. Anything doubtful is rejected, with the image and reason saved.</p>
                 </div>
             </section>
 
