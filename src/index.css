@@ -1141,3 +1141,71 @@ a.card.works-with { display: flex; }
 .check-list svg { color: var(--text-subtle); }
 .sector-grid + .tile-note { margin-top: 16px; }
 .sector-card.has-image h2 { margin-top: 12px; }
+
+/* ── Legacy details, step 1: hierarchy, pill buttons, hero entrance, hover glow,
+   pill labels, a calmer top bar. Taken from the first gorad.in design. ─────── */
+:root { --nav-h: 72px; --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94); --card-bg-hover: var(--surface); }
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --text-muted: #8e8e93; --text-subtle: #7a7a80; --card-bg-hover: rgb(255 255 255 / 0.06); }
+}
+:root[data-theme="dark"] { --text-muted: #8e8e93; --text-subtle: #7a7a80; --card-bg-hover: rgb(255 255 255 / 0.06); }
+
+/* 1. Bold headings over quiet neutral text */
+h1, h2, h3, h4 { font-weight: 700; }
+h3, h4 { font-weight: 650; }
+
+/* 2. Pill buttons with a soft glow */
+.btn { border-radius: 999px; padding: 11px 26px; transition: background-color 0.3s var(--ease-out), border-color 0.3s, color 0.3s, box-shadow 0.3s var(--ease-out), transform 0.3s var(--ease-out); }
+.btn-lg { padding: 14px 32px; }
+.btn-primary { box-shadow: 0 0 20px color-mix(in srgb, var(--signal) 30%, transparent); }
+.btn-primary:hover { box-shadow: 0 0 35px color-mix(in srgb, var(--signal) 50%, transparent); transform: translateY(-2px); }
+.btn-secondary { background: transparent; border-color: var(--card-border-hover); }
+.btn-secondary:hover { border-color: var(--signal); color: var(--signal); }
+
+/* 3. Hero: staggered entrance, light subtitle, glowing accent */
+@keyframes rise-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+@keyframes pop-in { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: none; } }
+.hero-center > * { animation: rise-in 0.7s var(--ease-out) both; }
+.hero-center > .hero-pill { animation-name: pop-in; animation-duration: 0.5s; animation-delay: 0.2s; }
+.hero-center > h1 { animation-delay: 0.3s; }
+.hero-center > .lead { animation-delay: 0.5s; }
+.hero-center > .hero-actions { animation-delay: 0.7s; }
+.page-hero .container > * { animation: rise-in 0.6s var(--ease-out) both; }
+.page-hero .container > :nth-child(2) { animation-delay: 0.08s; }
+.page-hero .container > :nth-child(3) { animation-delay: 0.16s; }
+.page-hero .container > :nth-child(4) { animation-delay: 0.24s; }
+.page-hero .container > :nth-child(n + 5) { animation-delay: 0.32s; }
+.hero-full .lead { font-weight: 300; font-size: clamp(1.1rem, 2.4vw, 1.4rem); color: var(--text-muted); max-width: 600px; }
+.hero-full h1 .accent { filter: drop-shadow(0 0 28px color-mix(in srgb, var(--signal) 30%, transparent)); }
+
+/* 4. Clickable cards brighten and glow on hover */
+a.card:hover, .pillar:hover, .ind-tile:hover, .sector-card:hover, .screen-card:hover, .download:hover {
+    background: var(--card-bg-hover);
+    border-color: color-mix(in srgb, var(--signal) 28%, transparent);
+    box-shadow: 0 0 22px color-mix(in srgb, var(--signal) 12%, transparent);
+    transform: translateY(-2px);
+}
+a.card, .pillar, .ind-tile, .sector-card, .screen-card, .download { transition: background-color 0.3s var(--ease-out), border-color 0.3s, box-shadow 0.3s, transform 0.3s var(--ease-out); }
+
+/* 5. Section labels as small pills: homepage sections and page heroes */
+.hero-full ~ section .eyebrow, .page-hero .eyebrow {
+    padding: 4px 12px; border-radius: 999px; letter-spacing: 0.15em;
+    background: color-mix(in srgb, var(--signal) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--signal) 28%, transparent);
+}
+
+/* 6. Taller top bar, wider links, an underline that grows on hover */
+.navbar-inner { height: var(--nav-h); }
+.nav-links { gap: 14px; }
+.nav-links > li > a, .nav-trigger { position: relative; }
+.nav-links > li > a::after, .nav-trigger::after {
+    content: ""; position: absolute; left: 12px; right: 12px; bottom: 2px; height: 2px; border-radius: 2px;
+    background: var(--signal); transform: scaleX(0); transform-origin: left; transition: transform 0.3s var(--ease-out);
+}
+.nav-links > li > a:hover::after, .nav-trigger:hover::after,
+.nav-links > li > a[aria-current="page"]::after, .nav-trigger.is-active::after { transform: scaleX(1); }
+.nav-mega { top: calc(var(--nav-h) - 4px); }
+.subnav { top: var(--nav-h); }
+.cycle-stage { top: calc(var(--nav-h) + 24px); }
+section[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 60px); }
+.hero-full { margin-top: calc(-1 * var(--nav-h)); padding-top: calc(var(--nav-h) + 64px); }
