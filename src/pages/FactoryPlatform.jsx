@@ -1,5 +1,7 @@
 import PlatformLayers from '../components/PlatformLayers.jsx'
-import { CheckList, CtaBand, PageHero, SectionHead, StatusBadge, TextLink } from '../components/Blocks.jsx'
+import Comparison from '../components/Comparison.jsx'
+import { CheckList, CtaBand, Faq, PageHero, SectionHead, StatusBadge, TextLink } from '../components/Blocks.jsx'
+import { homeFaqs } from '../content/faqs.js'
 import { appGroups } from '../content/apps.js'
 
 const coreFeatures = [
@@ -112,7 +114,16 @@ export default function FactoryPlatform() {
                 </div>
             </section>
 
-            <section className="section">
+            <section className="section" id="why-gorad">
+                <div className="container">
+                    <SectionHead eyebrow="Why Gorad" title="How Gorad compares">
+                        Plants usually choose between a smart camera, a custom vision project from an integrator, or separate tools for inspection and quality. Here is where Gorad differs.
+                    </SectionHead>
+                    <Comparison />
+                </div>
+            </section>
+
+            <section className="section alt">
                 <div className="container">
                     <SectionHead eyebrow="Typical combinations" title="Apps that work well together">
                         Each app stands alone. These are common starting combinations, not fixed packages.
@@ -125,6 +136,13 @@ export default function FactoryPlatform() {
                             </div>
                         ))}
                     </div>
+                </div>
+            </section>
+
+            <section className="section" id="faq">
+                <div className="container">
+                    <SectionHead eyebrow="Questions" title="Frequently asked questions" center />
+                    <Faq items={homeFaqs} />
                 </div>
             </section>
 

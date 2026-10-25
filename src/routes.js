@@ -14,9 +14,9 @@ export const routes = [
     {
         path: '/',
         page: 'home',
-        title: 'Gorad — Factory software that fails safe',
+        title: 'Gorad — AI inspection and factory software you can trust',
         description:
-            'Gorad Factory Platform brings visual inspection, machine data and quality apps together on one on-premise platform. Any fault rejects the part — never a silent pass.',
+            'Gorad builds AI software for factories: camera inspection of every part, machine data and quality apps, all running inside your own plant. If anything fails, the part is rejected, never passed.',
     },
     {
         path: '/factory-platform/',

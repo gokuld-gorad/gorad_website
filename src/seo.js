@@ -42,7 +42,8 @@ const software = {
 function jsonLd(route) {
     const graph = [organization]
     if (route.page === 'home' || route.page === 'platform') graph.push(software)
-    if (route.page === 'home') {
+    // The FAQ is shown on the Factory Platform page, so its structured data lives there.
+    if (route.page === 'platform') {
         graph.push({
             '@type': 'FAQPage',
             mainEntity: homeFaqs.map((f) => ({

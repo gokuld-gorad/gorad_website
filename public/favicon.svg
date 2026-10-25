@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
-  <style>path,circle{stroke:#2e5bff}.dot{fill:#2e5bff}@media (prefers-color-scheme:dark){path,circle{stroke:#6b8cff}.dot{fill:#6b8cff}}</style>
+  <style>path,circle{stroke:#0e7490}.dot{fill:#0e7490}@media (prefers-color-scheme:dark){path,circle{stroke:#00e5ff}.dot{fill:#00e5ff}}</style>
   <circle cx="24" cy="24" r="20.5" stroke-width="3"/>
   <path d="M24 11.5A12.5 12.5 0 1 0 36.5 24H30" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
   <circle class="dot" cx="24" cy="24" r="4" stroke="none"/>

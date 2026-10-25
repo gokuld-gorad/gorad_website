@@ -16,18 +16,29 @@ export function Logo({ size = 28 }) {
 }
 
 const platformLinks = [
-    { href: '/factory-platform/', label: 'Factory Platform overview', note: 'Core, Connect, Vision and the apps' },
-    { href: '/factory-platform/vision/', label: 'Gorad Vision', note: 'Fail-closed visual inspection' },
-    { href: '/factory-platform/connect/', label: 'Gorad Connect', note: 'PLC and meter data gateway' },
-    { href: '/factory-platform/use-cases/', label: 'Use cases', note: 'Example applications' },
+    { href: '/factory-platform/', label: 'Gorad Factory Platform', note: 'Inspection, machine data and quality apps' },
+    { href: '/factory-platform/vision/', label: 'Gorad Vision', note: 'AI visual inspection' },
+    { href: '/factory-platform/connect/', label: 'Gorad Connect', note: 'Machine and PLC data' },
+    { href: '/factory-platform/use-cases/', label: 'Use cases', note: 'What it is built to inspect' },
 ]
 
+// Company pages. "How we work" is the roadmap on the homepage until it gets its own page.
+const companyLinks = [
+    { href: '/about/', label: 'About Gorad', note: 'Vision, mission, founder' },
+    { href: '/#how-we-work', label: 'How we work', note: 'From first call to production' },
+    { href: '/pilot/', label: 'Pilot programme', note: 'Prove it on your own line' },
+    { href: '/partners/', label: 'Integrators & machine builders', note: 'Build cells on Gorad' },
+    { href: '/security/', label: 'Security & trust', note: 'For plant IT' },
+]
+
+// Industries live on the use cases page until phase 4 gives them their own pages.
+const INDUSTRIES_HREF = '/factory-platform/use-cases/'
+
 function ThemeToggle() {
-    // null until mounted: the server cannot know the visitor's theme.
+    // null until mounted: the server cannot know the visitor's saved choice.
     const [dark, setDark] = useState(null)
     useEffect(() => {
-        const attr = document.documentElement.getAttribute('data-theme')
-        setDark(attr ? attr === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches)
+        setDark(document.documentElement.getAttribute('data-theme') !== 'light')
     }, [])
     const toggle = () => {
         const next = !dark
@@ -36,13 +47,14 @@ function ThemeToggle() {
         try { localStorage.setItem('gorad-theme', next ? 'dark' : 'light') } catch { /* private mode */ }
     }
     return (
-        <button className="icon-btn" onClick={toggle} aria-label={dark ? 'Switch to light theme' : 'Switch to dark theme'} title="Toggle theme">
-            {dark ? <Sun size={18} /> : <Moon size={18} />}
+        <button className="icon-btn" onClick={toggle} aria-label={dark === false ? 'Switch to dark theme' : 'Switch to light theme'} title="Toggle theme">
+            {dark === false ? <Moon size={18} /> : <Sun size={18} />}
         </button>
     )
 }
 
-function PlatformsMenu({ path }) {
+// A nav item that opens a panel; closes on outside click and Escape.
+function Dropdown({ id, label, active, className, children }) {
     const [open, setOpen] = useState(false)
     const ref = useRef(null)
     useEffect(() => {
@@ -55,59 +67,57 @@ function PlatformsMenu({ path }) {
     }, [open])
     return (
         <li className="nav-dropdown" ref={ref}>
-            <button
-                className="nav-trigger"
-                aria-expanded={open}
-                aria-controls="platforms-menu"
-                onClick={() => setOpen(!open)}
-                style={path.startsWith('/factory-platform') ? { color: 'var(--text)' } : undefined}
-            >
-                Platforms <ChevronDown size={15} />
+            <button className={`nav-trigger${active ? ' is-active' : ''}`} aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>
+                {label} <ChevronDown size={15} className="nav-chevron" />
             </button>
-            {open && (
-                <div className="nav-menu nav-mega" id="platforms-menu">
-                    <ul>
-                        <li className="nav-menu-label">Gorad Factory Platform</li>
-                        {platformLinks.map((l) => (
-                            <li key={l.href}>
-                                <a href={l.href} aria-current={path === l.href ? 'page' : undefined}>
-                                    {l.label}
-                                    <span>{l.note}</span>
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                    {APP_GROUPS.map((g) => (
-                        <ul key={g}>
-                            <li className="nav-menu-label">{g}</li>
-                            {appPages.filter((a) => a.group === g).map((a) => (
-                                <li key={a.slug}>
-                                    <a href={`/factory-platform/${a.slug}/`} aria-current={path === `/factory-platform/${a.slug}/` ? 'page' : undefined}>{a.name}</a>
-                                </li>
-                            ))}
-                        </ul>
-                    ))}
-                </div>
-            )}
+            {open && <div className={`nav-menu ${className || ''}`} id={id}>{children}</div>}
         </li>
     )
+}
+
+function MenuLinks({ links, path }) {
+    return links.map((l) => (
+        <li key={l.href}>
+            <a href={l.href} aria-current={path === l.href ? 'page' : undefined}>
+                {l.label}
+                <span>{l.note}</span>
+            </a>
+        </li>
+    ))
 }
 
 function Navbar({ path }) {
     const [mobileOpen, setMobileOpen] = useState(false)
     const current = (href) => (path === href ? 'page' : undefined)
+    const inCompany = companyLinks.some((l) => l.href === path)
     return (
         <header className="navbar">
             <div className="container navbar-inner">
                 <a href="/" className="logo" aria-label="Gorad home">
-                    <Logo /> GORAD
+                    <Logo /> <span>GORAD<span className="logo-dot">.</span></span>
                 </a>
                 <nav aria-label="Main">
                     <ul className="nav-links">
-                        <PlatformsMenu path={path} />
-                        <li><a href="/factory-platform/use-cases/" aria-current={current('/factory-platform/use-cases/')}>Use cases</a></li>
-                        <li><a href="/pilot/" aria-current={current('/pilot/')}>Pilot programme</a></li>
-                        <li><a href="/about/" aria-current={current('/about/')}>About</a></li>
+                        <Dropdown id="platforms-menu" label="Platforms" active={path.startsWith('/factory-platform')} className="nav-mega">
+                            <ul>
+                                <li className="nav-menu-label">Platforms</li>
+                                <MenuLinks links={platformLinks} path={path} />
+                            </ul>
+                            {APP_GROUPS.map((g) => (
+                                <ul key={g}>
+                                    <li className="nav-menu-label">{g} apps</li>
+                                    {appPages.filter((a) => a.group === g).map((a) => (
+                                        <li key={a.slug}>
+                                            <a href={`/factory-platform/${a.slug}/`} aria-current={path === `/factory-platform/${a.slug}/` ? 'page' : undefined}>{a.name}</a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            ))}
+                        </Dropdown>
+                        <li><a href={INDUSTRIES_HREF} aria-current={current(INDUSTRIES_HREF)}>Industries</a></li>
+                        <Dropdown id="company-menu" label="Company" active={inCompany}>
+                            <ul><MenuLinks links={companyLinks} path={path} /></ul>
+                        </Dropdown>
                         <li><a href="/contact/" aria-current={current('/contact/')}>Contact</a></li>
                     </ul>
                 </nav>
@@ -127,17 +137,15 @@ function Navbar({ path }) {
             </div>
             <div className="mobile-menu" id="mobile-menu" hidden={!mobileOpen}>
                 <div className="container">
-                    <a href="/factory-platform/">Gorad Factory Platform</a>
-                    <a className="sub" href="/factory-platform/vision/">Gorad Vision</a>
-                    <a className="sub" href="/factory-platform/connect/">Gorad Connect</a>
-                    <a className="sub" href="/factory-platform/use-cases/">Use cases</a>
+                    <p className="mobile-label">Platforms</p>
+                    {platformLinks.map((l) => <a key={l.href} href={l.href}>{l.label}</a>)}
+                    <p className="mobile-label">Apps</p>
                     {appPages.map((a) => (
                         <a key={a.slug} className="sub" href={`/factory-platform/${a.slug}/`}>{a.name}</a>
                     ))}
-                    <a href="/pilot/">Pilot programme</a>
-                    <a href="/about/">About</a>
-                    <a href="/security/">Security & trust</a>
-                    <a href="/partners/">Integrators & machine builders</a>
+                    <p className="mobile-label">Company</p>
+                    <a href={INDUSTRIES_HREF}>Industries</a>
+                    {companyLinks.map((l) => <a key={l.href} href={l.href}>{l.label}</a>)}
                     <a href="/contact/">Contact</a>
                     <a href="/contact/" className="btn btn-primary">Book a demo</a>
                 </div>
@@ -152,7 +160,7 @@ function Footer() {
             <div className="container">
                 <div className="footer-grid">
                     <div>
-                        <a href="/" className="logo" aria-label="Gorad home"><Logo size={24} /> GORAD</a>
+                        <a href="/" className="logo" aria-label="Gorad home"><Logo size={24} /> <span>GORAD<span className="logo-dot">.</span></span></a>
                         <address>
                             {COMPANY}<br />
                             {ADDRESS_LINES.map((l) => <span key={l}>{l}<br /></span>)}

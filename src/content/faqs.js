@@ -1,5 +1,5 @@
-// Plain-text answers. The homepage shows the ones marked `home` and publishes exactly
-// those as FAQPage structured data (Google requires the two to match).
+// Plain-text answers. The Factory Platform page shows the ones marked `home` and publishes
+// exactly those as FAQPage structured data (Google requires the two to match).
 // Keep every claim within docs/sales/PLATFORM_OVERVIEW.md of the platform repo.
 export const faqs = [
     {

@@ -1,44 +1,82 @@
-import { ArrowRight, Camera, Cpu, FileLock2, HardDrive, Unplug, Users } from 'lucide-react'
-import LiveVerdictDemo from '../components/LiveVerdictDemo.jsx'
-import CycleDiagram from '../components/CycleDiagram.jsx'
-import PlatformLayers from '../components/PlatformLayers.jsx'
-import Comparison from '../components/Comparison.jsx'
-import UseCaseArt from '../components/UseCaseArt.jsx'
-import { CheckList, CtaBand, Faq, SectionHead, TextLink } from '../components/Blocks.jsx'
-import { inspectionUseCases } from '../content/useCases.js'
-import { homeFaqs } from '../content/faqs.js'
-import { pilotSteps } from '../content/pilot.js'
+import { ArrowRight, BarChart3, Cable, CircleCheck, CloudOff, FileCheck2, Layers, Plus, ScanEye, Settings2, ShieldCheck, Users } from 'lucide-react'
+import HeroScan from '../components/HeroScan.jsx'
+import { CtaBand, SectionHead, TextLink } from '../components/Blocks.jsx'
 import { FOUNDER } from '../site.js'
 
-const facts = ['Modbus TCP', 'Siemens S7', 'OPC UA', 'GenICam / GigE Vision', 'On-premise', 'Air-gap ready']
+// The homepage speaks for Gorad as a company, in plain words. Product detail lives on
+// the platform and app pages; this page tells the story and points the way.
 
-const plantFeatures = [
-    { icon: HardDrive, title: 'On-premise', text: 'Ubuntu appliance, VM or your RHEL server. No cloud account.' },
-    { icon: Unplug, title: 'Air-gap ready', text: 'Offline licence; programs, updates and backups by USB.' },
-    { icon: FileLock2, title: 'Signed programs', text: 'Only signed, verified programs go live. Every change is audited.' },
-    { icon: Users, title: 'Roles for every job', text: 'Operator to admin, enforced on the server.' },
-    { icon: Cpu, title: 'Your PLCs', text: 'Modbus TCP, Siemens S7, OPC UA, handshake on the station.' },
-    { icon: Camera, title: 'Industrial cameras', text: 'GenICam / GigE Vision and USB, one verdict per part.' },
+const pillars = [
+    {
+        icon: ScanEye, word: 'See', title: 'AI visual inspection',
+        text: 'Cameras and AI check every part. Anything doubtful is rejected, never passed.',
+        href: '/factory-platform/vision/', link: 'Gorad Vision',
+    },
+    {
+        icon: Cable, word: 'Connect', title: 'Machine data',
+        text: 'Counts, stops and alarms are read straight from your machines. No manual logging.',
+        href: '/factory-platform/connect/', link: 'Gorad Connect',
+    },
+    {
+        icon: BarChart3, word: 'Improve', title: 'Quality and production apps',
+        text: 'Turn that data into action: process control, non-conformances, OEE, maintenance and traceability.',
+        href: '/factory-platform/', link: 'Gorad Factory Platform',
+    },
+]
+
+const industries = [
+    { name: 'Automotive & components', examples: ['Connecting rods', 'Catalysts & filters', 'Bearings'], href: '/factory-platform/use-cases/#connecting-rod' },
+    { name: 'Electronics & power electronics', examples: ['PCB assemblies', 'IGBT modules'], href: '/factory-platform/use-cases/#pcb-assembly' },
+    { name: 'Aerospace & heavy engineering', examples: ['Machined parts', 'Fabricated assemblies'], href: '/contact/' },
+    { name: 'Building materials', examples: ['Bricks and blocks', 'Surface damage'], href: '/factory-platform/use-cases/#brick-damage' },
+    { name: 'Packaging & logistics', examples: ['Labels', 'Codes and text', 'Counts'], href: '/factory-platform/use-cases/#label-packing-check' },
+    { name: 'Any discrete part', examples: ['Defects', 'Presence', 'Measurement', 'Sorting'], href: '/factory-platform/vision/', open: true },
+]
+
+// Each advantage must be backed by something the product actually does.
+const advantages = [
+    { icon: ShieldCheck, title: 'Bad parts don’t slip through when something breaks', text: 'If a camera or a check fails, the part is rejected. Never quietly passed.' },
+    { icon: FileCheck2, title: 'Every decision has proof', text: 'The image and the reason are recorded for every part, before the machine acts on it.' },
+    { icon: Settings2, title: 'Change it yourself', text: 'Adjust inspections from a browser. No waiting for a vendor engineer to visit.' },
+    { icon: CloudOff, title: 'Works without the internet', text: 'Everything runs inside your plant. Your images and data stay with you.' },
+    { icon: Layers, title: 'Start small, grow later', text: 'Begin with one station or one app. Add more on the same platform, without replacing anything.' },
+    { icon: Users, title: 'Built by people who have done it', text: 'Our founder has built and deployed more than 30 production vision inspection systems.' },
+]
+
+const roadmap = [
+    { title: 'Study & analysis', text: 'We understand your part, its defects and your line.' },
+    { title: 'Concept & pricing', text: 'A clear solution concept, with transparent pricing.' },
+    { title: 'Hardware & installation', text: 'Cameras, lighting and optics chosen for your part and installed.' },
+    { title: 'Data & training', text: 'Sample images collected; AI trained only where it is needed.' },
+    { title: 'Deployment', text: 'The inspection goes live on your station.' },
+    { title: 'Testing', text: 'Proven on your parts and your PLC, including what happens when things fail.' },
+    { title: 'Production & support', text: 'Running on your line, with monitoring and support.' },
+]
+
+const principles = [
+    { name: 'Innovate', text: 'AI where it helps, simple rules where they are enough.' },
+    { name: 'Cost efficient', text: 'Start with one station or one app. Grow when it pays.' },
+    { name: 'Committed', text: 'With you from the first sample to production.' },
+    { name: 'Transparent', text: 'We tell you what we cannot do, before you spend money.' },
+    { name: 'Trust', text: 'Your data stays in your plant, and every decision is on record.' },
 ]
 
 export default function Home() {
     return (
         <>
-            <section className="hero">
-                <div className="container split hero-grid">
-                    <div>
-                        <span className="eyebrow">Gorad Factory Platform · Early access</span>
-                        <h1>Factory software that fails safe.</h1>
-                        <p className="lead">
-                            Visual inspection, machine data and quality apps on one on-premise platform.
-                            If a camera, a check or the software fails, the part is rejected, never quietly passed.
-                        </p>
-                        <div className="btn-row hero-actions">
-                            <a href="/contact/" className="btn btn-primary btn-lg">Book a demo <ArrowRight size={18} aria-hidden="true" /></a>
-                            <TextLink href="/pilot/">Join the pilot programme</TextLink>
-                        </div>
+            <section className="hero hero-home">
+                <div className="container hero-center">
+                    <span className="hero-pill"><CircleCheck size={14} aria-hidden="true" /> AI for manufacturing</span>
+                    <h1>See every part.<br /><span className="accent">Trust every result.</span></h1>
+                    <p className="lead">
+                        Gorad builds AI software for factories. It inspects every part with cameras, connects your
+                        machines and keeps your quality on record, all inside your own plant.
+                    </p>
+                    <div className="btn-row hero-actions">
+                        <a href="/contact/" className="btn btn-primary btn-lg">Book a demo <ArrowRight size={18} aria-hidden="true" /></a>
+                        <TextLink href="/factory-platform/">Explore our platforms</TextLink>
                     </div>
-                    <LiveVerdictDemo />
+                    <HeroScan />
                 </div>
             </section>
 
@@ -52,115 +90,100 @@ export default function Home() {
                         </span>
                     </a>
                     <ul className="trust-facts">
-                        {facts.map((f) => <li key={f}>{f}</li>)}
+                        <li>Runs inside your plant</li>
+                        <li>Works offline</li>
+                        <li>Your data stays with you</li>
                     </ul>
                 </div>
             </section>
 
-            <section className="section" id="fail-closed">
+            <section className="section">
                 <div className="container">
-                    <SectionHead eyebrow="Fail-closed by design" title="Never pass a part because the system was broken">
-                        Most escapes do not come from a bad decision. They come from a camera that timed out, a check that
-                        was skipped, a fault nobody noticed. In Gorad, a part is OK only when every expected view reports OK.
-                        Errors, timeouts and missing views all mean NG (rejected), and the result is written down before the
-                        PLC hears it.
+                    <SectionHead eyebrow="What we do" title="See. Connect. Improve." center>
+                        One family of software for the factory floor. Use one part, or all of them together.
                     </SectionHead>
-                    <CycleDiagram />
-                </div>
-            </section>
-
-            <section className="section alt">
-                <div className="container">
-                    <SectionHead eyebrow="Use cases" title="What it is built to inspect">
-                        Typical stations the platform is designed for. Examples, not customer stories.
-                    </SectionHead>
-                    <div className="grid grid-3 uc-cards">
-                        {inspectionUseCases.map((u) => (
-                            <a className="card uc-card" key={u.id} href={`/factory-platform/use-cases/#${u.id}`}>
-                                <UseCaseArt id={u.id} />
-                                <h3>{u.title}</h3>
-                                <p>{u.short}</p>
+                    <div className="pillars">
+                        {pillars.map(({ icon: Icon, word, title, text, href, link }) => (
+                            <a className="pillar" key={word} href={href}>
+                                <span className="icon-ring"><Icon size={20} aria-hidden="true" /></span>
+                                <span className="pillar-word">{word}</span>
+                                <h3>{title}</h3>
+                                <p>{text}</p>
+                                <span className="text-link">{link} <ArrowRight size={16} aria-hidden="true" /></span>
                             </a>
                         ))}
                     </div>
-                    <div className="section-foot"><TextLink href="/factory-platform/use-cases/">See every use case in detail</TextLink></div>
                 </div>
             </section>
 
-            <section className="section" id="why-gorad">
+            <section className="section alt" id="industries">
                 <div className="container">
-                    <SectionHead eyebrow="Why Gorad" title="How Gorad compares">
-                        Plants usually choose between a smart camera, a custom vision project from an integrator, or separate tools for inspection and quality. Here is where Gorad differs.
+                    <SectionHead eyebrow="Industries" title="Built for the parts you make">
+                        From engine components to circuit boards and building materials. If you make discrete parts, we can probably inspect them.
                     </SectionHead>
-                    <Comparison />
-                </div>
-            </section>
-
-            <section className="section alt">
-                <div className="container split" style={{ alignItems: 'start' }}>
-                    <div>
-                        <SectionHead eyebrow="One platform" title="Start with one app. Grow without replacing anything.">
-                            A shared core handles users, licences, audit and plant structure. Gorad Vision and Gorad Connect
-                            bring data in; quality and production apps plug in when you need them.
-                        </SectionHead>
-                        <CheckList items={[
-                            'One login and one audit trail for every app',
-                            'Apps share plant data through standard events',
-                            'Add SPC, NCR/CAPA or OEE later on the same platform',
-                        ]} />
-                        <p className="fine-print">All apps are in early access: built and tested in software, and being proven with pilot plants.</p>
-                        <div className="section-foot"><TextLink href="/factory-platform/">Explore the Factory Platform</TextLink></div>
+                    <div className="industries">
+                        {industries.map((ind) => (
+                            <a className={`industry${ind.open ? ' industry-open' : ''}`} key={ind.name} href={ind.href}>
+                                <h3>{ind.open && <Plus size={16} aria-hidden="true" />}{ind.name}</h3>
+                                <ul>{ind.examples.map((e) => <li key={e}>{e}</li>)}</ul>
+                                <ArrowRight className="industry-arrow" size={18} aria-hidden="true" />
+                            </a>
+                        ))}
                     </div>
-                    <PlatformLayers />
                 </div>
             </section>
 
             <section className="section">
                 <div className="container">
-                    <SectionHead eyebrow="Built for plants" title="Made for the shop floor and for plant IT" />
-                    <div className="feature-strip">
-                        {plantFeatures.map(({ icon: Icon, title, text }) => (
-                            <div className="feature" key={title}>
-                                <span className="icon-ring"><Icon size={18} aria-hidden="true" /></span>
-                                <div>
-                                    <h3>{title}</h3>
-                                    <p>{text}</p>
-                                </div>
+                    <SectionHead eyebrow="Why Gorad" title="What you can count on" center>
+                        No inflated promises. Six things the software actually does for you.
+                    </SectionHead>
+                    <div className="advantages">
+                        {advantages.map(({ icon: Icon, title, text }) => (
+                            <div className="advantage" key={title}>
+                                <Icon size={22} aria-hidden="true" />
+                                <h3>{title}</h3>
+                                <p>{text}</p>
                             </div>
                         ))}
                     </div>
-                    <div className="section-foot"><TextLink href="/security/">Security & trust in detail</TextLink></div>
                 </div>
             </section>
 
-            <section className="section alt">
+            <section className="section alt" id="how-we-work">
                 <div className="container">
-                    <SectionHead eyebrow="Pilot programme" title="Prove it on your own line before you commit">
-                        We are selecting a small number of plants worldwide. You see results on your own parts before you decide anything.
+                    <SectionHead eyebrow="How we work" title="From first call to a running line">
+                        A clear, seven-step path, so you always know where your project stands.
                     </SectionHead>
-                    <ol className="steps">
-                        {pilotSteps.map((s) => (
-                            <li className="card" key={s.title}>
-                                <h3>{s.title}</h3>
-                                <p>{s.text}</p>
+                    <ol className="roadmap">
+                        {roadmap.map((r) => (
+                            <li key={r.title}>
+                                <h3>{r.title}</h3>
+                                <p>{r.text}</p>
                             </li>
                         ))}
                     </ol>
-                    <div className="btn-row section-foot">
-                        <a href="/contact/?type=pilot" className="btn btn-primary">Apply for the pilot</a>
-                        <TextLink href="/pilot/#fit">Is Gorad a fit for your station?</TextLink>
+                    <div className="callout roadmap-note">
+                        <p>Not sure yet? Start with a <strong>pilot</strong>: we do the first steps on your own sample parts, so you see results before you commit. <a href="/pilot/">How the pilot works</a></p>
                     </div>
                 </div>
             </section>
 
             <section className="section">
                 <div className="container">
-                    <SectionHead eyebrow="Questions" title="Frequently asked questions" center />
-                    <Faq items={homeFaqs} />
+                    <SectionHead eyebrow="Our philosophy" title="Five principles we work by" center />
+                    <div className="principles">
+                        {principles.map((p) => (
+                            <div className="principle" key={p.name}>
+                                <h3>{p.name}</h3>
+                                <p>{p.text}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
-            <CtaBand />
+            <CtaBand title="Let’s look at your line" text="Tell us what you make and what goes wrong. We will tell you honestly what Gorad can do." />
         </>
     )
 }
