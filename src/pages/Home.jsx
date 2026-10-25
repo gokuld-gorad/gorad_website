@@ -26,12 +26,12 @@ const pillars = [
 ]
 
 const industries = [
-    { name: 'Automotive & components', examples: ['Connecting rods', 'Catalysts & filters', 'Bearings'], href: '/factory-platform/use-cases/#connecting-rod' },
-    { name: 'Electronics & power electronics', examples: ['PCB assemblies', 'IGBT modules'], href: '/factory-platform/use-cases/#pcb-assembly' },
-    { name: 'Aerospace & heavy engineering', examples: ['Machined parts', 'Fabricated assemblies'], href: '/contact/' },
-    { name: 'Building materials', examples: ['Bricks and blocks', 'Surface damage'], href: '/factory-platform/use-cases/#brick-damage' },
-    { name: 'Packaging & logistics', examples: ['Labels', 'Codes and text', 'Counts'], href: '/factory-platform/use-cases/#label-packing-check' },
-    { name: 'Any discrete part', examples: ['Defects', 'Presence', 'Measurement', 'Sorting'], href: '/factory-platform/vision/', open: true },
+    { name: 'Automotive & components', examples: ['Connecting rods', 'Catalysts & filters', 'Bearings'], href: '/industries/automotive/' },
+    { name: 'Electronics & power electronics', examples: ['PCB assemblies', 'IGBT modules'], href: '/industries/electronics/' },
+    { name: 'Aerospace & heavy engineering', examples: ['Machined parts', 'Fabricated assemblies'], href: '/industries/aerospace-heavy-engineering/' },
+    { name: 'Building materials', examples: ['Bricks and blocks', 'Surface damage'], href: '/industries/building-materials/' },
+    { name: 'Packaging & logistics', examples: ['Labels', 'Codes and text', 'Counts'], href: '/industries/packaging-logistics/' },
+    { name: 'Any discrete part', examples: ['Defects', 'Presence', 'Measurement', 'Sorting'], href: '/industries/#capabilities', open: true },
 ]
 
 // Each advantage must be backed by something the product actually does.

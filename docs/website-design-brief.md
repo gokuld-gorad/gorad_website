@@ -85,7 +85,8 @@ Removed from the current site: Vision & Mission, Philosophy, Advantages, generic
 - **Brand:** the original electric cyan on near-black is back as the signature (#00e5ff dark, #0e7490 light); **dark is the default theme**, light is optional.
 - Phase 2 done: Platform, Vision and Connect pages rebuilt with an in-page menu, "In plain words" boxes, advantages, rules, FAQs and glossary tooltips (src/content/glossary.js). Vision has the requested sections: how it works, use cases, inspection dashboards, deployment models, technology, implementation roadmap.
 - Phase 3 done: all nine app pages follow problem + plain words → how it works → what it does → advantages → rules + works with → terms + FAQ (content in src/content/appExtras.js; definitions in glossary.js).
-- Phases still to do: 4 Industries pages; 5 About, How we work, Glossary.
+- Phase 4 done: /industries/ overview (sector cards + "inspect by capability") and five sector pages (challenge, typical checks, examples, apps, other industries). Content in src/content/industries.js.
+- Phase still to do: 5 About, How we work, Glossary.
 
 ## Visual direction (superseded colours: see Restructure) — "Calm Precision"
 

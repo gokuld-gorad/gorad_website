@@ -815,6 +815,30 @@ section[id], div[id] { scroll-margin-top: 124px; }
 .app-intro .app-status { margin-top: 24px; display: flex; gap: 12px; align-items: flex-start; }
 .app-intro .app-status p { margin: 0; font-size: 0.88rem; }
 .app-intro .plain-words p { font-size: 1rem; }
+/* Industries */
+.sector-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.sector-card {
+    display: flex; flex-direction: column; gap: 10px; padding: 30px 28px; border-radius: 16px; color: inherit;
+    border: 1px solid var(--border); background: linear-gradient(180deg, var(--surface), var(--bg)); box-shadow: var(--shadow-card);
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.sector-card:hover { text-decoration: none; transform: translateY(-3px); border-color: color-mix(in srgb, var(--signal) 50%, transparent); box-shadow: var(--shadow), 0 0 40px -20px var(--glow); }
+.sector-card h2 { font-size: 1.3rem; margin-top: 8px; }
+.sector-card-open { border-style: dashed; background: none; box-shadow: none; }
+.sector-card p { flex: 1; }
+.sector-examples { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.sector-examples li { margin: 0; font-size: 0.8rem; padding: 3px 10px; border-radius: 999px; background: var(--surface-sunken); border: 1px solid var(--border); color: var(--text-muted); }
+@media (max-width: 900px) { .sector-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .sector-grid { grid-template-columns: 1fr; } }
+.industry-hero-icon { width: 52px; height: 52px; margin-bottom: 20px; }
+.challenge-list { list-style: none; padding: 0; display: grid; gap: 16px; }
+.challenge-list li { margin: 0; display: flex; gap: 12px; align-items: flex-start; color: var(--text); font-size: 1.02rem; }
+.challenge-list svg { flex: none; color: var(--warning); margin-top: 3px; }
+.other-industries-title { font: 500 0.75rem var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-subtle); margin-bottom: 14px; }
+.other-industries { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.other-industries li { margin: 0; }
+.other-industries a { display: inline-block; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 0.9rem; }
+.other-industries a:hover { border-color: var(--signal); text-decoration: none; }
 .screen-list { display: grid; gap: 18px; }
 .screen-item { display: flex; gap: 14px; align-items: flex-start; }
 .screen-item h3 { font-size: 1rem; margin-bottom: 2px; }

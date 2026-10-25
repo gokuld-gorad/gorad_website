@@ -1,4 +1,5 @@
 import { appIndex as appPages } from './content/appIndex.js'
+import { industries } from './content/industries.js'
 
 // One entry per page: URL, search title and description. Paths end in "/" because
 // each page is served from <path>/index.html on GitHub Pages.
@@ -8,6 +9,14 @@ const appRoutes = appPages.map((a) => ({
     slug: a.slug,
     title: `${a.fullName} — ${a.tagline}`,
     description: a.description,
+}))
+
+const industryRoutes = industries.map((i) => ({
+    path: `/industries/${i.slug}/`,
+    page: 'industry',
+    slug: i.slug,
+    title: `${i.name} — Gorad`,
+    description: i.description,
 }))
 
 export const routes = [
@@ -47,6 +56,14 @@ export const routes = [
             'Example applications: connecting rod inspection, catalyst blockage, PCB assembly, IGBT variant check, bearing pin count, brick damage, label checks, OEE from machine signals and a closed quality loop.',
     },
     ...appRoutes,
+    {
+        path: '/industries/',
+        page: 'industries',
+        title: 'Industries — AI visual inspection for the parts you make | Gorad',
+        description:
+            'Gorad inspects automotive components, electronics and power modules, aerospace and heavy engineering parts, building materials, and labels and packaging. Or any discrete part, by capability.',
+    },
+    ...industryRoutes,
     {
         path: '/about/',
         page: 'about',

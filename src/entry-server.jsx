@@ -9,6 +9,8 @@ import Vision from './pages/Vision.jsx'
 import Connect from './pages/Connect.jsx'
 import UseCases from './pages/UseCases.jsx'
 import AppPage from './pages/AppPage.jsx'
+import Industries from './pages/Industries.jsx'
+import Industry from './pages/Industry.jsx'
 import About from './pages/About.jsx'
 import Security from './pages/Security.jsx'
 import Partners from './pages/Partners.jsx'
@@ -27,6 +29,8 @@ const pages = {
     connect: Connect,
     usecases: UseCases,
     app: AppPage,
+    industries: Industries,
+    industry: Industry,
     about: About,
     security: Security,
     partners: Partners,

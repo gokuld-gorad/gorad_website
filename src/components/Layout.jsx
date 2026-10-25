@@ -31,8 +31,7 @@ const companyLinks = [
     { href: '/security/', label: 'Security & trust', note: 'For plant IT' },
 ]
 
-// Industries live on the use cases page until phase 4 gives them their own pages.
-const INDUSTRIES_HREF = '/factory-platform/use-cases/'
+const INDUSTRIES_HREF = '/industries/'
 
 function ThemeToggle() {
     // null until mounted: the server cannot know the visitor's saved choice.
@@ -114,7 +113,7 @@ function Navbar({ path }) {
                                 </ul>
                             ))}
                         </Dropdown>
-                        <li><a href={INDUSTRIES_HREF} aria-current={current(INDUSTRIES_HREF)}>Industries</a></li>
+                        <li><a href={INDUSTRIES_HREF} aria-current={path.startsWith('/industries/') ? 'page' : undefined}>Industries</a></li>
                         <Dropdown id="company-menu" label="Company" active={inCompany}>
                             <ul><MenuLinks links={companyLinks} path={path} /></ul>
                         </Dropdown>
@@ -173,6 +172,7 @@ function Footer() {
                             <li><a href="/factory-platform/vision/">Gorad Vision</a></li>
                             <li><a href="/factory-platform/connect/">Gorad Connect</a></li>
                             <li><a href="/factory-platform/use-cases/">Use cases</a></li>
+                            <li><a href="/industries/">Industries</a></li>
                             <li><a href="/factory-platform/#apps">All apps</a></li>
                             <li><a href="/downloads/gorad-factory-platform-brochure.pdf" download>Brochure (PDF)</a></li>
                             <li><a href="/downloads/gorad-factory-platform-datasheet.pdf" download>Datasheet (PDF)</a></li>
