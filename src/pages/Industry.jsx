@@ -1,6 +1,7 @@
 import { ArrowRight, Camera, CircleAlert, Info } from 'lucide-react'
 import IndustryIcon from '../components/IndustryIcon.jsx'
 import UseCaseArt from '../components/UseCaseArt.jsx'
+import ApplicationArt, { hasApplicationArt } from '../components/ApplicationArt.jsx'
 import SiteImage, { hasImage } from '../components/SiteImage.jsx'
 import { CtaBand, PageHero, SectionHead, TextLink } from '../components/Blocks.jsx'
 import { findIndustry, industries } from '../content/industries.js'
@@ -73,7 +74,8 @@ export default function Industry({ slug }) {
                                 {(g.title || examples.length > 0) && <h3 className="app-group-title">{g.title || 'More applications'}</h3>}
                                 <div className="grid grid-3">
                                     {g.items.map((a) => (
-                                        <div className="card application" key={a.name}>
+                                        <div className={`card application${hasApplicationArt(a.art) ? ' has-art' : ''}`} key={a.name} tabIndex={hasApplicationArt(a.art) ? 0 : undefined}>
+                                            {hasApplicationArt(a.art) && <ApplicationArt id={a.art} />}
                                             <h4>{a.name}</h4>
                                             <p>{a.checks}</p>
                                             <p className="application-setup"><Camera size={14} aria-hidden="true" /> {a.setup}</p>

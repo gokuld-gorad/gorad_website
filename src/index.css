@@ -936,3 +936,13 @@ section[id], div[id] { scroll-margin-top: 124px; }
 .application p { font-size: 0.92rem; }
 .application-setup { display: flex; gap: 6px; align-items: baseline; margin-top: 10px; font-family: var(--font-mono); font-size: 0.75rem !important; color: var(--text-subtle); }
 .application-setup svg { flex: none; color: var(--signal); transform: translateY(2px); }
+
+/* Application diagrams: the defect pulses and the NG verdict appears on hover or focus */
+.application.has-art { padding-top: 0; overflow: hidden; }
+.application .app-art { display: block; max-width: none; width: calc(100% + 2 * var(--card-pad, 24px)); margin: 0 calc(-1 * var(--card-pad, 24px)) 16px; height: 150px; background: var(--surface-sunken); border-bottom: 1px solid var(--border); padding: 6px; }
+.app-art .art-ng { opacity: 0; transform: translateY(-3px); transition: opacity 0.2s, transform 0.2s; }
+.application:hover .art-ng, .application:focus-visible .art-ng { opacity: 1; transform: none; }
+.application:hover .art-bad, .application:focus-visible .art-bad { animation: art-pulse 1s ease-in-out infinite; }
+.application.has-art:hover { border-color: color-mix(in srgb, var(--ng) 40%, var(--border)); }
+@keyframes art-pulse { 50% { opacity: 0.35; } }
+@media (prefers-reduced-motion: reduce) { .application .art-bad { animation: none !important; } }

@@ -1,12 +1,12 @@
 // One line illustration per inspection use case, in a single style: the part in
 // neutral strokes, cameras and their view in Signal blue, the defect in red.
-const part = { fill: 'none', stroke: 'var(--text-muted)', strokeWidth: 1.6 }
-const cam = { fill: 'var(--surface)', stroke: 'var(--signal)', strokeWidth: 1.6 }
-const ray = { stroke: 'var(--signal)', strokeWidth: 1, strokeDasharray: '3 3', opacity: 0.7 }
-const bad = { fill: 'none', stroke: 'var(--ng)', strokeWidth: 1.8 }
-const tag = { fontFamily: 'var(--font-mono)', fontSize: 10 }
+export const part = { fill: 'none', stroke: 'var(--text-muted)', strokeWidth: 1.6 }
+export const cam = { fill: 'var(--surface)', stroke: 'var(--signal)', strokeWidth: 1.6 }
+export const ray = { stroke: 'var(--signal)', strokeWidth: 1, strokeDasharray: '3 3', opacity: 0.7 }
+export const bad = { fill: 'none', stroke: 'var(--ng)', strokeWidth: 1.8 }
+export const tag = { fontFamily: 'var(--font-mono)', fontSize: 10 }
 
-function Camera({ x, y, r = 0 }) {
+export function Camera({ x, y, r = 0 }) {
     return (
         <g transform={`translate(${x} ${y}) rotate(${r})`}>
             <rect x="-11" y="-8" width="22" height="16" rx="3" {...cam} />
