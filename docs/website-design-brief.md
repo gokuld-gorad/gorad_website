@@ -143,3 +143,15 @@ Rules:
 - Stay on Vite + React, GitHub Pages, `www.gorad.in`.
 - Multi-page with real URLs; pages pre-rendered to static HTML for SEO (each page gets its own title and description).
 - Contact form keeps the existing Google Apps Script backend; the frontend must check the response `result`.
+
+## Calm pass (visual rules)
+
+Added after comparing the redesign with the old gorad.in, which felt calmer. Keep these when adding pages:
+
+- **Space:** sections 120 / 88 / 64 px (desktop / tablet / phone); 56 px under a section heading.
+- **One idea per screen on the homepage.** Detail lives on the deeper pages; the homepage links to it.
+- **Section intros:** one short sentence, about 15 words or fewer.
+- **Boxes only when needed:** use a card when the item is clickable or meant to be compared; otherwise use space, type and hairlines. All cards share one glass treatment (`--card-bg`, `--card-border`).
+- **Cyan is rare:** buttons, the hero accent, small labels, active states and diagram cameras. Icons and text links are neutral.
+- **Motion:** sections fade in once on scroll (`reveal-on`, added by script after load, so the HTML is always fully visible); none with reduced motion. Purposeful animations only (hero scan, app explainers, application diagrams).
+- **Homepage targets:** about 17 content links, under 20 bordered elements.

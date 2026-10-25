@@ -60,8 +60,7 @@ export default function Industry({ slug }) {
                 <section className="section alt" id="applications">
                     <div className="container">
                         <SectionHead eyebrow="Applications" title="What Gorad can check here">
-                            Typical inspection tasks in this industry, with the camera and lighting setup they usually need.
-                            They are examples of what the platform does, not customer stories.
+                            Typical tasks and the setup each one needs. Examples, not customer stories.
                         </SectionHead>
                         {examples.length > 0 && (
                             <div className="app-group" id="examples">
@@ -110,7 +109,7 @@ export default function Industry({ slug }) {
             <section className="section">
                 <div className="container">
                     <SectionHead eyebrow="Beyond inspection" title="Useful on the same platform">
-                        Inspection results feed these apps, so quality and production run on the same data.
+                        Inspection results feed these apps, on the same data.
                     </SectionHead>
                     <div className="grid grid-2">
                         {apps.map((a) => (

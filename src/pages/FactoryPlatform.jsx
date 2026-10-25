@@ -54,7 +54,7 @@ export default function FactoryPlatform() {
                     <div className="split" style={{ alignItems: 'start', marginTop: 56 }}>
                         <div>
                             <SectionHead eyebrow="How it fits together" title="Three layers, one system">
-                                The core is shared. Vision and Connect bring data in from cameras and machines. Apps turn that data into decisions.
+                                Vision and Connect bring the data in. Apps turn it into decisions. The core is shared.
                             </SectionHead>
                             <CheckList items={[
                                 'One web application: simple screens for operators, detailed screens for engineers',
@@ -94,7 +94,7 @@ export default function FactoryPlatform() {
             <section className="section" id="apps">
                 <div className="container">
                     <SectionHead eyebrow="Apps" title="Apps on the platform">
-                        Each app solves one job and works on its own. All are in early access: built and tested in software, and being proven with pilot plants.
+                        Each app does one job and works on its own. All are in early access, being proven with pilot plants.
                     </SectionHead>
                     {appGroups.map((g) => (
                         <div key={g.name} className="app-group">
@@ -142,7 +142,7 @@ export default function FactoryPlatform() {
             <section className="section alt" id="core">
                 <div className="container">
                     <SectionHead eyebrow="Platform Core" title="What every app shares">
-                        One login, one record of changes, one way of doing things. Adding an app never adds another system to learn.
+                        One login, one record of changes. A new app never means a new system to learn.
                     </SectionHead>
                     <div className="mini-cards">
                         {coreFeatures.map((f) => (
@@ -158,7 +158,7 @@ export default function FactoryPlatform() {
             <section className="section" id="why-gorad">
                 <div className="container">
                     <SectionHead eyebrow="Why Gorad" title="How Gorad compares">
-                        Plants usually choose between a smart camera, a custom vision project from an integrator, or separate tools for inspection and quality. Here is where Gorad differs.
+                        How Gorad differs from a smart camera, a custom integrator project or separate tools.
                     </SectionHead>
                     <Comparison />
                 </div>

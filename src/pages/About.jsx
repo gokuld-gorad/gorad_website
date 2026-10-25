@@ -89,7 +89,7 @@ export default function About() {
             <section className="section">
                 <div className="container">
                     <SectionHead eyebrow="How we build" title="What that means for the product">
-                        The principles above are how we work with you. These are how we build the software.
+                        How those principles show up in the software.
                     </SectionHead>
                     <div className="mini-cards">
                         {engineeringPrinciples.map((p) => (
@@ -106,8 +106,8 @@ export default function About() {
             <section className="section alt">
                 <div className="container grid grid-2" style={{ gap: 40 }}>
                     <SectionHead eyebrow="Where we are" title="Built in Bengaluru, for plants everywhere">
-                        Plants anywhere can work with us directly. The software runs inside your plant and fully offline, so
-                        it fits wherever you are. For robot cells and larger lines, we work alongside your integrator.
+                        The software runs inside your plant, fully offline, so we work with plants anywhere. For robot
+                        cells, we work alongside your integrator.
                     </SectionHead>
                     <div className="card" style={{ display: 'flex', gap: 14, alignSelf: 'start' }}>
                         <div className="card-icon" style={{ flex: 'none' }}><MapPin size={18} aria-hidden="true" /></div>

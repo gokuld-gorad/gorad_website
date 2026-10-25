@@ -102,13 +102,12 @@ export default function Vision() {
             <section className="section alt" id="how-it-works">
                 <div className="container">
                     <SectionHead eyebrow="How it works" title="What happens when a camera fails">
-                        Most inspection systems are judged on how well they see. Just as important is what they do when they
-                        cannot see. Gorad Vision is <Term t="Fail-closed">fail-closed</Term>: when in doubt, the part is <Term t="NG">NG</Term>.
+                        What an inspection system does when it cannot see matters as much as how well it sees. Gorad Vision is <Term t="Fail-closed">fail-closed</Term>: when in doubt, the part is <Term t="NG">NG</Term>.
                     </SectionHead>
                     <CycleDiagram />
                     <div style={{ marginTop: 72 }}>
                         <SectionHead eyebrow="Rules it keeps" title="Safety written into the product">
-                            These rules are built in and covered by automated tests. They are not settings someone can switch off.
+                            Built in and covered by automated tests. Not settings anyone can switch off.
                         </SectionHead>
                         <div className="mini-cards">
                             {rules.map((r) => (
@@ -125,7 +124,7 @@ export default function Vision() {
             <section className="section" id="use-cases">
                 <div className="container">
                     <SectionHead eyebrow="Use cases" title="What it is built to inspect">
-                        A few examples. If your part needs defects found, features counted or measured, or text and codes read, Gorad Vision can most likely do it.
+                        A few examples. Defects, counts, sizes, text or codes: Gorad Vision can most likely check it.
                     </SectionHead>
                     <div className="grid grid-3 uc-cards">
                         {inspectionUseCases.map((u) => (
@@ -144,7 +143,7 @@ export default function Vision() {
                 <div className="container split" style={{ alignItems: 'center' }}>
                     <div>
                         <SectionHead eyebrow="Inspection dashboards" title="What your team sees">
-                            Simple screens for operators, detailed screens for engineers. Engineering screens never appear on the operator’s screen.
+                            Simple screens for operators, detailed ones for engineers, kept apart.
                         </SectionHead>
                         <div className="screen-list">
                             {screens.map(({ icon: Icon, title, text }) => (
@@ -162,7 +161,7 @@ export default function Vision() {
             <section className="section" id="deployment">
                 <div className="container">
                     <SectionHead eyebrow="Deployment models" title="As automated as your line">
-                        Start with the level of automation you have today. The inspection works the same way at every level.
+                        Start at today’s level of automation. The inspection works the same at every level.
                     </SectionHead>
                     <div className="levels">
                         {levels.map((l) => (

@@ -101,7 +101,7 @@ export default function Security() {
                 <div className="container grid grid-2" style={{ gap: 40 }}>
                     <div>
                         <SectionHead eyebrow="Safety first" title="Security never weakens the line">
-                            Security and licensing are designed so that they cannot cause a bad part to pass, or stop a running line.
+                            Neither security nor licensing can pass a bad part or stop a running line.
                         </SectionHead>
                         <CheckList items={[
                             'The inspection and PLC path runs on the station, independent of the server and the user interface',

@@ -51,7 +51,7 @@ export default function Industries() {
             <section className="section alt" id="capabilities">
                 <div className="container">
                     <SectionHead eyebrow="Any discrete part" title="Don’t see your industry? We inspect by capability.">
-                        Industries are a starting point, not a limit. If your part needs one of these checks, Gorad can most likely do it.
+                        If your part needs one of these checks, Gorad can most likely do it.
                     </SectionHead>
                     <div className="mini-cards">
                         {capabilities.map((c) => (
