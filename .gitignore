@@ -29,3 +29,4 @@ dist-ssr
 
 # Original images before compression (see docs/image-prompts.md)
 images-src/
+__pycache__/
