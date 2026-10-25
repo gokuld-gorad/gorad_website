@@ -740,6 +740,87 @@ a.card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 }
 @media (max-width: 560px) { .principles { grid-template-columns: 1fr; } .principle { border-right: 0; } }
 
+/* ── Explaining technical terms ───────────────────────────────────────── */
+section[id], div[id] { scroll-margin-top: 124px; }
+.term { position: relative; border-bottom: 1px dotted color-mix(in srgb, var(--signal) 70%, transparent); cursor: help; color: inherit; outline: none; }
+.term:focus-visible { border-bottom-style: solid; }
+.term-tip {
+    position: absolute; left: 50%; bottom: calc(100% + 10px); transform: translate(-50%, 4px); z-index: 60;
+    width: max-content; max-width: min(300px, 80vw); padding: 12px 14px; border-radius: 10px;
+    background: var(--surface); border: 1px solid var(--border-strong); box-shadow: var(--shadow);
+    font: 400 0.85rem/1.5 var(--font-sans); color: var(--text-muted); text-align: left; white-space: normal;
+    display: none; pointer-events: none; animation: tip-in 0.15s ease-out;
+}
+/* display:none while hidden: a hidden-but-laid-out tip would widen the page on phones. */
+.term-tip strong { display: block; color: var(--signal); font-weight: 600; margin-bottom: 2px; }
+.term:hover .term-tip, .term:focus .term-tip { display: block; transform: translate(-50%, 0); }
+@keyframes tip-in { from { opacity: 0; } to { opacity: 1; } }
+/* Phones: show the definition as a small panel pinned to the bottom of the screen. */
+@media (max-width: 640px) {
+    .term-tip { position: fixed; left: 16px; right: 16px; bottom: 16px; top: auto; width: auto; max-width: none; }
+    .term:hover .term-tip, .term:focus .term-tip { transform: none; }
+}
+
+.plain-words {
+    display: flex; gap: 18px; align-items: flex-start; padding: 26px 28px; border-radius: 16px;
+    background: linear-gradient(135deg, var(--signal-soft), color-mix(in srgb, var(--glow-2) 60%, var(--surface)));
+    border: 1px solid color-mix(in srgb, var(--signal) 25%, transparent);
+}
+.plain-words-icon { flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; color: var(--signal); background: var(--surface); border: 1px solid color-mix(in srgb, var(--signal) 30%, transparent); }
+.plain-words h2 { font: 500 0.75rem var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--signal); margin-bottom: 8px; }
+.plain-words p { font-size: 1.08rem; color: var(--text); line-height: 1.6; }
+
+.subnav {
+    position: sticky; top: 64px; z-index: 50; border-bottom: 1px solid var(--border);
+    background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+.subnav ul { list-style: none; padding: 0; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+.subnav ul::-webkit-scrollbar { display: none; }
+.subnav li { margin: 0; flex: none; }
+.subnav a { display: block; padding: 12px 12px; font-size: 0.88rem; color: var(--text-muted); white-space: nowrap; border-bottom: 2px solid transparent; }
+.subnav a:hover { color: var(--text); text-decoration: none; border-bottom-color: var(--signal); }
+
+/* Product pages: shared blocks */
+.pillars-2 { grid-template-columns: 1fr 1fr; }
+@media (max-width: 860px) { .pillars-2 { grid-template-columns: 1fr; } }
+.pillar .term { color: inherit; }
+.app-group { margin-bottom: 40px; }
+.app-group-title { font: 500 0.75rem var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-subtle); margin-bottom: 14px; }
+.app-card { display: flex; flex-direction: column; gap: 8px; }
+.app-card p { flex: 1; }
+.app-card-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.app-card-head h4 { font-size: 1.05rem; }
+.mini-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.mini-card { padding: 22px; border-radius: 14px; border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow-card); }
+.mini-card h3 { font-size: 1.02rem; margin: 10px 0 6px; }
+.mini-card p { font-size: 0.92rem; }
+.mini-card .tag { font: 500 0.7rem var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--signal); }
+@media (max-width: 900px) { .mini-cards { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .mini-cards { grid-template-columns: 1fr; } }
+.steps-list { list-style: none; padding: 0; counter-reset: sl; display: grid; gap: 14px; }
+.steps-list li { counter-increment: sl; margin: 0; display: grid; grid-template-columns: 34px 1fr; column-gap: 12px; }
+.steps-list li::before {
+    content: counter(sl); grid-row: span 2; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
+    font: 600 0.8rem var(--font-mono); color: var(--signal); border: 1px solid color-mix(in srgb, var(--signal) 45%, transparent);
+}
+.steps-list strong { color: var(--text); }
+.steps-list span { font-size: 0.92rem; color: var(--text-muted); }
+.screen-list { display: grid; gap: 18px; }
+.screen-item { display: flex; gap: 14px; align-items: flex-start; }
+.screen-item h3 { font-size: 1rem; margin-bottom: 2px; }
+.screen-item p { font-size: 0.92rem; }
+.tool-table td:first-child { color: var(--text); font-weight: 600; width: 26%; }
+.tool-table .kind { font: 500 0.72rem var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); }
+.levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; background: var(--surface); }
+.level { padding: 26px; border-right: 1px solid var(--border); position: relative; }
+.level:last-child { border-right: 0; }
+.level-meter { display: flex; gap: 4px; margin-bottom: 16px; }
+.level-meter span { width: 26px; height: 6px; border-radius: 3px; background: var(--border-strong); }
+.level-meter span.on { background: var(--signal); }
+.level h3 { font-size: 1.05rem; margin-bottom: 6px; }
+.level p { font-size: 0.92rem; }
+@media (max-width: 800px) { .levels { grid-template-columns: 1fr; } .level { border-right: 0; border-bottom: 1px solid var(--border); } .level:last-child { border-bottom: 0; } }
+
 /* ── Motion preferences ───────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }

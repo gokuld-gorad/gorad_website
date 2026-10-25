@@ -1,5 +1,6 @@
 import { ArrowRight, BarChart3, Cable, CircleCheck, CloudOff, FileCheck2, Layers, Plus, ScanEye, Settings2, ShieldCheck, Users } from 'lucide-react'
 import HeroScan from '../components/HeroScan.jsx'
+import Roadmap from '../components/Roadmap.jsx'
 import { CtaBand, SectionHead, TextLink } from '../components/Blocks.jsx'
 import { FOUNDER } from '../site.js'
 
@@ -43,15 +44,6 @@ const advantages = [
     { icon: Users, title: 'Built by people who have done it', text: 'Our founder has built and deployed more than 30 production vision inspection systems.' },
 ]
 
-const roadmap = [
-    { title: 'Study & analysis', text: 'We understand your part, its defects and your line.' },
-    { title: 'Concept & pricing', text: 'A clear solution concept, with transparent pricing.' },
-    { title: 'Hardware & installation', text: 'Cameras, lighting and optics chosen for your part and installed.' },
-    { title: 'Data & training', text: 'Sample images collected; AI trained only where it is needed.' },
-    { title: 'Deployment', text: 'The inspection goes live on your station.' },
-    { title: 'Testing', text: 'Proven on your parts and your PLC, including what happens when things fail.' },
-    { title: 'Production & support', text: 'Running on your line, with monitoring and support.' },
-]
 
 const principles = [
     { name: 'Innovate', text: 'AI where it helps, simple rules where they are enough.' },
@@ -155,17 +147,7 @@ export default function Home() {
                     <SectionHead eyebrow="How we work" title="From first call to a running line">
                         A clear, seven-step path, so you always know where your project stands.
                     </SectionHead>
-                    <ol className="roadmap">
-                        {roadmap.map((r) => (
-                            <li key={r.title}>
-                                <h3>{r.title}</h3>
-                                <p>{r.text}</p>
-                            </li>
-                        ))}
-                    </ol>
-                    <div className="callout roadmap-note">
-                        <p>Not sure yet? Start with a <strong>pilot</strong>: we do the first steps on your own sample parts, so you see results before you commit. <a href="/pilot/">How the pilot works</a></p>
-                    </div>
+                    <Roadmap />
                 </div>
             </section>
 

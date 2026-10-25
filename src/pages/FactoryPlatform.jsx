@@ -1,16 +1,18 @@
+import { ArrowRight, Cable, ScanEye } from 'lucide-react'
 import PlatformLayers from '../components/PlatformLayers.jsx'
 import Comparison from '../components/Comparison.jsx'
-import { CheckList, CtaBand, Faq, PageHero, SectionHead, StatusBadge, TextLink } from '../components/Blocks.jsx'
-import { homeFaqs } from '../content/faqs.js'
+import { CheckList, CtaBand, Faq, PageHero, SectionHead, StatusBadge } from '../components/Blocks.jsx'
+import { PlainWords, SubNav } from '../components/Explain.jsx'
 import { appGroups } from '../content/apps.js'
+import { homeFaqs } from '../content/faqs.js'
 
 const coreFeatures = [
-    { title: 'Identity and roles', text: 'Users, roles, sessions and API keys. Operator, supervisor, engineer, quality, maintenance and admin roles are enforced on the server.' },
-    { title: 'Offline licensing', text: 'Licences activate without the internet and list the apps a site is entitled to. An expired licence never stops inspection or the PLC output.' },
-    { title: 'Plant structure', text: 'Site, area, line and station master data shared by every app.' },
-    { title: 'Audit trail', text: 'An append-only record of configuration changes: who changed what, and when.' },
-    { title: 'Event bus', text: 'Apps publish and consume standard events instead of reading each other’s databases.' },
-    { title: 'Updates and backup', text: 'Updates, backups, restores and support bundles from the web interface, with no shell access needed.' },
+    { title: 'One login, many roles', text: 'Operator, supervisor, engineer, quality, maintenance and admin, checked on the server for every request.' },
+    { title: 'Offline licensing', text: 'Licences activate without the internet. An expired licence never stops inspection or the machine signal.' },
+    { title: 'Your plant, mapped once', text: 'Site, area, line and station are set up once and shared by every app.' },
+    { title: 'Audit trail', text: 'A permanent record of every configuration change: who changed what, and when.' },
+    { title: 'Shared events', text: 'Apps exchange standard events, so adding an app never means re-wiring the others.' },
+    { title: 'Updates and backup', text: 'Updates, backups and restores from the browser. No command line needed.' },
 ]
 
 const bundles = [
@@ -24,93 +26,107 @@ export default function FactoryPlatform() {
     return (
         <>
             <PageHero
-                crumbs={[{ label: 'Home', href: '/' }, { label: 'Factory Platform' }]}
-                eyebrow="Early access"
+                crumbs={[{ label: 'Home', href: '/' }, { label: 'Platforms' }, { label: 'Gorad Factory Platform' }]}
+                eyebrow="Platform · Early access"
                 title="Gorad Factory Platform"
-                actions={<><a href="/contact/" className="btn btn-primary">Book a demo</a><a href="/pilot/" className="btn btn-secondary">Join the pilot programme</a></>}
+                actions={<><a href="/contact/" className="btn btn-primary btn-lg">Book a demo</a><a href="/pilot/" className="btn btn-secondary">Join the pilot programme</a></>}
             >
-                Composable manufacturing software. Buy one app or several: they all share one login, one licence,
-                one web application and one event backbone. Start with inspection or machine data and grow into
-                quality and production without replacing the stack.
+                Inspection, machine data and quality apps on one platform that runs inside your plant. Start with the
+                app you need most, and add others later without replacing anything.
             </PageHero>
 
-            <section className="section">
-                <div className="container split" style={{ alignItems: 'start' }}>
-                    <div>
-                        <SectionHead eyebrow="How it fits together" title="Three layers">
-                            The core is shared. Vision and Connect bring data in from cameras and machines. Apps turn that data into decisions.
-                        </SectionHead>
-                        <CheckList items={[
-                            'One web application: LIVE screens for operators, SETUP screens for engineers',
-                            'Each app owns its data; apps talk through events and public APIs',
-                            'Runs standalone on the machine network or on a connected site server',
-                        ]} />
+            <SubNav label="On this page" items={[['overview', 'Overview'], ['ways-in', 'Vision & Connect'], ['apps', 'Apps'], ['core', 'Platform Core'], ['why-gorad', 'Why Gorad'], ['faq', 'FAQ']]} />
+
+            <section className="section" id="overview">
+                <div className="container">
+                    <PlainWords>
+                        Think of it like a smartphone for your factory. The platform is the phone: one login, one set of
+                        settings, one place where everything is recorded. The apps are what you install on it: inspection,
+                        machine data, quality control, maintenance. You only install what you need.
+                    </PlainWords>
+                    <div className="split" style={{ alignItems: 'start', marginTop: 56 }}>
+                        <div>
+                            <SectionHead eyebrow="How it fits together" title="Three layers, one system">
+                                The core is shared. Vision and Connect bring data in from cameras and machines. Apps turn that data into decisions.
+                            </SectionHead>
+                            <CheckList items={[
+                                'One web application: simple screens for operators, detailed screens for engineers',
+                                'Each app keeps its own data and shares results as standard events',
+                                'Runs on its own on the machine network, or on a site server for several lines',
+                            ]} />
+                        </div>
+                        <PlatformLayers />
                     </div>
-                    <PlatformLayers />
                 </div>
             </section>
 
-            <section className="section alt">
+            <section className="section alt" id="ways-in">
                 <div className="container">
-                    <SectionHead eyebrow="Platform Core" title="The part every app shares">
-                        One plant identity and one audit story, so adding an app does not add another login or another vocabulary.
+                    <SectionHead eyebrow="Where data comes from" title="Two ways in">
+                        Most plants start with one of these. Both feed the apps.
                     </SectionHead>
-                    <div className="grid grid-3">
-                        {coreFeatures.map((f) => (
-                            <div className="card" key={f.title}>
-                                <h3>{f.title}</h3>
-                                <p>{f.text}</p>
-                            </div>
-                        ))}
+                    <div className="pillars pillars-2">
+                        <a className="pillar" href="/factory-platform/vision/">
+                            <span className="icon-ring"><ScanEye size={20} aria-hidden="true" /></span>
+                            <span className="pillar-word">Gorad Vision</span>
+                            <h3>AI visual inspection</h3>
+                            <p>Cameras check every part, and anything doubtful is rejected. The result goes to your machine’s controller (PLC) with a record of why.</p>
+                            <span className="text-link">How Vision works <ArrowRight size={16} aria-hidden="true" /></span>
+                        </a>
+                        <a className="pillar" href="/factory-platform/connect/">
+                            <span className="icon-ring"><Cable size={20} aria-hidden="true" /></span>
+                            <span className="pillar-word">Gorad Connect</span>
+                            <h3>Machine data</h3>
+                            <p>Reads counts, states and alarms from your PLCs and meters, and keeps every reading safe when the network drops.</p>
+                            <span className="text-link">How Connect works <ArrowRight size={16} aria-hidden="true" /></span>
+                        </a>
                     </div>
                 </div>
             </section>
 
-            <section className="section">
-                <div className="container">
-                    <SectionHead eyebrow="Bring data in" title="Vision and Connect" />
-                    <div className="grid grid-2">
-                        <div className="card door">
-                            <h3>Gorad Vision</h3>
-                            <p>Fail-closed visual inspection. Multi-camera stations, classical and AI tools in one signed program, a journal before every PLC output.</p>
-                            <TextLink href="/factory-platform/vision/">How Vision works</TextLink>
-                        </div>
-                        <div className="card door">
-                            <h3>Gorad Connect</h3>
-                            <p>A PLC and meter gateway. Modbus TCP, Siemens S7 and OPC UA tags become standard events, kept safe through network drops.</p>
-                            <TextLink href="/factory-platform/connect/">How Connect works</TextLink>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="section alt" id="apps">
+            <section className="section" id="apps">
                 <div className="container">
                     <SectionHead eyebrow="Apps" title="Apps on the platform">
-                        Every app below is built and tested in software. They are in early access: we are proving them on real stations with pilot plants before general release.
+                        Each app solves one job and works on its own. All are in early access: built and tested in software, and being proven with pilot plants.
                     </SectionHead>
                     {appGroups.map((g) => (
-                        <div key={g.name} style={{ marginBottom: 32 }}>
-                            <h3 style={{ marginBottom: 14 }}>{g.name}</h3>
+                        <div key={g.name} className="app-group">
+                            <h3 className="app-group-title">{g.name}</h3>
                             <div className="grid grid-3">
                                 {g.apps.map((a) => {
                                     const body = (
                                         <>
-                                            <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, alignItems: 'start', marginBottom: 8 }}>
+                                            <div className="app-card-head">
                                                 <h4>{a.name}</h4>
-                                                <StatusBadge status={a.status} />
+                                                {a.status !== 'early' && <StatusBadge status={a.status} />}
                                             </div>
                                             <p>{a.text}</p>
-                                            {a.slug && <span className="text-link" style={{ marginTop: 10 }}>Learn more →</span>}
+                                            {a.slug && <span className="text-link">Learn more <ArrowRight size={16} aria-hidden="true" /></span>}
                                         </>
                                     )
                                     return a.slug
-                                        ? <a className="card" key={a.name} href={`/factory-platform/${a.slug}/`}>{body}</a>
-                                        : <div className="card" key={a.name}>{body}</div>
+                                        ? <a className="card app-card" key={a.name} href={`/factory-platform/${a.slug}/`}>{body}</a>
+                                        : <div className="card app-card" key={a.name}>{body}</div>
                                 })}
                             </div>
                         </div>
                     ))}
+                </div>
+            </section>
+
+            <section className="section alt" id="core">
+                <div className="container">
+                    <SectionHead eyebrow="Platform Core" title="What every app shares">
+                        One login, one record of changes, one way of doing things. Adding an app never adds another system to learn.
+                    </SectionHead>
+                    <div className="mini-cards">
+                        {coreFeatures.map((f) => (
+                            <div className="mini-card" key={f.title}>
+                                <h3 style={{ marginTop: 0 }}>{f.title}</h3>
+                                <p>{f.text}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
