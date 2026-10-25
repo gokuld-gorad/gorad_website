@@ -84,7 +84,8 @@ Removed from the current site: Vision & Mission, Philosophy, Advantages, generic
 - **Navigation:** Platforms (Gorad Factory Platform, Vision, Connect, use cases, all apps) · Industries · Company (About, How we work, Pilot, Partners, Security) · Contact.
 - **Brand:** the original electric cyan on near-black is back as the signature (#00e5ff dark, #0e7490 light); **dark is the default theme**, light is optional.
 - Phase 2 done: Platform, Vision and Connect pages rebuilt with an in-page menu, "In plain words" boxes, advantages, rules, FAQs and glossary tooltips (src/content/glossary.js). Vision has the requested sections: how it works, use cases, inspection dashboards, deployment models, technology, implementation roadmap.
-- Phases still to do: 3 app pages (plain-words example, advantages, tooltips, FAQ); 4 Industries pages; 5 About, How we work, Glossary.
+- Phase 3 done: all nine app pages follow problem + plain words → how it works → what it does → advantages → rules + works with → terms + FAQ (content in src/content/appExtras.js; definitions in glossary.js).
+- Phases still to do: 4 Industries pages; 5 About, How we work, Glossary.
 
 ## Visual direction (superseded colours: see Restructure) — "Calm Precision"
 
