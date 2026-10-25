@@ -1074,3 +1074,21 @@ a.card:hover, .pillar:hover, .industry:hover, .sector-card:hover, .screen-card:h
 @media (max-width: 520px) { .principle-list li { grid-template-columns: 1fr; gap: 2px; } }
 .reasons-split > .section-head { position: sticky; top: 120px; }
 @media (max-width: 960px) { .reasons-split > .section-head { position: static; } }
+
+/* ── Calm pass: motion and the transparent top bar ──────────────────────── */
+.reveal-on main > section:not(:first-child) { opacity: 0; transform: translateY(14px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal-on main > section.is-in { opacity: 1; transform: none; }
+.reveal-on main > section :is(.pillars, .ind-tiles, .reasons, .roadmap, .principle-list, .grid, .mini-cards, .sector-grid) > * {
+    opacity: 0; transform: translateY(10px); transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal-on main > section.is-in :is(.pillars, .ind-tiles, .reasons, .roadmap, .principle-list, .grid, .mini-cards, .sector-grid) > * { opacity: 1; transform: none; }
+.reveal-on main > section.is-in :is(.pillars, .ind-tiles, .reasons, .roadmap, .principle-list, .grid, .mini-cards, .sector-grid) > :nth-child(2) { transition-delay: 70ms; }
+.reveal-on main > section.is-in :is(.pillars, .ind-tiles, .reasons, .roadmap, .principle-list, .grid, .mini-cards, .sector-grid) > :nth-child(3) { transition-delay: 140ms; }
+.reveal-on main > section.is-in :is(.pillars, .ind-tiles, .reasons, .roadmap, .principle-list, .grid, .mini-cards, .sector-grid) > :nth-child(4) { transition-delay: 210ms; }
+.reveal-on main > section.is-in :is(.pillars, .ind-tiles, .reasons, .roadmap, .principle-list, .grid, .mini-cards, .sector-grid) > :nth-child(5) { transition-delay: 280ms; }
+.reveal-on main > section.is-in :is(.pillars, .ind-tiles, .reasons, .roadmap, .principle-list, .grid, .mini-cards, .sector-grid) > :nth-child(n + 6) { transition-delay: 350ms; }
+
+/* Over a full-height hero the bar is transparent until the page scrolls. */
+.navbar { transition: background-color 0.3s, border-color 0.3s, backdrop-filter 0.3s; }
+body:has(.hero-full) .navbar:not(.scrolled) { background: transparent; border-bottom-color: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; }
+.hero-full { margin-top: -64px; padding-top: 128px; min-height: 100svh; }

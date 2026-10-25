@@ -86,10 +86,18 @@ function MenuLinks({ links, path }) {
 
 function Navbar({ path }) {
     const [mobileOpen, setMobileOpen] = useState(false)
+    // The bar is transparent over a full-height hero and turns solid once the page scrolls.
+    const [scrolled, setScrolled] = useState(false)
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 8)
+        onScroll()
+        window.addEventListener('scroll', onScroll, { passive: true })
+        return () => window.removeEventListener('scroll', onScroll)
+    }, [])
     const current = (href) => (path === href ? 'page' : undefined)
     const inCompany = companyLinks.some((l) => l.href === path)
     return (
-        <header className="navbar">
+        <header className={`navbar${scrolled || mobileOpen ? ' scrolled' : ''}`}>
             <div className="container navbar-inner">
                 <a href="/" className="logo" aria-label="Gorad home">
                     <Logo /> <span>GORAD<span className="logo-dot">.</span></span>
@@ -207,7 +215,27 @@ function Footer() {
     )
 }
 
+// Sections fade in as they scroll into view, once. The class that hides them is added
+// here, after load, so the pre-rendered HTML (crawlers, no-JS visitors) always shows
+// everything; visitors who prefer reduced motion get no fade at all.
+function useReveal() {
+    useEffect(() => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return
+        const sections = [...document.querySelectorAll('main > section')]
+        const root = document.documentElement
+        root.classList.add('reveal-on')
+        const io = new IntersectionObserver((entries) => {
+            for (const e of entries) {
+                if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target) }
+            }
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 })
+        sections.forEach((el) => io.observe(el))
+        return () => { io.disconnect(); root.classList.remove('reveal-on') }
+    }, [])
+}
+
 export default function Layout({ path, children }) {
+    useReveal()
     return (
         <>
             <a className="skip-link" href="#main">Skip to content</a>
