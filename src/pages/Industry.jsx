@@ -63,9 +63,15 @@ export default function Industry({ slug }) {
                             Typical inspection tasks in this industry, with the camera and lighting setup they usually need.
                             They are examples of what the platform does, not customer stories.
                         </SectionHead>
+                        {examples.length > 0 && (
+                            <div className="app-group" id="examples">
+                                <h3 className="app-group-title">Worked examples</h3>
+                                <ExampleCards examples={examples} />
+                            </div>
+                        )}
                         {apps2d.map((g) => (
                             <div className="app-group" key={g.title || 'all'}>
-                                {g.title && <h3 className="app-group-title">{g.title}</h3>}
+                                {(g.title || examples.length > 0) && <h3 className="app-group-title">{g.title || 'More applications'}</h3>}
                                 <div className="grid grid-3">
                                     {g.items.map((a) => (
                                         <div className="card application" key={a.name}>
@@ -83,7 +89,7 @@ export default function Industry({ slug }) {
                 </section>
             )}
 
-            {(examples.length > 0 || apps2d.length === 0) && (
+            {apps2d.length === 0 && (
             <section className="section alt" id="examples">
                 <div className="container">
                     <SectionHead eyebrow="Examples" title={examples.length ? 'Parts we are built to inspect' : 'Your parts, your examples'}>
@@ -92,15 +98,7 @@ export default function Industry({ slug }) {
                             : 'We do not publish examples for this industry yet. Tell us about your part and we will show you how Gorad would inspect it.'}
                     </SectionHead>
                     {examples.length > 0 ? (
-                        <div className="grid grid-3 uc-cards">
-                            {examples.map((u) => (
-                                <a className="card uc-card" key={u.id} href={`/factory-platform/use-cases/#${u.id}`}>
-                                    {u.group === 'inspection' && <UseCaseArt id={u.id} />}
-                                    <h3>{u.title}</h3>
-                                    <p>{u.short}</p>
-                                </a>
-                            ))}
-                        </div>
+                        <ExampleCards examples={examples} />
                     ) : (
                         <a href="/contact/" className="btn btn-primary">Send us details of your part</a>
                     )}
@@ -137,5 +135,19 @@ export default function Industry({ slug }) {
 
             <CtaBand title="Tell us about your part" text="What you make, what goes wrong, and how you check it today. We reply with an honest view of what Gorad can do." />
         </>
+    )
+}
+
+function ExampleCards({ examples }) {
+    return (
+        <div className="grid grid-3 uc-cards">
+            {examples.map((u) => (
+                <a className="card uc-card" key={u.id} href={`/factory-platform/use-cases/#${u.id}`}>
+                    {u.group === 'inspection' && <UseCaseArt id={u.id} />}
+                    <h3>{u.title}</h3>
+                    <p>{u.short}</p>
+                </a>
+            ))}
+        </div>
     )
 }
