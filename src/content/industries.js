@@ -20,11 +20,18 @@ export const industries = [
         short: 'Engine, drivetrain and emission parts, forged, cast or machined.',
         lead: 'Automotive parts go into vehicles in their millions, and one escape can mean a recall. Gorad inspects every part, records every decision, and links the results to the rest of your quality system.',
         challenges: [
-            'Defects can appear anywhere on complex forged, cast or machined parts',
+            'Defects can appear anywhere on complex cast, forged, machined or moulded parts, and many need several views',
+            'Similar-looking variants run on the same line, and fitting the wrong one is costly',
             'OEM customers ask for traceability evidence for PPAP and IATF 16949 audits, for every part, not just a sample',
             'Manual inspection cannot keep up with line speed, shift after shift',
         ],
-        inspect: ['Defects and surface damage', 'Presence and count', 'Measurement', 'Codes and text'],
+        inspect: [
+            { title: 'Defects and surface damage', text: 'Porosity, cold shuts, cracks, dents, burrs, flash and paint runs on cast, forged, stamped, machined and moulded parts.' },
+            { title: 'Presence and count', text: 'Seals, O-rings, clips, threads, holes, welds, rollers and gear teeth: all there, and the right number.' },
+            { title: 'Measurement', text: 'Bore diameters, hole positions and chamfers in 2D, against your limits.' },
+            { title: 'Codes and text', text: 'Part numbers, VIN, labels and Data Matrix (DPM) marks, read and linked to the part.' },
+            { title: 'Variant and orientation', text: 'The right part and variant for the order, the right way round, before it is assembled.' },
+        ],
         examples: ['connecting-rod', 'catalyst-blockage', 'bearing-pin-count'],
         applications: [
             { items: [
@@ -53,11 +60,18 @@ export const industries = [
         short: 'PCB assemblies, power modules and electronic sub-assemblies.',
         lead: 'Small parts, many variants and a single wrong component can fail in the field. Gorad checks presence, position, polarity and variant on every board and module, and keeps the result per serial number.',
         challenges: [
-            'Many board variants run on the same line',
-            'A reversed or missing component is easy to miss by eye',
-            'Each board needs its own record for traceability',
+            'Many board and module variants run on the same line',
+            'A reversed or missing component, or the wrong value, is easy to miss by eye',
+            'Connectors, crimps and coatings are small, and a bad one fails in the field',
+            'Each board and module needs its own record for traceability',
         ],
-        inspect: ['Presence and count', 'Variant and orientation', 'Codes and text', 'Defects and surface damage'],
+        inspect: [
+            { title: 'Presence and count', text: 'Every component, pin and terminal in place, and the right number of them.' },
+            { title: 'Variant and orientation', text: 'Polarity of diodes and capacitors, the right module variant, and the right value from its marking.' },
+            { title: 'Codes and text', text: 'Reference designators, lot codes, serials and labels, read and checked.' },
+            { title: 'Defects and surface damage', text: 'Bent pins, burrs and plating defects on busbars and heatsinks, and damaged insulation on coils.' },
+            { title: 'Measurement', text: 'Crimp position, terminal seating and conformal-coating coverage against keep-out areas.' },
+        ],
         examples: ['pcb-assembly', 'igbt-variant'],
         applications: [
             { items: [
@@ -72,7 +86,6 @@ export const industries = [
         ],
         scope: 'Solder-joint inspection (fillet shape, bridges, tombstoning), voiding, BGA balls and coplanarity need dedicated AOI, X-ray or 3D machines. Continuous cable inspection needs line-scan cameras. Gorad does not offer these today.',
         apps: ['traceability', 'ncr-capa', 'label-dispatch'],
-        note: 'Gorad inspects assemblies. Full solder-joint AOI is not offered today.',
         description: 'Visual inspection for PCB assemblies and power electronics: component presence, location, polarity and variant checks, with per-board traceability.',
     },
     {
@@ -83,10 +96,17 @@ export const industries = [
         lead: 'Where parts are expensive and failures are critical, every inspection needs evidence. Our founder has built and deployed production vision systems in aerospace and heavy engineering, and Gorad is built around the same discipline: every decision recorded, every program signed.',
         challenges: [
             'Critical features must be checked on every part, with proof',
-            'Parts are large or complex and need several views',
+            'Parts are large, heavy or complex, so they need several views or a robot to present them',
             'Audits ask who checked what, when, and with which gauge',
+            'Heat, dust and vibration on the shop floor make stable lighting and mounting hard',
         ],
-        inspect: ['Defects and surface damage', 'Presence and count', 'Measurement', 'Codes and text', 'Variant and orientation'],
+        inspect: [
+            { title: 'Defects and surface damage', text: 'Visible cracks, laps and folds, casting porosity and inclusions, weld spatter, paint runs, and debris left on parts.' },
+            { title: 'Presence and count', text: 'Fasteners, rivets, drilled holes, bolts and connector pins: present and counted.' },
+            { title: 'Measurement', text: 'Hole diameters, edge and step positions, slot widths and chamfers in 2D; sealant bead width and gaps.' },
+            { title: 'Codes and text', text: 'Laser-etched serials, Data Matrix (DPM) marks, nameplates and heat numbers, read for traceability.' },
+            { title: 'Variant and orientation', text: 'Fastener head type and orientation, torque-mark alignment, and connector pin-out.' },
+        ],
         examples: [],
         applications: [
             { title: 'Aerospace', items: [
@@ -117,14 +137,20 @@ export const industries = [
         slug: 'building-materials',
         icon: 'brick',
         name: 'Building materials',
-        short: 'Bricks, blocks and other products made on fast, continuous lines.',
-        lead: 'Damaged products are usually sorted by people watching a fast line, and attention drops. Gorad checks each piece as it passes and rejects damaged ones automatically.',
+        short: 'Bricks, blocks, tiles and sanitaryware, checked piece by piece.',
+        lead: 'Damaged products are usually sorted by people watching a fast line, and attention drops. Gorad checks each piece as it passes, rejects damaged ones automatically, and records the reject rate per shift.',
         challenges: [
-            'Lines run fast and continuously',
-            'Cracks and chipped edges are easy to miss when attention drops',
+            'Products move fast, one piece after another, and people sorting them get tired',
+            'Cracks, chipped edges and glaze defects are easy to miss when attention drops',
+            'Shade and size vary from batch to batch',
             'Reject rates are rarely measured, so problems stay hidden',
         ],
-        inspect: ['Defects and surface damage', 'Measurement', 'Presence and count'],
+        inspect: [
+            { title: 'Defects and surface damage', text: 'Cracks, chipped edges, broken corners, glaze defects and pinholes on bricks, blocks, tiles and sanitaryware.' },
+            { title: 'Measurement', text: 'Length, width and squareness in 2D, against your limits.' },
+            { title: 'Sorting and classification', text: 'Shade and colour grouped by batch, and pieces outside the accepted range rejected.' },
+            { title: 'Presence and count', text: 'The right number and pattern of pieces on each pallet.' },
+        ],
         examples: ['brick-damage'],
         applications: [
             { items: [
@@ -146,11 +172,18 @@ export const industries = [
         short: 'Labels, codes, counts and the last check before a box ships.',
         lead: 'A wrong label or a short count is found by your customer, not by you. Gorad reads labels and codes, counts items and holds the box until everything matches.',
         challenges: [
-            'Labels are printed by hand and checked by eye',
-            'A wrong label or a missing item means a returned shipment',
+            'Labels and codes are printed at speed and checked by eye, if at all',
+            'Many SKUs share a line, so the wrong label, insert or product is easy to pack',
+            'A wrong label, short count or loose cap means a returned shipment or a complaint',
             'There is no record of what was checked before shipping',
         ],
-        inspect: ['Codes and text', 'Presence and count', 'Variant and orientation'],
+        inspect: [
+            { title: 'Codes and text', text: 'Labels, barcodes, date and lot codes, and pallet labels: present, readable and correct.' },
+            { title: 'Presence and count', text: 'Items in the pack, inserts, caps and blister pockets: all there, and the right count.' },
+            { title: 'Variant and orientation', text: 'The right SKU and label for the order, caps straight and seated, labels in the right place.' },
+            { title: 'Defects and surface damage', text: 'Damaged carton corners, open flaps, foil and seal defects, and foreign objects in trays.' },
+            { title: 'Measurement', text: 'Fill level in clear bottles and jars.' },
+        ],
         examples: ['label-packing-check'],
         applications: [
             { items: [
@@ -175,11 +208,18 @@ export const industries = [
         short: 'Vials, syringes, tablets, blister packs, labels and cartons.',
         lead: 'In pharma, a missing cap, an unreadable code or a wrong label has to be caught before the product leaves the line. Gorad checks containers, tablets, labels and codes on every unit and keeps a record of each decision.',
         challenges: [
-            'Every container and label needs checking, not a sample',
-            'Codes and printed text must be readable and correct on every unit',
+            'Every container, pack and label needs checking, not a sample',
+            'Lot numbers, expiry dates and serial codes must be readable and correct on every unit',
+            'Many products and strengths share a line, so the wrong tablet or leaflet must be caught',
             'Audits ask what was checked, when, and what was rejected',
         ],
-        inspect: ['Defects and surface damage', 'Presence and count', 'Measurement', 'Codes and text', 'Variant and orientation'],
+        inspect: [
+            { title: 'Defects and surface damage', text: 'Visible cracks and discoloration in vials, chipped or broken tablets, coating defects and syringe barrel defects.' },
+            { title: 'Presence and count', text: 'Caps, seals, needle shields, tablets in every blister pocket, and leaflets in every carton.' },
+            { title: 'Measurement', text: 'Fill level in vials and ampoules, and plunger position in pre-filled syringes.' },
+            { title: 'Codes and text', text: 'Lot, expiry and serial codes read and checked, with an indicative print-quality grade for Data Matrix.' },
+            { title: 'Variant and orientation', text: 'The right tablet, label and leaflet for the batch, in the right place.' },
+        ],
         examples: [],
         applications: [
             { items: [

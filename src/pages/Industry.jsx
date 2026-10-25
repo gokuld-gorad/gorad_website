@@ -3,14 +3,13 @@ import IndustryIcon from '../components/IndustryIcon.jsx'
 import UseCaseArt from '../components/UseCaseArt.jsx'
 import SiteImage, { hasImage } from '../components/SiteImage.jsx'
 import { CtaBand, PageHero, SectionHead, TextLink } from '../components/Blocks.jsx'
-import { capabilities, findIndustry, industries } from '../content/industries.js'
+import { findIndustry, industries } from '../content/industries.js'
 import { useCases } from '../content/useCases.js'
 import { appIndex } from '../content/appIndex.js'
 
 export default function Industry({ slug }) {
     const ind = findIndustry(slug)
     const examples = ind.examples.map((id) => useCases.find((u) => u.id === id))
-    const caps = capabilities.filter((c) => ind.inspect.includes(c.title))
     const apps = ind.apps.map((s) => appIndex.find((a) => a.slug === s))
     const others = industries.filter((i) => i.slug !== slug)
     const apps2d = ind.applications || []
@@ -44,7 +43,7 @@ export default function Industry({ slug }) {
                     <div>
                         <SectionHead eyebrow="What we inspect" title="Typical checks" />
                         <div className="screen-list">
-                            {caps.map((c) => (
+                            {ind.inspect.map((c) => (
                                 <div className="screen-item" key={c.title}>
                                     <span className="icon-ring"><ArrowRight size={16} aria-hidden="true" /></span>
                                     <div><h3>{c.title}</h3><p>{c.text}</p></div>
