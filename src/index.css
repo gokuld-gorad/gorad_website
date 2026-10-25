@@ -946,3 +946,68 @@ section[id], div[id] { scroll-margin-top: 124px; }
 .application.has-art:hover { border-color: color-mix(in srgb, var(--ng) 40%, var(--border)); }
 @keyframes art-pulse { 50% { opacity: 0.35; } }
 @media (prefers-reduced-motion: reduce) { .application .art-bad { animation: none !important; } }
+
+/* ── Calm pass: space, type, glass cards, quiet colour ─────────────────────
+   Overrides the rules above. Cyan is kept for buttons, the hero accent, small
+   labels, active states and diagram cameras; everything else is neutral. */
+:root {
+    --card-bg: var(--surface);
+    --card-border: var(--border);
+    --card-border-hover: color-mix(in srgb, var(--text) 22%, var(--border));
+    --card-shadow: 0 1px 2px rgb(16 18 24 / 0.04);
+    --card-radius: 16px;
+}
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --card-bg: rgb(255 255 255 / 0.03);
+        --card-border: rgb(255 255 255 / 0.07);
+        --card-border-hover: rgb(255 255 255 / 0.16);
+        --card-shadow: none;
+    }
+}
+:root[data-theme="dark"] {
+    --card-bg: rgb(255 255 255 / 0.03);
+    --card-border: rgb(255 255 255 / 0.07);
+    --card-border-hover: rgb(255 255 255 / 0.16);
+    --card-shadow: none;
+}
+
+/* Space */
+.section { padding: 120px 0; }
+.section.tight { padding: 64px 0; }
+.section-head { margin-bottom: 56px; }
+.section-foot { margin-top: 40px; }
+@media (max-width: 960px) { .section { padding: 88px 0; } }
+@media (max-width: 640px) { .section { padding: 64px 0; } .section.tight { padding: 48px 0; } .section-head { margin-bottom: 36px; } }
+
+/* Type: larger headings, quieter supporting text */
+h1, h2, h3, h4 { font-weight: 600; }
+h2 { font-size: clamp(1.9rem, 3.6vw, 2.65rem); line-height: 1.15; }
+.section-head p { font-size: clamp(1.05rem, 1.5vw, 1.2rem); color: var(--text-muted); line-height: 1.55; }
+.lead { color: var(--text-muted); }
+
+/* Glass cards: one surface treatment for every boxed element */
+.card, .pillar, .industry, .mini-card, .sector-card, .howto > li, .download, .screen-card,
+.layer, .compare-wrap, .levels, .feature-strip, .vm-grid, .cta-band {
+    background: var(--card-bg); border-color: var(--card-border); box-shadow: var(--card-shadow);
+}
+.card, .pillar, .industry, .mini-card, .sector-card, .howto > li, .screen-card, .cta-band { border-radius: var(--card-radius); }
+.sector-card-open, .industry-open { background: none; }
+a.card:hover, .pillar:hover, .industry:hover, .sector-card:hover, .screen-card:hover, .download:hover {
+    border-color: var(--card-border-hover); background: var(--card-bg); box-shadow: var(--card-shadow);
+}
+.application.has-art:hover { border-color: color-mix(in srgb, var(--ng) 40%, var(--card-border)); }
+.layer:hover, .layer:focus-within, .layer.active { background: var(--card-bg); border-color: var(--card-border-hover); }
+.cta-band::before { opacity: 0.6; }
+
+/* Icons: plain outlines, no coloured tiles */
+.card-icon, .icon-ring, .principle-icon, .plain-words-icon {
+    background: none; border: 1px solid var(--card-border); color: var(--text);
+}
+.advantage svg, .download svg { color: var(--text-muted); }
+
+/* Links: text colour, underline grows on hover; cyan stays for inline links in prose */
+.text-link { color: var(--text); }
+.text-link svg { color: var(--text-muted); }
+.text-link:hover svg { color: var(--signal); }
+.industry:hover .industry-arrow { color: var(--text); }
