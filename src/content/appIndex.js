@@ -23,6 +23,7 @@ export const appIndex = [
         fullName: 'Gorad Calibration & MSA',
         group: 'Quality',
         tagline: 'Gauges you can trust, studies you can defend',
+        seoTitle: 'Gorad Calibration & MSA — gauges and studies you can trust',
         description: 'Gauge register, calibration due list, quarantine of failed gauges and Gauge R&R (ANOVA and average-range), with PDF and Excel reports.',
     },
     {
@@ -39,6 +40,7 @@ export const appIndex = [
         fullName: 'Gorad Maintenance',
         group: 'Production',
         tagline: 'Maintenance that starts when the machine stops',
+        seoTitle: 'Gorad Maintenance — work orders that start with the fault',
         description: 'Work orders, PM plans and spares, with breakdowns opened from Andon or PLC fault signals and an offline technician page.',
     },
     {

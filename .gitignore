@@ -30,3 +30,6 @@ dist-ssr
 # Original images before compression (see docs/image-prompts.md)
 images-src/
 __pycache__/
+
+# Original AI image renders (large). The optimised WebP copies live in public/images.
+docs/gemini_images/

@@ -8,7 +8,7 @@ export const APP_STATUS_NOTE =
 const details = [
     {
         slug: 'spc',
-        lead: 'SPC fed automatically by Gorad Vision measurements and PLC tags through Gorad Connect, plus manual gauge entry. Out-of-control conditions are flagged within seconds, against locked limits you can defend in an audit.',
+        lead: 'Know when a process starts to drift, before it makes bad parts. Measurements arrive by themselves from your cameras and machines, or are typed in, and the app warns you within seconds when a process leaves its limits.',
         problem: 'Measurements sit in spreadsheets and gauges, charts are drawn after the fact, and a drift is found when the parts are already made.',
         features: [
             { title: 'Data arrives by itself', text: 'Vision measurements and verdicts, Connect tags and manual gauge readings feed the same characteristics.' },
@@ -29,7 +29,7 @@ const details = [
     },
     {
         slug: 'ncr-capa',
-        lead: 'Raise NCRs by hand or automatically from Vision and SPC, work them through containment, investigation and corrective action with an 8D template, and check whether the fix worked.',
+        lead: 'When something goes wrong, make sure it is fixed for good. Problems are logged by hand or automatically from inspection and SPC, then worked through step by step until the fix is proven to work.',
         problem: 'Rejects are counted, but the link from a reject to its cause, its action and its proof lives in emails and memory.',
         features: [
             { title: 'Raised from the line', text: 'Rules raise an NCR from a count of NG results, an NG rate above your limit, or an SPC violation. Rules are off until quality turns them on.' },
@@ -50,7 +50,7 @@ const details = [
     },
     {
         slug: 'calibration-msa',
-        lead: 'A gauge register, a calibration due list and Gauge R&R studies, with gauge status shared with SPC.',
+        lead: 'Make sure the tools you measure with can be trusted. Every gauge is listed with its calibration due date, failed gauges are taken out of use, and studies show whether your measurements are reliable.',
         problem: 'Calibration dates live in a spreadsheet, an overdue gauge is still in use, and Gauge R&R studies are done once and lost.',
         features: [
             { title: 'Gauge register', text: 'Every gauge with its calibrations, as-found and as-left values and certificates.' },
@@ -69,7 +69,7 @@ const details = [
     },
     {
         slug: 'line-performance',
-        lead: 'Andon, OEE with drill-down and downtime, from machine signals read by Gorad Connect, with quality from part counts or Vision verdicts.',
+        lead: 'See how well each line is really running, and why it stops. Counts and stops come straight from the machines, so every loss is recorded without anyone writing it down.',
         problem: 'OEE is calculated by hand after the shift, missing data is quietly counted as running, and nobody agrees on the number.',
         features: [
             { title: 'Live line view', text: 'Machine states and Andon calls as they happen, on a screen, a tablet or a TV board.' },
@@ -89,7 +89,7 @@ const details = [
     },
     {
         slug: 'maintenance',
-        lead: 'Work orders, preventive maintenance plans and spares, with breakdown orders opened from Line Performance or a Connect fault signal, and a technician page that works offline.',
+        lead: 'Get machines fixed faster, and service them before they break. A breakdown can open a work order by itself, planned servicing is scheduled automatically, and technicians work from a simple page on the shop floor.',
         problem: 'Breakdowns are reported by phone, PM is tracked on paper, and the spare part is never in stock when it is needed.',
         features: [
             { title: 'Breakdowns open themselves', text: 'An Andon call, a downtime or a PLC fault signal opens a work order. One stop is one order.' },
@@ -109,7 +109,7 @@ const details = [
     },
     {
         slug: 'tool-life',
-        lead: 'Stroke and shot counts for tools, dies, moulds and fixtures, read from PLC counters through Gorad Connect, with warning and stop limits, service records and cost per part.',
+        lead: 'Change tools on time, not too early and not too late. Every tool, die, mould and fixture is counted automatically from the machine, with a warning before it wears out and a record of every service.',
         problem: 'Tool life is estimated, counters are reset by hand, and a die runs past its limit because nobody was watching the count.',
         features: [
             { title: 'Counts follow the tool', text: 'Strokes belong to the tool mounted at that moment, multiplied by its cavities, and stay with it when it moves between presses.' },
@@ -128,7 +128,7 @@ const details = [
     },
     {
         slug: 'traceability',
-        lead: 'Part genealogy across stations, from receiving to shipping, with Vision results and process data linked to each item.',
+        lead: 'Answer “what happened to this part?” in seconds. Each part’s journey is recorded from receiving to shipping, with its inspection results and machine data at every station.',
         problem: 'When a problem is found, nobody can say quickly which parts, batches and shipments are affected, so the recall is either too big or too small.',
         features: [
             { title: 'Receive, build, ship', text: 'Lots in, work in progress, shipments out, with parent-child links between items.' },
@@ -148,7 +148,7 @@ const details = [
     },
     {
         slug: 'label-dispatch',
-        lead: 'Print labels at packing and verify them with a Gorad Vision station before the box ships.',
+        lead: 'Stop wrong labels from reaching your customer. Labels are printed at packing and checked by a camera before the box is allowed to ship.',
         problem: 'Labels are printed by hand, checked by eye, and a wrong label is found by the customer.',
         features: [
             { title: 'Templates and printing', text: 'Label templates printed to industrial label printers over the network.' },
@@ -167,7 +167,7 @@ const details = [
     },
     {
         slug: 'skills',
-        lead: 'A skill matrix, qualifications with levels and expiry dates, training records, and a check when a person signs in at a station.',
+        lead: 'Make sure only trained people run each station. Skills, qualifications and training are kept in one place, and the station checks them when someone signs in.',
         problem: 'Who is qualified for which station lives in a spreadsheet, qualifications expire unnoticed, and an auditor’s question takes a day to answer.',
         features: [
             { title: 'Skill matrix', text: 'People and skills, with levels: in training, supervised, qualified and trainer.' },

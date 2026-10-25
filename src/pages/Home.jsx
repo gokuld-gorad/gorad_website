@@ -32,6 +32,7 @@ const industries = [
     { name: 'Aerospace & heavy engineering', examples: ['Machined parts', 'Fabricated assemblies'], href: '/industries/aerospace-heavy-engineering/' },
     { name: 'Building materials', examples: ['Bricks and blocks', 'Surface damage'], href: '/industries/building-materials/' },
     { name: 'Packaging & logistics', examples: ['Labels', 'Codes and text', 'Counts'], href: '/industries/packaging-logistics/' },
+    { name: 'Pharmaceuticals', examples: ['Vials and containers', 'Caps', 'Labels and codes'], href: '/industries/pharma/' },
     { name: 'Any discrete part', examples: ['Defects', 'Presence', 'Measurement', 'Sorting'], href: '/industries/#capabilities', open: true },
 ]
 
@@ -99,7 +100,7 @@ export default function Home() {
             <section className="section alt" id="industries">
                 <div className="container">
                     <SectionHead eyebrow="Industries" title="Built for the parts you make">
-                        From engine components to circuit boards and building materials. If you make discrete parts, we can probably inspect them.
+                        From engine components to circuit boards, vials and building materials. If you make discrete parts, we can probably inspect them.
                     </SectionHead>
                     <div className="industries">
                         {industries.map((ind) => (

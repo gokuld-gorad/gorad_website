@@ -7,7 +7,7 @@ const appRoutes = appPages.map((a) => ({
     path: `/factory-platform/${a.slug}/`,
     page: 'app',
     slug: a.slug,
-    title: `${a.fullName} — ${a.tagline}`,
+    title: a.seoTitle ?? `${a.fullName} — ${a.tagline}`,
     description: a.description,
 }))
 
@@ -44,7 +44,7 @@ export const routes = [
     {
         path: '/factory-platform/connect/',
         page: 'connect',
-        title: 'Gorad Connect — PLC and meter data gateway (Modbus TCP, S7, OPC UA)',
+        title: 'Gorad Connect — PLC and meter data gateway (Modbus, S7, OPC UA)',
         description:
             'Read PLCs and meters over Modbus TCP, Siemens S7 and OPC UA, map tags to standard events and keep every event when the network drops.',
     },
@@ -125,7 +125,7 @@ export const notFound = {
     path: '/404',
     page: 'notfound',
     title: 'Page not found — Gorad',
-    description: 'The page you were looking for does not exist.',
+    description: 'The page you were looking for does not exist or has moved. Go to the Gorad homepage, or contact us and we will help you find it.',
     noindex: true,
 }
 

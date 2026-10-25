@@ -86,7 +86,7 @@ const art = {
                     : <circle key={i} cx={x} cy={y} r="5" fill="var(--surface-sunken)" stroke="var(--text-muted)" strokeWidth="1.3" />
             })}
             <Camera x={120} y={14} />
-            <text x="176" y="40" {...tag} fill="var(--ng)">Views</text>
+            <text x="176" y="40" {...tag} fill="var(--ng)">1 missing</text>
         </>
     ),
     'brick-damage': (

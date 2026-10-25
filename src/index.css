@@ -297,7 +297,7 @@ a.card:hover { border-color: var(--signal); text-decoration: none; }
 .page-hero { padding: 72px 0 56px; border-bottom: 1px solid var(--border); }
 .page-hero h1 { font-size: clamp(2rem, 4.4vw, 3rem); margin-bottom: 18px; }
 .breadcrumb { font-size: 0.85rem; color: var(--text-subtle); margin-bottom: 18px; }
-.breadcrumb a { color: var(--text-muted); }
+.breadcrumb a { color: var(--text-muted); display: inline-block; padding: 4px 0; }
 
 /* ── Station screen mock (always dark) ────────────────────────────────── */
 .kiosk {
@@ -377,6 +377,16 @@ a.card:hover { border-color: var(--signal); text-decoration: none; }
 .cycle-controls p { font-size: 0.85rem; color: var(--text-subtle); }
 /* On narrow screens the diagram goes first so it stays in view while the steps change. */
 @media (max-width: 900px) { .cycle { grid-template-columns: 1fr; gap: 20px; } .cycle-stage { position: static; order: -1; } }
+/* App-page diagrams keep a readable size on phones: the frame scrolls sideways instead
+   of shrinking the labels below legibility. */
+.explainer-frame { padding: 16px; }
+.cycle > * { min-width: 0; }
+.explainer-swipe { display: none; font-size: 0.8rem; color: var(--text-subtle); margin-top: 6px; }
+@media (max-width: 560px) {
+    .explainer-frame { padding: 8px; overflow-x: auto; }
+    .explainer-frame .explainer-svg { min-width: 500px; }
+    .explainer-swipe { display: block; }
+}
 
 /* ── Store-and-forward diagram ────────────────────────────────────────── */
 .sf-state { font: 500 0.8rem var(--font-mono); }
@@ -696,7 +706,7 @@ a.card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 .industry li { margin: 0; font-size: 0.82rem; padding: 3px 10px; border-radius: 999px; background: var(--surface-sunken); border: 1px solid var(--border); color: var(--text-muted); }
 .industry-arrow { position: absolute; top: 26px; right: 22px; color: var(--text-subtle); transition: transform 0.2s, color 0.2s; }
 .industry:hover .industry-arrow { transform: translateX(3px); color: var(--signal); }
-.industry-open { border-style: dashed; }
+.industry-open { border-style: dashed; grid-column: 1 / -1; }
 @media (max-width: 900px) { .industries { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 600px) { .industries { grid-template-columns: 1fr; } }
 
@@ -781,6 +791,10 @@ section[id], div[id] { scroll-margin-top: 124px; }
 .subnav li { margin: 0; flex: none; }
 .subnav a { display: block; padding: 12px 12px; font-size: 0.88rem; color: var(--text-muted); white-space: nowrap; border-bottom: 2px solid transparent; }
 .subnav a:hover { color: var(--text); text-decoration: none; border-bottom-color: var(--signal); }
+.subnav a[aria-current] { color: var(--text); border-bottom-color: var(--signal); }
+.subnav.fade-end ul { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 48px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 48px), transparent); }
+.subnav.fade-start ul { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 48px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 48px), transparent); }
+.subnav.fade-start.fade-end ul { -webkit-mask-image: linear-gradient(to right, transparent, #000 48px, #000 calc(100% - 48px), transparent); mask-image: linear-gradient(to right, transparent, #000 48px, #000 calc(100% - 48px), transparent); }
 
 /* Product pages: shared blocks */
 .pillars-2 { grid-template-columns: 1fr 1fr; }

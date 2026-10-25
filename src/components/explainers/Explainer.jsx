@@ -29,11 +29,12 @@ export default function Explainer({ steps, Stage, mode = 'animated', ms = 2400, 
                 ))}
             </ol>
             <div className="cycle-stage">
-                <div className="card" style={{ padding: 16 }}>
+                <div className="card explainer-frame">
                     <svg className="explainer-svg" viewBox="0 0 560 260" role="img" aria-label={label}>
                         <Stage step={step} />
                     </svg>
                 </div>
+                <p className="explainer-swipe" aria-hidden="true">Swipe to see the whole picture</p>
                 {(note || (!isStatic && !reduced)) && (
                     <div className="cycle-controls">
                         <p>{isStatic || reduced ? note : `Step ${step + 1} of ${steps.length}${note ? ` · ${note}` : ''}`}</p>
