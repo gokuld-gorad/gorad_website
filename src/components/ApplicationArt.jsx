@@ -1,4 +1,5 @@
 import { Camera, bad, part, ray, tag } from './UseCaseArt.jsx'
+import { sectorArt } from './ApplicationArtSectors.jsx'
 
 // One small diagram per application card on the industry pages, in the same style as
 // the use-case art: the part in neutral strokes, the camera in Signal, the defect in red.
@@ -34,7 +35,7 @@ function matrixModules() {
     return cells
 }
 
-const art = {
+const pharmaArt = {
     'vials-ampoules': (
         <>
             <Camera x={120} y={14} />
@@ -139,6 +140,8 @@ const art = {
         </>
     ),
 }
+
+const art = { ...pharmaArt, ...sectorArt }
 
 export function hasApplicationArt(id) {
     return Boolean(id && art[id])
