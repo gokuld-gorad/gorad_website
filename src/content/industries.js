@@ -57,7 +57,7 @@ export const industries = [
         inspect: ['Defects and surface damage', 'Presence and count', 'Measurement', 'Codes and text'],
         examples: [],
         apps: ['traceability', 'calibration-msa', 'ncr-capa', 'skills'],
-        description: 'Visual inspection with full evidence for aerospace and heavy engineering parts: critical features, surface damage and part marking, with traceability and calibration records.',
+        description: 'Visual inspection with full evidence for aerospace and heavy engineering parts: critical features, surface damage and part marking, with traceability.',
     },
     {
         slug: 'building-materials',
@@ -90,6 +90,23 @@ export const industries = [
         examples: ['label-packing-check'],
         apps: ['label-dispatch', 'traceability'],
         description: 'Label verification, code reading and counting at packing: every box checked before it ships, with a record of every check.',
+    },
+    {
+        slug: 'pharma',
+        icon: 'flask',
+        name: 'Pharmaceuticals',
+        short: 'Vials, containers, labels and the packaging that goes with them.',
+        lead: 'In pharma, a missing cap, an unreadable code or a wrong label has to be caught before the product leaves the line. Gorad checks containers and their codes on every unit and keeps a record of each decision.',
+        challenges: [
+            'Every container and label needs checking, not a sample',
+            'Codes and printed text must be readable and correct on every unit',
+            'Audits ask what was checked, when, and what was rejected',
+        ],
+        inspect: ['Defects and surface damage', 'Presence and count', 'Codes and text'],
+        examples: [],
+        apps: ['traceability', 'ncr-capa', 'label-dispatch', 'calibration-msa'],
+        note: 'Gorad inspects containers, closures and labels visually. It does not replace laboratory release tests.',
+        description: 'Visual inspection for vials, containers and pharmaceutical packaging: presence, codes, labels and defects, with per-unit traceability.',
     },
 ]
 

@@ -45,7 +45,7 @@ const art = {
                     return <rect key={`${r}${c}`} x={x} y={y} width="6.5" height="6.5" fill={blocked ? 'var(--ng)' : 'none'} stroke="var(--text-subtle)" strokeWidth="0.8" />
                 }),
             )}
-            <text x="176" y="86" {...tag} fill="var(--ng)">4 % blocked</text>
+            <text x="176" y="86" {...tag} fill="var(--ng)">Blocked</text>
         </>
     ),
     'pcb-assembly': (
@@ -86,7 +86,7 @@ const art = {
                     : <circle key={i} cx={x} cy={y} r="5" fill="var(--surface-sunken)" stroke="var(--text-muted)" strokeWidth="1.3" />
             })}
             <Camera x={120} y={14} />
-            <text x="176" y="40" {...tag} fill="var(--ng)">15 / 16</text>
+            <text x="176" y="40" {...tag} fill="var(--ng)">Views</text>
         </>
     ),
     'brick-damage': (

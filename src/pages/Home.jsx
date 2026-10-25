@@ -1,4 +1,4 @@
-import { ArrowRight, BarChart3, Cable, CircleCheck, CloudOff, FileCheck2, Layers, Plus, ScanEye, Settings2, ShieldCheck, Users } from 'lucide-react'
+import { ArrowRight, BarChart3, Cable, CircleCheck, CloudOff, FileCheck2, Layers, Plus, ScanEye, Settings2, ShieldCheck } from 'lucide-react'
 import HeroScan from '../components/HeroScan.jsx'
 import Roadmap from '../components/Roadmap.jsx'
 import { CtaBand, SectionHead, TextLink } from '../components/Blocks.jsx'
@@ -42,7 +42,6 @@ const advantages = [
     { icon: Settings2, title: 'Change it yourself', text: 'Adjust inspections from a browser. No waiting for a vendor engineer to visit.' },
     { icon: CloudOff, title: 'Works without the internet', text: 'Everything runs inside your plant. Your images and data stay with you.' },
     { icon: Layers, title: 'Start small, grow later', text: 'Begin with one station or one app. Add more on the same platform, without replacing anything.' },
-    { icon: Users, title: 'Built by people who have done it', text: 'Our founder has built and deployed more than 30 production vision inspection systems.' },
 ]
 
 
@@ -75,11 +74,6 @@ export default function Home() {
                             <span>{FOUNDER.name} · aerospace, automotive and heavy engineering</span>
                         </span>
                     </a>
-                    <ul className="trust-facts">
-                        <li>Runs inside your plant</li>
-                        <li>Works offline</li>
-                        <li>Your data stays with you</li>
-                    </ul>
                 </div>
             </section>
 
@@ -122,7 +116,7 @@ export default function Home() {
             <section className="section">
                 <div className="container">
                     <SectionHead eyebrow="Why Gorad" title="What you can count on" center>
-                        No inflated promises. Six things the software actually does for you.
+                        No inflated promises. Five things the software actually does for you.
                     </SectionHead>
                     <div className="advantages">
                         {advantages.map(({ icon: Icon, title, text }) => (
@@ -151,6 +145,7 @@ export default function Home() {
                     <div className="principles">
                         {principles.map((p) => (
                             <div className="principle" key={p.name}>
+                                <span className="principle-icon"><p.icon size={20} aria-hidden="true" /></span>
                                 <h3>{p.name}</h3>
                                 <p>{p.text}</p>
                             </div>

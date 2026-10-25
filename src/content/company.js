@@ -3,12 +3,14 @@
 export const VISION = 'To provide AI and automation solutions precisely tailored to your business needs.'
 export const MISSION = 'We build a better and smarter future for manufacturing and industry.'
 
+import { Eye, Gauge, Handshake, Lightbulb, ShieldCheck } from 'lucide-react'
+
 export const principles = [
-    { name: 'Innovate', text: 'AI where it helps, simple rules where they are enough.' },
-    { name: 'Cost efficient', text: 'Start with one station or one app. Grow when it pays.' },
-    { name: 'Committed', text: 'With you from the first sample to production.' },
-    { name: 'Transparent', text: 'We tell you what we cannot do, before you spend money.' },
-    { name: 'Trust', text: 'Your data stays in your plant, and every decision is on record.' },
+    { name: 'Innovate', icon: Lightbulb, text: 'AI where it helps, simple rules where they are enough.' },
+    { name: 'Cost efficient', icon: Gauge, text: 'Start with one station or one app. Grow when it pays.' },
+    { name: 'Committed', icon: Handshake, text: 'With you from the first sample to production.' },
+    { name: 'Transparent', icon: Eye, text: 'We tell you what we cannot do, before you spend money.' },
+    { name: 'Trust', icon: ShieldCheck, text: 'Your data stays in your plant, and every decision is on record.' },
 ]
 
 // How the product is built: the engineering side of the philosophy.

@@ -1,5 +1,30 @@
 {
-  "industries": {},
+  "industries": {
+    "aerospace-heavy-engineering": [
+      1600,
+      900
+    ],
+    "automotive": [
+      1600,
+      900
+    ],
+    "building-materials": [
+      1600,
+      900
+    ],
+    "electronics": [
+      1600,
+      900
+    ],
+    "packaging-logistics": [
+      1600,
+      900
+    ],
+    "pharma": [
+      1600,
+      900
+    ]
+  },
   "screens": {
     "calibration-msa": [
       1600,

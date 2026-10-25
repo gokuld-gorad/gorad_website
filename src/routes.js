@@ -25,21 +25,21 @@ export const routes = [
         page: 'home',
         title: 'Gorad — AI inspection and factory software you can trust',
         description:
-            'Gorad builds AI software for factories: camera inspection of every part, machine data and quality apps, all running inside your own plant. If anything fails, the part is rejected, never passed.',
+            'Gorad builds AI software for factories: camera inspection of every part, machine data and quality apps, inside your own plant. Anything that fails is rejected.',
     },
     {
         path: '/factory-platform/',
         page: 'platform',
-        title: 'Gorad Factory Platform — one platform for inspection, machine data and quality',
+        title: 'Gorad Factory Platform — inspection, machine data and quality',
         description:
-            'A shared core for users, licences and audit, with Gorad Vision, Gorad Connect and apps for SPC, NCR/CAPA, OEE, traceability and maintenance. Start with one app and grow.',
+            'A shared core for users, licences and audit, with Gorad Vision, Gorad Connect and apps for SPC, NCR/CAPA, OEE and traceability. Start with one app.',
     },
     {
         path: '/factory-platform/vision/',
         page: 'vision',
         title: 'Gorad Vision — fail-closed visual inspection with PLC handshake',
         description:
-            'Multi-camera visual inspection that rejects the part on any fault, writes a journal before the PLC output and runs only signed programs. Classical and AI tools in one program.',
+            'Multi-camera inspection that rejects the part on any fault, writes a journal before the PLC output and runs only signed programs.',
     },
     {
         path: '/factory-platform/connect/',
@@ -53,7 +53,7 @@ export const routes = [
         page: 'usecases',
         title: 'Use cases — Gorad Factory Platform',
         description:
-            'Example applications: connecting rod inspection, catalyst blockage, PCB assembly, IGBT variant check, bearing pin count, brick damage, label checks, OEE from machine signals and a closed quality loop.',
+            'Example applications: connecting rod and catalyst checks, PCB assembly, brick damage, label checks, OEE from machine signals and a closed quality loop.',
     },
     ...appRoutes,
     {
@@ -61,7 +61,7 @@ export const routes = [
         page: 'industries',
         title: 'Industries — AI visual inspection for the parts you make | Gorad',
         description:
-            'Gorad inspects automotive components, electronics and power modules, aerospace and heavy engineering parts, building materials, and labels and packaging. Or any discrete part, by capability.',
+            'Automotive, electronics, aerospace and heavy engineering, building materials, packaging, pharma, or any discrete part, by capability.',
     },
     ...industryRoutes,
     {
@@ -76,7 +76,7 @@ export const routes = [
         page: 'howwework',
         title: 'How we work — from first call to a running line | Gorad',
         description:
-            'Seven clear steps from study and pricing to installation, training, testing and support, with what Gorad does, what we need from you, and what you get at each step.',
+            'Seven clear steps from study and pricing to installation, training, testing and support, with what we need from you at each one.',
     },
     {
         path: '/glossary/',
@@ -90,14 +90,14 @@ export const routes = [
         page: 'security',
         title: 'Security & trust — Gorad Factory Platform',
         description:
-            'On-premise, no outbound connection, signed programs and updates, server-side roles, an audit log, SBOM and a licence-clean dependency policy. Designed with IEC 62443 principles.',
+            'On-premise, no outbound connection, signed programs and updates, server-side roles, an audit log and SBOM. Designed with IEC 62443 principles, not certified.',
     },
     {
         path: '/partners/',
         page: 'partners',
         title: 'For integrators & machine builders — Gorad Factory Platform',
         description:
-            'Build inspection and robot cells on Gorad Vision: one product for every customer, a standard PLC signal map over Modbus TCP, S7 or OPC UA, and programs you can hand over.',
+            'Build inspection and robot cells on Gorad Vision: one product for every customer, a standard PLC signal map and programs you can hand over.',
     },
     {
         path: '/pilot/',

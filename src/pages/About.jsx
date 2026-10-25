@@ -51,7 +51,7 @@ export default function About() {
 
             <section className="section">
                 <div className="container">
-                    <SectionHead eyebrow="Who is behind Gorad" title="Founded by a vision engineer" />
+                    <SectionHead eyebrow="Who is behind Gorad" title="Founded by an engineer" />
                     <div className="card founder">
                         <img className="founder-photo" src={FOUNDER.photo} alt={`Portrait of ${FOUNDER.name}`} width="144" height="144" loading="lazy" />
                         <div>
@@ -77,6 +77,7 @@ export default function About() {
                     <div className="principles">
                         {principles.map((p) => (
                             <div className="principle" key={p.name}>
+                                <span className="principle-icon"><p.icon size={20} aria-hidden="true" /></span>
                                 <h3>{p.name}</h3>
                                 <p>{p.text}</p>
                             </div>

@@ -664,9 +664,9 @@ a.card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 @keyframes hero-beam { from { transform: translateX(60px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } to { transform: translateX(660px); opacity: 0; } }
 .hero-defect { opacity: 0; transition: opacity 0.3s; }
 .hero-defect.on { opacity: 1; }
-.hero-scan-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 18px; border-top: 1px solid var(--border); }
-.hero-scan-id { font: 500 0.8rem var(--font-mono); color: var(--text-subtle); }
-.hero-chip { font: 600 0.82rem var(--font-sans); padding: 5px 12px; border-radius: 999px; border: 1px solid; transition: all 0.25s; }
+.hero-scan-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 12px; padding: 12px 18px; border-top: 1px solid var(--border); }
+.hero-scan-id { font: 500 0.8rem var(--font-mono); color: var(--text-subtle); white-space: nowrap; }
+.hero-chip { font: 600 0.82rem var(--font-sans); padding: 5px 12px; border-radius: 999px; border: 1px solid; white-space: nowrap; transition: all 0.25s; }
 .hero-chip.scanning { color: var(--signal); border-color: color-mix(in srgb, var(--signal) 40%, transparent); background: var(--signal-soft); }
 .hero-chip.ok { color: var(--ok); border-color: color-mix(in srgb, var(--ok) 40%, transparent); background: var(--ok-soft); }
 .hero-chip.ng { color: var(--ng); border-color: color-mix(in srgb, var(--ng) 40%, transparent); background: var(--ng-soft); }
@@ -701,12 +701,14 @@ a.card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 @media (max-width: 600px) { .industries { grid-template-columns: 1fr; } }
 
 /* Advantages: open grid, no boxes */
-.advantages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px 40px; }
+/* Flex rows, not a grid, so a short last row stays centred at every width */
+.advantages { display: flex; flex-wrap: wrap; justify-content: center; gap: 44px 40px; }
+.advantage { flex: 0 0 calc((100% - 80px) / 3); }
 .advantage svg { color: var(--signal); margin-bottom: 14px; }
 .advantage h3 { font-size: 1.08rem; margin-bottom: 6px; }
 .advantage p { font-size: 0.95rem; }
-@media (max-width: 900px) { .advantages { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 600px) { .advantages { grid-template-columns: 1fr; gap: 32px; } }
+@media (max-width: 900px) { .advantage { flex-basis: calc((100% - 40px) / 2); } }
+@media (max-width: 600px) { .advantages { gap: 32px; } .advantage { flex-basis: 100%; } }
 
 /* Roadmap: seven steps on a line */
 .roadmap { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: 16px; counter-reset: rm; position: relative; }
@@ -732,7 +734,7 @@ a.card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 .principle { padding: 28px 22px; border-right: 1px solid var(--border); }
 .principle:last-child { border-right: 0; }
 .principle h3 { font-size: 1.05rem; margin-bottom: 8px; }
-.principle h3::before { content: ""; display: block; width: 24px; height: 2px; background: var(--signal); margin-bottom: 14px; }
+.principle-icon { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; margin-bottom: 14px; border-radius: 10px; color: var(--signal); background: var(--signal-soft); }
 .principle p { font-size: 0.9rem; }
 @media (max-width: 900px) {
     .principles { grid-template-columns: 1fr 1fr; }

@@ -31,30 +31,26 @@ export default function HeroScan() {
                             <stop offset="0.5" stopColor="var(--signal)" stopOpacity="0.55" />
                             <stop offset="1" stopColor="var(--signal)" stopOpacity="0" />
                         </linearGradient>
-                        <pattern id="scan-grid" width="24" height="24" patternUnits="userSpaceOnUse">
-                            <path d="M24 0 H0 V24" fill="none" stroke="var(--border)" strokeWidth="1" />
-                        </pattern>
+                        <linearGradient id="hero-shade" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0" stopColor="#000" stopOpacity="0.35" />
+                            <stop offset="0.5" stopColor="#000" stopOpacity="0" />
+                            <stop offset="1" stopColor="#000" stopOpacity="0.45" />
+                        </linearGradient>
                     </defs>
-                    <rect width="720" height="300" fill="url(#scan-grid)" opacity="0.6" />
+
+                    {/* The part: a flange photographed on an inspection stage */}
+                    <image href="/images/hero/hero-part.webp" x="0" y="0" width="720" height="300" preserveAspectRatio="xMidYMid slice" />
+                    <rect width="720" height="300" fill="url(#hero-shade)" />
 
                     {/* Viewfinder corners */}
                     {[[40, 30, 1, 1], [680, 30, -1, 1], [40, 270, 1, -1], [680, 270, -1, -1]].map(([x, y, dx, dy]) => (
                         <path key={`${x}${y}`} d={`M${x} ${y + 22 * dy} V${y} H${x + 22 * dx}`} fill="none" stroke="var(--signal)" strokeWidth="2" opacity="0.8" />
                     ))}
 
-                    {/* The part: a connecting rod in outline */}
-                    <g fill="none" stroke="var(--text-muted)" strokeWidth="2.2" strokeLinejoin="round">
-                        <circle cx="220" cy="150" r="72" />
-                        <circle cx="220" cy="150" r="40" />
-                        <circle cx="520" cy="150" r="40" />
-                        <circle cx="520" cy="150" r="20" />
-                        <path d="M288 128 C 360 136, 420 136, 482 136 M288 172 C 360 164, 420 164, 482 164" />
-                    </g>
-
                     {/* The defect, marked only on the NG part */}
                     <g className={`hero-defect${showNg ? ' on' : ''}`}>
-                        <circle cx="385" cy="141" r="16" fill="none" stroke="var(--ng)" strokeWidth="2.5" />
-                        <path d="M375 141 l6 -4 l5 6 l6 -5" fill="none" stroke="var(--ng)" strokeWidth="2" />
+                        <circle cx="516" cy="156" r="18" fill="none" stroke="var(--ng)" strokeWidth="2.5" />
+                        <path d="M505 156 l6 -4 l5 6 l6 -5" fill="none" stroke="var(--ng)" strokeWidth="2" />
                     </g>
 
                     {/* Scan beam */}
@@ -67,7 +63,7 @@ export default function HeroScan() {
                 </svg>
 
                 <div className="hero-scan-bar">
-                    <span className="hero-scan-id">Part #{part.n}</span>
+                    <span className="hero-scan-id">Part #{part.n} · illustration</span>
                     {scanning ? (
                         <span className="hero-chip scanning">Inspecting…</span>
                     ) : part.ok ? (
