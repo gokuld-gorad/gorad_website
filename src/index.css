@@ -815,6 +815,38 @@ section[id], div[id] { scroll-margin-top: 124px; }
 .app-intro .app-status { margin-top: 24px; display: flex; gap: 12px; align-items: flex-start; }
 .app-intro .app-status p { margin: 0; font-size: 0.88rem; }
 .app-intro .plain-words p { font-size: 1rem; }
+/* About: vision and mission */
+.vm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: 18px; overflow: hidden; background: linear-gradient(135deg, var(--surface), var(--bg)); }
+.vm { padding: 48px 44px; }
+.vm + .vm { border-left: 1px solid var(--border); }
+.vm-statement { font-size: clamp(1.35rem, 2.4vw, 1.85rem); line-height: 1.3; letter-spacing: -0.02em; font-weight: 600; color: var(--text); }
+@media (max-width: 800px) { .vm-grid { grid-template-columns: 1fr; } .vm + .vm { border-left: 0; border-top: 1px solid var(--border); } .vm { padding: 32px 26px; } }
+
+/* How we work: detailed steps */
+.howto { list-style: none; padding: 0; counter-reset: hw; display: grid; gap: 14px; }
+.howto > li { counter-increment: hw; margin: 0; display: grid; grid-template-columns: 64px 1fr; gap: 20px; padding: 26px 26px 26px 22px; border-radius: 16px; border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow-card); }
+.howto > li::before {
+    content: counter(hw); width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center;
+    font: 600 1rem var(--font-mono); color: var(--signal); border: 1px solid color-mix(in srgb, var(--signal) 45%, transparent); background: var(--signal-soft);
+}
+.howto h3 { font-size: 1.15rem; margin-bottom: 12px; }
+.howto-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.howto-cols dt { font: 500 0.7rem var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--signal); margin-bottom: 4px; }
+.howto-cols dd { font-size: 0.92rem; color: var(--text-muted); }
+@media (max-width: 860px) { .howto-cols { grid-template-columns: 1fr; gap: 12px; } .howto > li { grid-template-columns: 1fr; } }
+
+/* Glossary */
+.glossary-search { width: 100%; max-width: 520px; min-height: 48px; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border-strong); background: var(--surface); color: var(--text); font: 400 1rem var(--font-sans); }
+.glossary-search:focus { outline: 2px solid var(--signal); outline-offset: 0; }
+.glossary-group { margin-top: 48px; }
+.glossary-group h2 { font: 500 0.78rem var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--signal); margin-bottom: 4px; }
+.glossary-list { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 40px; }
+.glossary-list > div { padding: 18px 0; border-bottom: 1px solid var(--border); }
+.glossary-list dt { font-weight: 650; color: var(--text); margin-bottom: 4px; }
+.glossary-list dd { font-size: 0.94rem; color: var(--text-muted); }
+.glossary-empty { margin-top: 32px; }
+@media (max-width: 760px) { .glossary-list { grid-template-columns: 1fr; } }
+
 /* Industries */
 .sector-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .sector-card {

@@ -80,3 +80,14 @@ export const glossary = {
     Override: 'A supervisor’s time-limited permission for someone to work without the usual qualification, with a reason recorded.',
     'Station rule': 'The skills and minimum levels a person needs to work at a given station.',
 }
+
+// Groups for the glossary page. Every key above must appear in exactly one group
+// (checked by the glossary page build).
+export const glossaryGroups = [
+    { name: 'Inspection', terms: ['OK', 'NG', 'Fail-closed', 'Station', 'Classical tools', 'Anomaly detection', 'OCR', 'Signed program', 'Golden sample', 'Journal', 'GenICam', 'GigE Vision'] },
+    { name: 'Machines and data', terms: ['PLC', 'Handshake', 'Heartbeat', 'Line unsafe', 'Modbus TCP', 'Siemens S7', 'OPC UA', 'Tag', 'Event', 'Broker', 'Store and forward', 'Edge', 'Air-gapped', 'MES'] },
+    { name: 'Quality', terms: ['SPC', 'Control limits', 'Subgroup', 'Nelson rules', 'Cp / Cpk', 'EWMA / CUSUM', 'NCR', 'CAPA', '8D', 'Containment', 'Disposition', 'Concession', 'Calibration', 'MSA', 'Gauge R&R', '%GRR', 'ndc', 'Quarantine'] },
+    { name: 'Production', terms: ['OEE', 'Availability', 'Performance', 'Ideal cycle time', 'Downtime', 'Andon', 'Work order', 'Preventive maintenance', 'Breakdown', 'MTBF / MTTR', 'Safety-critical asset', 'Stroke / shot', 'Cavities', 'Mount', 'Warning and stop limits', 'Cost per part'] },
+    { name: 'Traceability and dispatch', terms: ['Genealogy', 'Lot', 'Recall', 'Upstream / downstream', 'ZPL', 'GS1', 'Pack check', 'Serial number'] },
+    { name: 'People', terms: ['Skill matrix', 'Qualification level', 'Override', 'Station rule'] },
+]

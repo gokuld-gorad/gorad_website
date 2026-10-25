@@ -72,6 +72,20 @@ export const routes = [
             'Gorad Pvt Ltd is an engineering company based in Bengaluru, India, building the Gorad Factory Platform for discrete manufacturers around the world.',
     },
     {
+        path: '/how-we-work/',
+        page: 'howwework',
+        title: 'How we work — from first call to a running line | Gorad',
+        description:
+            'Seven clear steps from study and pricing to installation, training, testing and support, with what Gorad does, what we need from you, and what you get at each step.',
+    },
+    {
+        path: '/glossary/',
+        page: 'glossary',
+        title: 'Glossary — factory and inspection terms in plain language | Gorad',
+        description:
+            'Plain-language definitions of inspection, machine data, quality and production terms: OEE, SPC, PLC, NCR, 8D, Gauge R&R, OPC UA and more.',
+    },
+    {
         path: '/security/',
         page: 'security',
         title: 'Security & trust — Gorad Factory Platform',

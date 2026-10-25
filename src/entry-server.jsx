@@ -12,6 +12,8 @@ import AppPage from './pages/AppPage.jsx'
 import Industries from './pages/Industries.jsx'
 import Industry from './pages/Industry.jsx'
 import About from './pages/About.jsx'
+import HowWeWork from './pages/HowWeWork.jsx'
+import Glossary from './pages/Glossary.jsx'
 import Security from './pages/Security.jsx'
 import Partners from './pages/Partners.jsx'
 import Pilot from './pages/Pilot.jsx'
@@ -32,6 +34,8 @@ const pages = {
     industries: Industries,
     industry: Industry,
     about: About,
+    howwework: HowWeWork,
+    glossary: Glossary,
     security: Security,
     partners: Partners,
     pilot: Pilot,

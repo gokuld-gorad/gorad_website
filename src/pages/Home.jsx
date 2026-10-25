@@ -3,6 +3,7 @@ import HeroScan from '../components/HeroScan.jsx'
 import Roadmap from '../components/Roadmap.jsx'
 import { CtaBand, SectionHead, TextLink } from '../components/Blocks.jsx'
 import { FOUNDER } from '../site.js'
+import { principles } from '../content/company.js'
 
 // The homepage speaks for Gorad as a company, in plain words. Product detail lives on
 // the platform and app pages; this page tells the story and points the way.
@@ -45,13 +46,6 @@ const advantages = [
 ]
 
 
-const principles = [
-    { name: 'Innovate', text: 'AI where it helps, simple rules where they are enough.' },
-    { name: 'Cost efficient', text: 'Start with one station or one app. Grow when it pays.' },
-    { name: 'Committed', text: 'With you from the first sample to production.' },
-    { name: 'Transparent', text: 'We tell you what we cannot do, before you spend money.' },
-    { name: 'Trust', text: 'Your data stays in your plant, and every decision is on record.' },
-]
 
 export default function Home() {
     return (

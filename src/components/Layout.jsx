@@ -22,10 +22,9 @@ const platformLinks = [
     { href: '/factory-platform/use-cases/', label: 'Use cases', note: 'What it is built to inspect' },
 ]
 
-// Company pages. "How we work" is the roadmap on the homepage until it gets its own page.
 const companyLinks = [
     { href: '/about/', label: 'About Gorad', note: 'Vision, mission, founder' },
-    { href: '/#how-we-work', label: 'How we work', note: 'From first call to production' },
+    { href: '/how-we-work/', label: 'How we work', note: 'From first call to production' },
     { href: '/pilot/', label: 'Pilot programme', note: 'Prove it on your own line' },
     { href: '/partners/', label: 'Integrators & machine builders', note: 'Build cells on Gorad' },
     { href: '/security/', label: 'Security & trust', note: 'For plant IT' },
@@ -186,6 +185,8 @@ function Footer() {
                             <li><a href="/partners/">Integrators & machine builders</a></li>
                             <li><a href="/pilot/">Pilot programme</a></li>
                             <li><a href="/contact/">Contact</a></li>
+                            <li><a href="/how-we-work/">How we work</a></li>
+                            <li><a href="/glossary/">Glossary</a></li>
                             <li><a href="/privacy/">Privacy</a></li>
                         </ul>
                     </nav>

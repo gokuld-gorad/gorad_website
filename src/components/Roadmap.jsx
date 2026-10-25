@@ -12,7 +12,7 @@ export default function Roadmap() {
                 ))}
             </ol>
             <div className="callout roadmap-note">
-                <p>Not sure yet? Start with a <strong>pilot</strong>: we do the first steps on your own sample parts, so you see results before you commit. <a href="/pilot/">How the pilot works</a></p>
+                <p>Not sure yet? Start with a <strong>pilot</strong>: we do the first steps on your own sample parts, so you see results before you commit. <a href="/pilot/">How the pilot works</a> · <a href="/how-we-work/">Every step in detail</a></p>
             </div>
         </>
     )

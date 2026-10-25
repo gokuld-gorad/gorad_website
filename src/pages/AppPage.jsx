@@ -141,7 +141,9 @@ export default function AppPage({ slug }) {
 
             <section className="section alt" id="faq">
                 <div className="container">
-                    <SectionHead eyebrow="Terms used on this page" title="In plain language" />
+                    <SectionHead eyebrow="Terms used on this page" title="In plain language">
+                        More terms in the <a href="/glossary/">glossary</a>.
+                    </SectionHead>
                     <dl className="terms">
                         {extra.terms.map((t) => (
                             <div key={t}>

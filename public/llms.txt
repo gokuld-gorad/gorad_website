@@ -25,6 +25,8 @@ Key facts:
 - [Security & trust](https://www.gorad.in/security/): on-premise, no outbound connection required, signed programs/updates/licences (Ed25519), server-side roles, audit log, SBOM, licence-clean dependencies; designed with IEC 62443 principles, no certification claimed
 - [Integrators & machine builders](https://www.gorad.in/partners/): partner model, scope split, and the standard PLC signal map (Ready, Trigger, ResultOK/NG, Heartbeat, LineUnsafe, PartToken, ProgramSelect, Ack, per-position robot signals)
 - Downloads: [Brochure (PDF)](https://www.gorad.in/downloads/gorad-factory-platform-brochure.pdf), [Technical datasheet (PDF)](https://www.gorad.in/downloads/gorad-factory-platform-datasheet.pdf)
-- [About](https://www.gorad.in/about/): company, founder, principles, location
+- [About](https://www.gorad.in/about/): vision, mission, founder, philosophy, location
+- [How we work](https://www.gorad.in/how-we-work/): the seven project steps, with what Gorad does, what the customer provides and the result of each
+- [Glossary](https://www.gorad.in/glossary/): plain-language definitions of inspection, machine data, quality and production terms
 - [Pilot programme](https://www.gorad.in/pilot/): who it is for and how a pilot works
 - [Contact](https://www.gorad.in/contact/): book a demo or apply for the pilot; sales@gorad.in

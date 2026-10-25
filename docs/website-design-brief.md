@@ -86,7 +86,7 @@ Removed from the current site: Vision & Mission, Philosophy, Advantages, generic
 - Phase 2 done: Platform, Vision and Connect pages rebuilt with an in-page menu, "In plain words" boxes, advantages, rules, FAQs and glossary tooltips (src/content/glossary.js). Vision has the requested sections: how it works, use cases, inspection dashboards, deployment models, technology, implementation roadmap.
 - Phase 3 done: all nine app pages follow problem + plain words → how it works → what it does → advantages → rules + works with → terms + FAQ (content in src/content/appExtras.js; definitions in glossary.js).
 - Phase 4 done: /industries/ overview (sector cards + "inspect by capability") and five sector pages (challenge, typical checks, examples, apps, other industries). Content in src/content/industries.js.
-- Phase still to do: 5 About, How we work, Glossary.
+- Phase 5 done: About (vision, mission, story, founder, philosophy, how we build, location), /how-we-work/ (seven steps: what we do, what we need, what you get; ways to work with us) and /glossary/ (72 terms in six groups, searchable, DefinedTermSet structured data). All five restructure phases are complete.
 
 ## Visual direction (superseded colours: see Restructure) — "Calm Precision"
 

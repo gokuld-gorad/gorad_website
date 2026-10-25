@@ -1,5 +1,6 @@
 import { SITE_URL, COMPANY, PLATFORM, EMAIL_INFO, FOUNDER } from './site.js'
 import { homeFaqs } from './content/faqs.js'
+import { glossary } from './content/glossary.js'
 
 const esc = (s) =>
     String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
@@ -51,6 +52,13 @@ function jsonLd(route) {
                 name: f.q,
                 acceptedAnswer: { '@type': 'Answer', text: f.a },
             })),
+        })
+    }
+    if (route.page === 'glossary') {
+        graph.push({
+            '@type': 'DefinedTermSet',
+            name: 'Gorad glossary',
+            hasDefinedTerm: Object.entries(glossary).map(([name, description]) => ({ '@type': 'DefinedTerm', name, description })),
         })
     }
     // "<" is escaped so the JSON can never close the script tag.
