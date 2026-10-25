@@ -930,3 +930,9 @@ section[id], div[id] { scroll-margin-top: 124px; }
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
+
+/* Industry pages: typical applications with their usual setup */
+.application h4 { font-size: 1rem; margin-bottom: 6px; }
+.application p { font-size: 0.92rem; }
+.application-setup { display: flex; gap: 6px; align-items: baseline; margin-top: 10px; font-family: var(--font-mono); font-size: 0.75rem !important; color: var(--text-subtle); }
+.application-setup svg { flex: none; color: var(--signal); transform: translateY(2px); }

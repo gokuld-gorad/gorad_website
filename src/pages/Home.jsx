@@ -29,10 +29,10 @@ const pillars = [
 const industries = [
     { name: 'Automotive & components', examples: ['Connecting rods', 'Catalysts & filters', 'Bearings'], href: '/industries/automotive/' },
     { name: 'Electronics & power electronics', examples: ['PCB assemblies', 'IGBT modules'], href: '/industries/electronics/' },
-    { name: 'Aerospace & heavy engineering', examples: ['Machined parts', 'Fabricated assemblies'], href: '/industries/aerospace-heavy-engineering/' },
+    { name: 'Aerospace & heavy engineering', examples: ['Fasteners and holes', 'Part marking', 'Castings and welds'], href: '/industries/aerospace-heavy-engineering/' },
     { name: 'Building materials', examples: ['Bricks and blocks', 'Surface damage'], href: '/industries/building-materials/' },
     { name: 'Packaging & logistics', examples: ['Labels', 'Codes and text', 'Counts'], href: '/industries/packaging-logistics/' },
-    { name: 'Pharmaceuticals', examples: ['Vials and containers', 'Caps', 'Labels and codes'], href: '/industries/pharma/' },
+    { name: 'Pharmaceuticals', examples: ['Vials and syringes', 'Blister packs', 'Labels and codes'], href: '/industries/pharma/' },
     { name: 'Any discrete part', examples: ['Defects', 'Presence', 'Measurement', 'Sorting'], href: '/industries/#capabilities', open: true },
 ]
 

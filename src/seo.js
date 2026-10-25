@@ -1,4 +1,4 @@
-import { SITE_URL, COMPANY, PLATFORM, EMAIL_INFO, FOUNDER } from './site.js'
+import { SITE_URL, COMPANY, PLATFORM, EMAIL_INFO, FOUNDER, CIN } from './site.js'
 import { homeFaqs } from './content/faqs.js'
 import { glossary } from './content/glossary.js'
 
@@ -13,6 +13,7 @@ const organization = {
     url: SITE_URL,
     logo: `${SITE_URL}/favicon.svg`,
     email: EMAIL_INFO,
+    identifier: { '@type': 'PropertyValue', propertyID: 'CIN', value: CIN },
     founder: {
         '@type': 'Person',
         name: FOUNDER.name,

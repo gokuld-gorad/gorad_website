@@ -1,6 +1,6 @@
 import { Linkedin, MapPin } from 'lucide-react'
 import { CtaBand, PageHero, SectionHead, TextLink } from '../components/Blocks.jsx'
-import { ADDRESS_LINES, COMPANY, FOUNDER } from '../site.js'
+import { ADDRESS_LINES, CIN, COMPANY, FOUNDER } from '../site.js'
 import { MISSION, VISION, engineeringPrinciples, principles } from '../content/company.js'
 
 export default function About() {
@@ -114,6 +114,7 @@ export default function About() {
                         <address style={{ fontStyle: 'normal', color: 'var(--text-muted)' }}>
                             <strong style={{ color: 'var(--text)' }}>{COMPANY}</strong><br />
                             {ADDRESS_LINES.map((l) => <span key={l}>{l}<br /></span>)}
+                            <span style={{ fontSize: '0.85rem' }}>CIN {CIN}</span>
                         </address>
                     </div>
                 </div>

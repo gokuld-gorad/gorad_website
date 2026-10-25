@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { ChevronDown, Menu, Moon, Sun, X } from 'lucide-react'
-import { ADDRESS_LINES, COMPANY, EMAIL_INFO, EMAIL_SALES } from '../site.js'
+import { ADDRESS_LINES, CIN, COMPANY, EMAIL_INFO, EMAIL_SALES } from '../site.js'
 import { appIndex as appPages } from '../content/appIndex.js'
 
 const APP_GROUPS = ['Quality', 'Production', 'Compliance & logistics']
@@ -199,7 +199,7 @@ function Footer() {
                     </div>
                 </div>
                 <div className="footer-bottom">
-                    <span>© {COMPANY}. All rights reserved.</span>
+                    <span>© {COMPANY}. All rights reserved. CIN {CIN}</span>
                     <span>Based in Bengaluru, India · Serving plants worldwide</span>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import { ArrowRight, CircleAlert, Info } from 'lucide-react'
+import { ArrowRight, Camera, CircleAlert, Info } from 'lucide-react'
 import IndustryIcon from '../components/IndustryIcon.jsx'
 import UseCaseArt from '../components/UseCaseArt.jsx'
 import SiteImage, { hasImage } from '../components/SiteImage.jsx'
@@ -13,6 +13,7 @@ export default function Industry({ slug }) {
     const caps = capabilities.filter((c) => ind.inspect.includes(c.title))
     const apps = ind.apps.map((s) => appIndex.find((a) => a.slug === s))
     const others = industries.filter((i) => i.slug !== slug)
+    const apps2d = ind.applications || []
 
     return (
         <>
@@ -55,6 +56,34 @@ export default function Industry({ slug }) {
                 </div>
             </section>
 
+            {apps2d.length > 0 && (
+                <section className="section alt" id="applications">
+                    <div className="container">
+                        <SectionHead eyebrow="Applications" title="What Gorad can check here">
+                            Typical inspection tasks in this industry, with the camera and lighting setup they usually need.
+                            They are examples of what the platform does, not customer stories.
+                        </SectionHead>
+                        {apps2d.map((g) => (
+                            <div className="app-group" key={g.title || 'all'}>
+                                {g.title && <h3 className="app-group-title">{g.title}</h3>}
+                                <div className="grid grid-3">
+                                    {g.items.map((a) => (
+                                        <div className="card application" key={a.name}>
+                                            <h4>{a.name}</h4>
+                                            <p>{a.checks}</p>
+                                            <p className="application-setup"><Camera size={14} aria-hidden="true" /> {a.setup}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                        {ind.scope && <p className="fine-print"><Info size={14} aria-hidden="true" style={{ display: 'inline', verticalAlign: '-2px' }} /> {ind.scope}</p>}
+                        <div className="section-foot"><TextLink href="/contact/">Part not on the list? Tell us about it</TextLink></div>
+                    </div>
+                </section>
+            )}
+
+            {(examples.length > 0 || apps2d.length === 0) && (
             <section className="section alt" id="examples">
                 <div className="container">
                     <SectionHead eyebrow="Examples" title={examples.length ? 'Parts we are built to inspect' : 'Your parts, your examples'}>
@@ -77,6 +106,7 @@ export default function Industry({ slug }) {
                     )}
                 </div>
             </section>
+            )}
 
             <section className="section">
                 <div className="container">

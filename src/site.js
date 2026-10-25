@@ -2,6 +2,7 @@
 export const SITE_URL = 'https://www.gorad.in'
 export const COMPANY = 'Gorad Pvt Ltd'
 export const PLATFORM = 'Gorad Factory Platform'
+export const CIN = 'U62099KA2026PTC214948'
 
 export const EMAIL_INFO = 'info@gorad.in'
 export const EMAIL_SALES = 'sales@gorad.in'
