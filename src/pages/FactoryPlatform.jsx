@@ -108,7 +108,6 @@ export default function FactoryPlatform() {
                                                 {a.status !== 'early' && <StatusBadge status={a.status} />}
                                             </div>
                                             <p>{a.text}</p>
-                                            {a.slug && <span className="text-link">Learn more <ArrowRight size={16} aria-hidden="true" /></span>}
                                         </>
                                     )
                                     return a.slug

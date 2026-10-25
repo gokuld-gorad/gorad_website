@@ -27,7 +27,7 @@ export default function Industries() {
                         {industries.map((ind) => (
                             <a className={`sector-card${hasImage('industries', ind.slug) ? ' has-image' : ''}`} key={ind.slug} href={`/industries/${ind.slug}/`}>
                                 <SiteImage group="industries" name={ind.slug} variant="card" caption={null} />
-                                <span className="icon-ring"><IndustryIcon name={ind.icon} /></span>
+                                {!hasImage('industries', ind.slug) && <span className="icon-ring"><IndustryIcon name={ind.icon} /></span>}
                                 <h2>{ind.name}</h2>
                                 <p>{ind.short}</p>
                                 {ind.examples.length > 0 && (
@@ -35,7 +35,6 @@ export default function Industries() {
                                         {ind.examples.map((id) => <li key={id}>{caseTitle(id)}</li>)}
                                     </ul>
                                 )}
-                                <span className="text-link">Explore <ArrowRight size={16} aria-hidden="true" /></span>
                             </a>
                         ))}
                         <a className="sector-card sector-card-open" href="#capabilities">
@@ -45,6 +44,7 @@ export default function Industries() {
                             <span className="text-link">See the capabilities <ArrowRight size={16} aria-hidden="true" /></span>
                         </a>
                     </div>
+                    <p className="tile-note">Images are illustrations.</p>
                 </div>
             </section>
 
