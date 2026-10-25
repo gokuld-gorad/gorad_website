@@ -1,3 +1,21 @@
 {
-  "industries": []
+  "industries": {},
+  "screens": {
+    "calibration-msa": [
+      1600,
+      959
+    ],
+    "maintenance": [
+      1600,
+      959
+    ],
+    "ncr-capa": [
+      1600,
+      959
+    ],
+    "spc": [
+      1600,
+      959
+    ]
+  }
 }

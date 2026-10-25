@@ -86,4 +86,13 @@ Capture at 1600 × 1000, dark theme, with demo plant names only:
 - SETUP: a program, the NG review
 - SPC chart with a violation, OEE drill-down, an NCR record
 
-Save them in `images-src/screens/`; they get their own slots once captured.
+### Done once already (2026-10-25)
+
+SPC, NCR / CAPA, Calibration & MSA and Maintenance have real screenshots on their app pages and in the Factory Platform "Real screens" gallery, captioned "Real screen · demo data". Connect, Line, Vision and the other apps had no live data in the demo (no gateway or inspection station running), so they have none yet.
+
+To redo or add screens:
+
+1. Start a scratch server and seed it with `tools/demo/seed_demo_plant.py` (platform repo), then start the web UI on port 5180 pointing at it.
+2. Add demo data: `GORAD_DEMO_ADMIN_PASSWORD=… GORAD_DEMO_USER_PASSWORD=… python scripts/screens/extend_demo.py` (run with the platform's Python; the passwords are the ones the seed script prints).
+3. Capture: `GORAD_DEMO_ADMIN_PASSWORD=… PLAYWRIGHT_PATH=<platform>/node_modules/playwright/index.mjs node scripts/screens/capture.mjs <outDir> <spcCharacteristicId> <ncrId>`.
+4. Crop off the top bar, save the chosen shots as `images-src/screens/<app-slug>.png`, and run `python3 scripts/add-images.py`. A screen named after an app slug appears on that app's page automatically.

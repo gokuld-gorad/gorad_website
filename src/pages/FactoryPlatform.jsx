@@ -5,6 +5,8 @@ import { CheckList, CtaBand, Faq, PageHero, SectionHead, StatusBadge } from '../
 import { PlainWords, SubNav } from '../components/Explain.jsx'
 import { appGroups } from '../content/apps.js'
 import { homeFaqs } from '../content/faqs.js'
+import { appIndex } from '../content/appIndex.js'
+import SiteImage, { imageNames } from '../components/SiteImage.jsx'
 
 const coreFeatures = [
     { title: 'One login, many roles', text: 'Operator, supervisor, engineer, quality, maintenance and admin, checked on the server for every request.' },
@@ -23,6 +25,11 @@ const bundles = [
 ]
 
 export default function FactoryPlatform() {
+    // Strongest screens first; any others follow in name order.
+    const order = ['spc', 'ncr-capa', 'calibration-msa', 'maintenance']
+    const rank = (s) => (order.includes(s) ? order.indexOf(s) : order.length)
+    const screens = imageNames('screens').sort((a, b) => rank(a) - rank(b) || a.localeCompare(b))
+    const appName = (slug) => appIndex.find((a) => a.slug === slug)?.name || slug
     return (
         <>
             <PageHero
@@ -113,6 +120,24 @@ export default function FactoryPlatform() {
                     ))}
                 </div>
             </section>
+
+            {screens.length > 0 && (
+                <section className="section tight" id="screens">
+                    <div className="container">
+                        <SectionHead eyebrow="Real screens" title="What the apps look like">
+                            Screenshots from the running platform, filled with demo data. No mock-ups.
+                        </SectionHead>
+                        <div className="grid grid-2">
+                            {screens.map((s) => (
+                                <a key={s} className="screen-card" href={`/factory-platform/${s}/`}>
+                                    <SiteImage group="screens" name={s} variant="card" caption={null} alt={`${appName(s)} screen with demo data`} />
+                                    <span>{appName(s)}</span>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
 
             <section className="section alt" id="core">
                 <div className="container">

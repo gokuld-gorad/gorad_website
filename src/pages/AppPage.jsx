@@ -1,6 +1,7 @@
 import { ArrowRight, CircleCheck, FileText, ShieldCheck } from 'lucide-react'
 import { CheckList, CtaBand, Faq, PageHero, SectionHead, StatusBadge } from '../components/Blocks.jsx'
 import { PlainWords, SubNav } from '../components/Explain.jsx'
+import SiteImage, { hasImage } from '../components/SiteImage.jsx'
 import { APP_STATUS_NOTE, appPages, findAppPage } from '../content/appPages.js'
 import { appExtras } from '../content/appExtras.js'
 import { glossary } from '../content/glossary.js'
@@ -92,6 +93,12 @@ export default function AppPage({ slug }) {
                             <p>{app.reports}.</p>
                         </div>
                     </div>
+                    {hasImage('screens', slug) && (
+                        <div className="screen-shot">
+                            <div className="screen-chrome" aria-hidden="true"><span /><span /><span /></div>
+                            <SiteImage group="screens" name={slug} caption="Real screen · demo data" alt={`${app.fullName} screen with demo data`} />
+                        </div>
+                    )}
                 </div>
             </section>
 

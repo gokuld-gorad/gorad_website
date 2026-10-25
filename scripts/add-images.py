@@ -3,8 +3,12 @@
 
 Reads images-src/<group>/<name>.(png|jpg|jpeg|webp) and writes
 public/images/<group>/<name>.webp (1600 px wide) and <name>-card.webp (800 px wide),
-then rewrites src/content/imageManifest.json with the names available per group.
+then rewrites src/content/imageManifest.json with each published image's size.
 Pages only show an image when its name is in the manifest.
+
+Groups:
+  industries  AI-generated headers, centre-cropped to 16:9
+  screens     real product screenshots, kept at their own aspect ratio
 
 Needs Pillow:  python3 scripts/add-images.py
 """
@@ -17,7 +21,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "images-src"
 OUT = ROOT / "public" / "images"
 MANIFEST = ROOT / "src" / "content" / "imageManifest.json"
-GROUPS = ["industries"]
+GROUPS = {"industries": {"crop_16_9": True}, "screens": {"crop_16_9": False}}
 SIZES = {"": 1600, "-card": 800}
 EXTS = {".png", ".jpg", ".jpeg", ".webp"}
 
@@ -37,23 +41,30 @@ def to_16_9(img):
 
 def main():
     manifest = {}
-    for group in GROUPS:
+    for group, opts in GROUPS.items():
         (OUT / group).mkdir(parents=True, exist_ok=True)
         for src in sorted((SRC / group).glob("*")) if (SRC / group).exists() else []:
             if src.suffix.lower() not in EXTS:
                 continue
-            img = to_16_9(Image.open(src).convert("RGB"))
+            img = Image.open(src).convert("RGB")
+            if opts["crop_16_9"]:
+                img = to_16_9(img)
             for suffix, width in SIZES.items():
                 out = OUT / group / f"{src.stem}{suffix}.webp"
-                resized = img.resize((width, round(width * 9 / 16)), Image.LANCZOS) if img.width > width else img
-                resized.save(out, "WEBP", quality=80, method=6)
+                if img.width > width:
+                    resized = img.resize((width, round(img.height * width / img.width)), Image.LANCZOS)
+                else:
+                    resized = img
+                resized.save(out, "WEBP", quality=82, method=6)
                 print(f"wrote {out.relative_to(ROOT)} ({out.stat().st_size // 1024} KB)")
         # The manifest lists what is published, so deleting a WebP removes the image.
-        manifest[group] = sorted(
-            p.stem for p in (OUT / group).glob("*.webp") if not p.stem.endswith("-card")
-        )
+        manifest[group] = {
+            p.stem: list(Image.open(p).size)
+            for p in sorted((OUT / group).glob("*.webp"))
+            if not p.stem.endswith("-card")
+        }
     MANIFEST.write_text(json.dumps(manifest, indent=2) + "\n")
-    print(f"updated {MANIFEST.relative_to(ROOT)}: {manifest}")
+    print(f"updated {MANIFEST.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":
