@@ -166,9 +166,7 @@ export default function Vision() {
                     <div className="levels">
                         {levels.map((l) => (
                             <div className="level" key={l.title}>
-                                <div className="level-meter" aria-hidden="true">
-                                    {[1, 2, 3].map((i) => <span key={i} className={i <= l.n ? 'on' : ''} />)}
-                                </div>
+                                <span className="level-num" aria-hidden="true">{l.n}</span>
                                 <h3>{l.title}</h3>
                                 <p>{l.text}</p>
                             </div>

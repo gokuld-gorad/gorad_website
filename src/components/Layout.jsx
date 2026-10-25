@@ -91,8 +91,11 @@ function Navbar({ path }) {
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 8)
         onScroll()
-        window.addEventListener('scroll', onScroll, { passive: true })
-        return () => window.removeEventListener('scroll', onScroll)
+        // Re-check after load and when a (smooth) scroll settles: a jump to an anchor can
+        // finish before this listener is attached.
+        const events = ['scroll', 'scrollend', 'load']
+        events.forEach((e) => window.addEventListener(e, onScroll, { passive: true }))
+        return () => events.forEach((e) => window.removeEventListener(e, onScroll))
     }, [])
     const current = (href) => (path === href ? 'page' : undefined)
     const inCompany = companyLinks.some((l) => l.href === path)

@@ -1209,3 +1209,61 @@ a.card, .pillar, .ind-tile, .sector-card, .screen-card, .download { transition: 
 .cycle-stage { top: calc(var(--nav-h) + 24px); }
 section[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 60px); }
 .hero-full { margin-top: calc(-1 * var(--nav-h)); padding-top: calc(var(--nav-h) + 64px); }
+
+/* ── Legacy details, step 2: industry bento, glowing steps, motion timing ──── */
+/* 7. Industries: one large tile and two wide ones, so the grid looks composed */
+.ind-tiles { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 200px; }
+.ind-tile { aspect-ratio: auto; height: 100%; }
+.ind-tile:first-child { grid-column: span 2; grid-row: span 2; }
+.ind-tile:first-child .ind-tile-name { font-size: 1.35rem; }
+.ind-tile:nth-child(6), .ind-tile-open { grid-column: span 2; }
+.ind-tile-open { display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; padding: 20px; border-style: dashed; background: none; color: var(--text); }
+.ind-tile-open::after { display: none; }
+.ind-tile-open .ind-tile-name { position: static; }
+.ind-tile-text { color: var(--text-muted); font-size: 0.95rem; }
+@media (max-width: 900px) {
+    .ind-tiles { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
+    .ind-tile:first-child { grid-row: span 1; }
+}
+@media (max-width: 560px) {
+    .ind-tiles { grid-template-columns: 1fr; grid-auto-rows: 170px; }
+    .ind-tile:first-child, .ind-tile:nth-child(6), .ind-tile-open { grid-column: span 1; }
+}
+
+/* 8. Roadmap: cyan-to-indigo line and glowing step dots */
+.roadmap::before { background: linear-gradient(90deg, var(--signal), color-mix(in srgb, #6366f1 80%, transparent), transparent); opacity: 0.55; }
+.roadmap li::before { border: 1.5px solid var(--signal); box-shadow: 0 0 12px color-mix(in srgb, var(--signal) 40%, transparent); }
+@media (max-width: 1000px) { .roadmap::before { background: linear-gradient(180deg, var(--signal), color-mix(in srgb, #6366f1 80%, transparent), transparent); } }
+
+/* Deployment levels: large numbered circles joined by a gradient line */
+.levels { position: relative; }
+.levels::before {
+    content: ""; position: absolute; top: 28px; left: 16.6%; right: 16.6%; height: 2px; opacity: 0.35;
+    background: linear-gradient(90deg, var(--signal), #6366f1, var(--signal));
+}
+.level, .level:last-child { border-top: 0; text-align: center; position: relative; }
+.level p { max-width: 280px; margin: 0 auto; }
+.level-num {
+    display: grid; place-items: center; width: 56px; height: 56px; margin: 0 auto 18px; border-radius: 50%;
+    font: 700 1.2rem var(--font-mono); color: var(--signal); background: var(--bg);
+    border: 2px solid var(--signal); box-shadow: 0 0 20px color-mix(in srgb, var(--signal) 22%, transparent);
+}
+@media (max-width: 800px) { .levels::before { display: none; } .level, .level:last-child { padding: 20px 0; } }
+
+/* 9. Motion: the heading arrives first, then the items one by one; steps slide from the left */
+.reveal-on main > section:not(:first-child) { transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out); }
+.reveal-on main > section :is(.pillars, .ind-tiles, .reasons, .roadmap, .principle-list, .grid, .mini-cards, .sector-grid, .levels) > * {
+    transform: translateY(24px); transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out);
+}
+.reveal-on main > section.is-in :is(.pillars, .ind-tiles, .reasons, .roadmap, .principle-list, .grid, .mini-cards, .sector-grid, .levels) > * { opacity: 1; transform: none; }
+.reveal-on main > section .levels > * { opacity: 0; }
+.reveal-on main > section.is-in :is(.pillars, .ind-tiles, .reasons, .roadmap, .principle-list, .grid, .mini-cards, .sector-grid, .levels) > :nth-child(1) { transition-delay: 150ms; }
+.reveal-on main > section.is-in :is(.pillars, .ind-tiles, .reasons, .roadmap, .principle-list, .grid, .mini-cards, .sector-grid, .levels) > :nth-child(2) { transition-delay: 230ms; }
+.reveal-on main > section.is-in :is(.pillars, .ind-tiles, .reasons, .roadmap, .principle-list, .grid, .mini-cards, .sector-grid, .levels) > :nth-child(3) { transition-delay: 310ms; }
+.reveal-on main > section.is-in :is(.pillars, .ind-tiles, .reasons, .roadmap, .principle-list, .grid, .mini-cards, .sector-grid, .levels) > :nth-child(4) { transition-delay: 390ms; }
+.reveal-on main > section.is-in :is(.pillars, .ind-tiles, .reasons, .roadmap, .principle-list, .grid, .mini-cards, .sector-grid, .levels) > :nth-child(5) { transition-delay: 470ms; }
+.reveal-on main > section.is-in :is(.pillars, .ind-tiles, .reasons, .roadmap, .principle-list, .grid, .mini-cards, .sector-grid, .levels) > :nth-child(6) { transition-delay: 550ms; }
+.reveal-on main > section.is-in :is(.pillars, .ind-tiles, .reasons, .roadmap, .principle-list, .grid, .mini-cards, .sector-grid, .levels) > :nth-child(n + 7) { transition-delay: 620ms; }
+.reveal-on main > section .roadmap > li { transform: translateX(-28px); }
+.reveal-on main > section.is-in .roadmap > li { transform: none; }
+.ind-tile-open { border-color: var(--card-border-hover); }

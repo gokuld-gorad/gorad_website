@@ -105,9 +105,13 @@ export default function Home() {
                     </SectionHead>
                     <div className="ind-tiles">
                         {industries.map((ind) => <IndustryTile key={ind.slug} ind={ind} />)}
+                        <a className="ind-tile ind-tile-open" href="/industries/#capabilities">
+                            <span className="ind-tile-name">Any discrete part</span>
+                            <span className="ind-tile-text">Defects, presence, measurement, codes, variants and sorting.</span>
+                        </a>
                     </div>
                     <div className="section-foot center-foot">
-                        <TextLink href="/industries/">Any discrete part · See all industries</TextLink>
+                        <TextLink href="/industries/">See all industries</TextLink>
                         <p className="tile-note">Images are illustrations.</p>
                     </div>
                 </div>
