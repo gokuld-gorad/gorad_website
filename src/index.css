@@ -857,6 +857,19 @@ section[id], div[id] { scroll-margin-top: 124px; }
 .sector-card:hover { text-decoration: none; transform: translateY(-3px); border-color: color-mix(in srgb, var(--signal) 50%, transparent); box-shadow: var(--shadow), 0 0 40px -20px var(--glow); }
 .sector-card h2 { font-size: 1.3rem; margin-top: 8px; }
 .sector-card-open { border-style: dashed; background: none; box-shadow: none; }
+
+/* Optional images (scripts/add-images.py) */
+.site-image { position: relative; margin: 0; overflow: hidden; }
+.site-image img { width: 100%; height: auto; display: block; }
+.site-image figcaption {
+    position: absolute; right: 12px; bottom: 10px; font: 500 0.68rem var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase;
+    color: #f4f5f7; background: rgb(0 0 0 / 0.55); padding: 3px 8px; border-radius: 4px;
+}
+.site-image-full { border-radius: 18px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+.sector-banner { margin-top: 40px; }
+.sector-card.has-image { padding-top: 0; }
+.sector-card.has-image .site-image-card { margin: 0 -28px 8px; border-bottom: 1px solid var(--border); }
+.sector-card.has-image .icon-ring { margin-top: -38px; position: relative; background: var(--surface); }
 .sector-card p { flex: 1; }
 .sector-examples { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
 .sector-examples li { margin: 0; font-size: 0.8rem; padding: 3px 10px; border-radius: 999px; background: var(--surface-sunken); border: 1px solid var(--border); color: var(--text-muted); }

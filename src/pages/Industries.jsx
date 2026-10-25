@@ -1,5 +1,6 @@
 import { ArrowRight, Plus } from 'lucide-react'
 import IndustryIcon from '../components/IndustryIcon.jsx'
+import SiteImage, { hasImage } from '../components/SiteImage.jsx'
 import { CtaBand, PageHero, SectionHead } from '../components/Blocks.jsx'
 import { PlainWords } from '../components/Explain.jsx'
 import { capabilities, industries } from '../content/industries.js'
@@ -24,7 +25,8 @@ export default function Industries() {
                 <div className="container">
                     <div className="sector-grid">
                         {industries.map((ind) => (
-                            <a className="sector-card" key={ind.slug} href={`/industries/${ind.slug}/`}>
+                            <a className={`sector-card${hasImage('industries', ind.slug) ? ' has-image' : ''}`} key={ind.slug} href={`/industries/${ind.slug}/`}>
+                                <SiteImage group="industries" name={ind.slug} variant="card" caption={null} />
                                 <span className="icon-ring"><IndustryIcon name={ind.icon} /></span>
                                 <h2>{ind.name}</h2>
                                 <p>{ind.short}</p>

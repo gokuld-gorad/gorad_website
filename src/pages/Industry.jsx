@@ -1,6 +1,7 @@
 import { ArrowRight, CircleAlert, Info } from 'lucide-react'
 import IndustryIcon from '../components/IndustryIcon.jsx'
 import UseCaseArt from '../components/UseCaseArt.jsx'
+import SiteImage, { hasImage } from '../components/SiteImage.jsx'
 import { CtaBand, PageHero, SectionHead, TextLink } from '../components/Blocks.jsx'
 import { capabilities, findIndustry, industries } from '../content/industries.js'
 import { useCases } from '../content/useCases.js'
@@ -23,6 +24,12 @@ export default function Industry({ slug }) {
             >
                 {ind.lead}
             </PageHero>
+
+            {hasImage('industries', slug) && (
+                <div className="container sector-banner">
+                    <SiteImage group="industries" name={slug} />
+                </div>
+            )}
 
             <section className="section">
                 <div className="container split" style={{ alignItems: 'start' }}>

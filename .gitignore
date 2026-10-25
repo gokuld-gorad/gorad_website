@@ -26,3 +26,6 @@ dist-ssr
 
 # macOS
 .DS_Store
+
+# Original images before compression (see docs/image-prompts.md)
+images-src/
