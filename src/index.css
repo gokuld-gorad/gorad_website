@@ -740,17 +740,14 @@ a.card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 }
 
 /* Philosophy */
-.principles { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.principle { padding: 28px 22px; border-right: 1px solid var(--border); }
-.principle:last-child { border-right: 0; }
+/* Five bordered cards, centred. Flex rows keep a short last row centred at every width. */
+.principles { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.principle { flex: 0 0 calc((100% - 64px) / 5); padding: 28px 20px; border: 1px solid var(--card-border); border-radius: 14px; background: var(--surface); text-align: center; }
 .principle h3 { font-size: 1.05rem; margin-bottom: 8px; }
-.principle-icon { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; margin-bottom: 14px; border-radius: 10px; color: var(--signal); background: var(--signal-soft); }
+.principle-icon { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; margin: 0 auto 16px; border-radius: 10px; color: var(--signal); background: var(--signal-soft); }
 .principle p { font-size: 0.9rem; }
-@media (max-width: 900px) {
-    .principles { grid-template-columns: 1fr 1fr; }
-    .principle { border-bottom: 1px solid var(--border); }
-}
-@media (max-width: 560px) { .principles { grid-template-columns: 1fr; } .principle { border-right: 0; } }
+@media (max-width: 900px) { .principle { flex-basis: calc((100% - 16px) / 2); } }
+@media (max-width: 560px) { .principle { flex-basis: 100%; } }
 
 /* ── Explaining technical terms ───────────────────────────────────────── */
 section[id], div[id] { scroll-margin-top: 124px; }
