@@ -1011,3 +1011,66 @@ a.card:hover, .pillar:hover, .industry:hover, .sector-card:hover, .screen-card:h
 .text-link svg { color: var(--text-muted); }
 .text-link:hover svg { color: var(--signal); }
 .industry:hover .industry-arrow { color: var(--text); }
+
+/* ── Calm pass: homepage, one idea per screen ────────────────────────────── */
+.hero-full { min-height: calc(100svh - 64px); display: flex; align-items: center; padding: 64px 0 88px; }
+.hero-full .container { width: 100%; }
+.hero-full .lead { font-size: clamp(1.1rem, 1.7vw, 1.3rem); max-width: 560px; }
+
+.proof { padding-top: 0; }
+.proof .hero-scan { margin: 0 auto; max-width: 920px; }
+.proof-caption { max-width: 600px; margin: 28px auto 0; text-align: center; color: var(--text-muted); }
+
+.pillar h3 { color: var(--text-subtle); }
+.pillar .icon-ring { margin-bottom: 4px; }
+
+.statement { padding: 96px 0; }
+.statement-text {
+    max-width: 900px; margin: 0 auto; text-align: center; color: var(--text);
+    font-size: clamp(1.7rem, 4vw, 2.9rem); line-height: 1.2; letter-spacing: -0.03em; font-weight: 600;
+}
+
+.ind-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.ind-tile {
+    position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; border-radius: var(--card-radius);
+    border: 1px solid var(--card-border); background: var(--card-bg); color: #fff;
+}
+.ind-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.ind-tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgb(0 0 0 / 0.72), rgb(0 0 0 / 0) 55%); }
+.ind-tile-name { position: absolute; left: 20px; right: 20px; bottom: 16px; z-index: 1; font-weight: 600; font-size: 1.1rem; line-height: 1.3; }
+.ind-tile:hover { text-decoration: none; border-color: var(--card-border-hover); }
+.ind-tile:hover img { transform: scale(1.04); }
+.center-foot { text-align: center; }
+.tile-note { margin-top: 10px; font-size: 0.8rem; color: var(--text-subtle); }
+@media (max-width: 900px) { .ind-tiles { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .ind-tiles { grid-template-columns: 1fr; } }
+
+.reasons-split { align-items: start; grid-template-columns: 1fr 1.25fr; }
+.reasons { list-style: none; padding: 0; counter-reset: rs; }
+.reasons li { counter-increment: rs; margin: 0; display: grid; grid-template-columns: 44px 1fr; padding: 22px 0; border-top: 1px solid var(--card-border); }
+.reasons li:last-child { border-bottom: 1px solid var(--card-border); }
+.reasons li::before { content: "0" counter(rs); grid-row: span 2; font: 500 0.8rem var(--font-mono); color: var(--signal); padding-top: 4px; }
+.reasons h3 { font-size: 1.1rem; margin-bottom: 4px; }
+.reasons p { font-size: 1rem; }
+@media (max-width: 960px) { .reasons-split { grid-template-columns: 1fr; gap: 8px; } }
+
+.roadmap-compact h3 { font-size: 1rem; font-weight: 500; color: var(--text); }
+.roadmap-compact li::before { background: var(--bg); }
+@media (max-width: 1000px) { .roadmap-compact li { padding-bottom: 18px; } .roadmap-compact h3 { padding-top: 7px; } }
+
+.who { display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; align-items: start; max-width: 1000px; margin: 0 auto; }
+.who-founder { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; color: inherit; }
+.who-founder:hover { text-decoration: none; }
+.who-founder:hover strong { text-decoration: underline; }
+.who-founder img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 1px solid var(--card-border); margin-bottom: 6px; }
+.who-founder strong { font-size: 1.1rem; color: var(--text); }
+.who-founder span { color: var(--text-muted); font-size: 1rem; }
+.principle-list { list-style: none; padding: 0; }
+.principle-list li { margin: 0; display: grid; grid-template-columns: 150px 1fr; gap: 16px; padding: 16px 0; border-top: 1px solid var(--card-border); }
+.principle-list li:last-child { border-bottom: 1px solid var(--card-border); }
+.principle-list strong { color: var(--text); font-weight: 600; }
+.principle-list span { color: var(--text-muted); }
+@media (max-width: 860px) { .who { grid-template-columns: 1fr; gap: 40px; } }
+@media (max-width: 520px) { .principle-list li { grid-template-columns: 1fr; gap: 2px; } }
+.reasons-split > .section-head { position: sticky; top: 120px; }
+@media (max-width: 960px) { .reasons-split > .section-head { position: static; } }
