@@ -40,6 +40,8 @@ export default function HeroScan() {
 
                     {/* The part: a flange photographed on an inspection stage */}
                     <image href="/images/hero/hero-part.webp" x="0" y="0" width="720" height="300" preserveAspectRatio="xMidYMid slice" />
+                    {/* The same flange with a chipped rim, for the defective part; always loaded so it swaps without a flicker */}
+                    <image href="/images/hero/hero-part-ng.webp" x="0" y="0" width="720" height="300" preserveAspectRatio="xMidYMid slice" opacity={part.ok ? 0 : 1} />
                     <rect width="720" height="300" fill="url(#hero-shade)" />
 
                     {/* Viewfinder corners */}
@@ -47,10 +49,9 @@ export default function HeroScan() {
                         <path key={`${x}${y}`} d={`M${x} ${y + 22 * dy} V${y} H${x + 22 * dx}`} fill="none" stroke="var(--signal)" strokeWidth="2" opacity="0.8" />
                     ))}
 
-                    {/* The defect, marked only on the NG part */}
+                    {/* The verdict marks the chip on the NG part */}
                     <g className={`hero-defect${showNg ? ' on' : ''}`}>
-                        <circle cx="516" cy="156" r="18" fill="none" stroke="var(--ng)" strokeWidth="2.5" />
-                        <path d="M505 156 l6 -4 l5 6 l6 -5" fill="none" stroke="var(--ng)" strokeWidth="2" />
+                        <circle cx="502" cy="148" r="17" fill="none" stroke="var(--ng)" strokeWidth="2.5" />
                     </g>
 
                     {/* Scan beam */}
