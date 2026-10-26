@@ -85,7 +85,7 @@ export default function Vision() {
                         check that did not run. That is Gorad Vision.
                     </PlainWords>
                     <div style={{ marginTop: 64 }}>
-                        <SectionHead eyebrow="Why Gorad Vision" title="What it does for you" />
+                        <SectionHead eyebrow="Why Gorad Vision" title="Inspection you can stand behind" />
                         <div className="advantages">
                             {advantages.map(({ icon: Icon, title, text }) => (
                                 <div className="advantage" key={title}>
@@ -124,7 +124,7 @@ export default function Vision() {
             <section className="section" id="use-cases">
                 <div className="container">
                     <SectionHead eyebrow="Use cases" title="What it is built to inspect">
-                        A few examples. Defects, counts, sizes, text or codes: Gorad Vision can most likely check it.
+                        A few examples. Defects, counts, sizes, text or codes: send us a part and we will show you.
                     </SectionHead>
                     <div className="grid grid-3 uc-cards">
                         {inspectionUseCases.map((u) => (

@@ -24,11 +24,41 @@ function write(file, route) {
     fs.mkdirSync(path.dirname(out), { recursive: true })
     fs.writeFileSync(out, page)
     console.log('prerendered', file)
+    return html
 }
 
-for (const route of routes) {
-    write(route.path === '/' ? 'index.html' : path.join(route.path, 'index.html'), route)
+// Plain text of a page's main content for llms-full.txt: headings as Markdown, list
+// items as bullets, no drawings, scripts or tooltip duplicates.
+function pageText(html) {
+    const main = (html.match(/<main[^>]*>([\s\S]*?)<\/main>/) || [, html])[1]
+    const entities = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' }
+    return main
+        .replace(/<(svg|script|style|nav)[\s\S]*?<\/\1>/g, '')
+        .replace(/<span class="term-tip"[\s\S]*?<\/span><\/span>/g, '</span>')
+        .replace(/<h([1-4])[^>]*>/g, (_, n) => `\n\n${'#'.repeat(Number(n) + 1)} `)
+        .replace(/<\/h[1-4]>/g, '\n')
+        .replace(/<li[^>]*>/g, '\n- ')
+        .replace(/<(br|\/p|\/div|\/section|\/li|\/dd|\/dt|\/summary|\/tr)[^>]*>/g, '\n')
+        .replace(/<\/t[dh]>/g, ' | ')
+        .replace(/<\/a>\s*(?=<a[\s>])/g, '</a>\n')
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/&(#x?[0-9a-f]+|\w+);/gi, (m, e) =>
+            e[0] === '#' ? String.fromCodePoint(e[1] === 'x' ? parseInt(e.slice(2), 16) : Number(e.slice(1))) : entities[e] ?? m)
+        .split('\n').map((l) => l.replace(/[ \t]+/g, ' ').replace(/ ([,.;:!?)’])/g, '$1').trim()).filter((l) => l !== '-').join('\n')
+        .replace(/\n{3,}/g, '\n\n')
+        .trim()
 }
+
+const fullText = []
+for (const route of routes) {
+    const html = write(route.path === '/' ? 'index.html' : path.join(route.path, 'index.html'), route)
+    fullText.push(`# ${route.title}\n\nURL: ${SITE_URL}${route.path}\n\n${pageText(html)}`)
+}
+fs.writeFileSync(
+    path.join(dist, 'llms-full.txt'),
+    `# Gorad: full text of www.gorad.in\n\n> Every page of the site as plain text, generated at build time. A short summary is in ${SITE_URL}/llms.txt.\n\n${fullText.join('\n\n---\n\n')}\n`,
+)
+console.log('wrote llms-full.txt')
 // GitHub Pages serves 404.html for any unknown path.
 write('404.html', notFound)
 

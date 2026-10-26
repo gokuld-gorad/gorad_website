@@ -75,7 +75,7 @@ export default function Connect() {
                         when the network is down, it keeps a notebook, so nothing gets lost.
                     </PlainWords>
                     <div style={{ marginTop: 64 }}>
-                        <SectionHead eyebrow="Why Gorad Connect" title="What it does for you" />
+                        <SectionHead eyebrow="Why Gorad Connect" title="Machine data without the manual work" />
                         <div className="advantages">
                             {advantages.map(({ icon: Icon, title, text }) => (
                                 <div className="advantage" key={title}>

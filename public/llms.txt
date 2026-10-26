@@ -14,9 +14,11 @@ Key facts:
 - Cameras: GenICam / GigE Vision industrial cameras and USB cameras.
 - Not available today: EtherNet/IP, OPC UA server, native Windows server install, 3D inspection, full solder-joint AOI, very high-speed line-scan web inspection, MES/ERP replacement.
 
+The full text of every page is in [llms-full.txt](https://www.gorad.in/llms-full.txt).
+
 ## Pages
 
-- [Home](https://www.gorad.in/): overview, fail-closed inspection, apps, FAQ
+- [Home](https://www.gorad.in/): overview, fail-closed inspection, industries, advantages, how we work, philosophy
 - [Gorad Factory Platform](https://www.gorad.in/factory-platform/): layers, Platform Core, app catalogue
 - [Gorad Vision](https://www.gorad.in/factory-platform/vision/): inspection cycle, safety rules, tools, station types, PLC and cameras
 - [Gorad Connect](https://www.gorad.in/factory-platform/connect/): protocols, standard events, store-and-forward

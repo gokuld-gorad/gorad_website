@@ -104,7 +104,7 @@ export default function AppPage({ slug }) {
 
             <section className="section alt" id="advantages">
                 <div className="container">
-                    <SectionHead eyebrow="Advantages" title="What it does for you" />
+                    <SectionHead eyebrow="Advantages" title={`What changes with ${app.name}`} />
                     <div className="advantages">
                         {extra.advantages.map((a) => (
                             <div className="advantage" key={a.title}>

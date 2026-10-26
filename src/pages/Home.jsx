@@ -25,7 +25,7 @@ const pillars = [
     },
     {
         icon: BarChart3, word: 'Improve', product: 'Quality and production apps',
-        text: 'Quality and production apps, all on the same data.',
+        text: 'Process control, OEE, maintenance and traceability, on the same data.',
         href: '/factory-platform/',
     },
 ]
@@ -60,7 +60,7 @@ export default function Home() {
                     <p className="lead">AI software that inspects every part and keeps every result on record, inside your plant.</p>
                     <div className="btn-row hero-actions">
                         <a href="/contact/" className="btn btn-primary btn-lg">Book a demo <ArrowRight size={18} aria-hidden="true" /></a>
-                        <TextLink href="/factory-platform/">Explore our platforms</TextLink>
+                        <TextLink href="/factory-platform/">Explore the Factory Platform</TextLink>
                     </div>
                 </div>
             </section>

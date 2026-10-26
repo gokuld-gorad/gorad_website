@@ -3,7 +3,7 @@ import { appIndex } from './appIndex.js'
 // One entry per app page. Every claim comes from the platform's docs/apps/<app>.md.
 // Plain JS (no JSX): routes.js reads it to build the page list.
 export const APP_STATUS_NOTE =
-    'Early access. Built and tested in software, not yet proven on a plant line. Available to pilot plants.'
+    'Built and tested in software, not yet proven on a plant line. Available to pilot plants.'
 
 const details = [
     {

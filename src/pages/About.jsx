@@ -34,9 +34,8 @@ export default function About() {
                     <SectionHead eyebrow="Why we exist" title="Inspection is only useful if you can trust it" />
                     <div className="stack">
                         <p className="lead" style={{ color: 'var(--text)' }}>
-                            Gorad’s founder built and deployed more than 30 production vision inspection systems in
-                            aerospace, automotive and heavy engineering. The lesson: the hard part is not the AI. It is the
-                            software around it. Most vision systems are built as one-off projects for one machine, are hard
+                            We learned it on production lines in aerospace, automotive and heavy engineering: the hard
+                            part of machine vision is not the AI. It is the software around it. Most vision systems are built as one-off projects for one machine, are hard
                             to change, keep no record of their decisions, and can fail silently and pass bad parts.
                         </p>
                         <p>
