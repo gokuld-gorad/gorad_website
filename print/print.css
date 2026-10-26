@@ -80,7 +80,7 @@ table.compact th { width: 28%; }
 .section-title { font: 500 7.5pt "JetBrains Mono", monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--signal); margin: 5mm 0 2mm; }
 .chips { display: flex; flex-wrap: wrap; gap: 1.2mm; margin-top: 1.6mm; }
 .chip { font-size: 7.4pt; padding: 0.5mm 2.2mm; border-radius: 99px; border: 1px solid #d1d3d9; color: #3b3f48; background: #f7f7f8; }
-.footer { position: absolute; left: 16mm; right: 16mm; bottom: 10mm; display: flex; justify-content: space-between; font-size: 8pt; color: var(--subtle); border-top: 1px solid var(--line); padding-top: 3mm; }
+.footer { position: absolute; left: 16mm; right: 16mm; bottom: 13mm; display: flex; justify-content: space-between; font-size: 8pt; color: var(--subtle); border-top: 1px solid var(--line); padding-top: 3mm; }
 .footer strong { color: var(--ink); }
 .founder { display: flex; gap: 4mm; align-items: center; }
 .founder img { width: 14mm; height: 14mm; border-radius: 50%; object-fit: cover; flex: none; }
@@ -89,3 +89,5 @@ table.compact th { width: 28%; }
 .ng-text { color: var(--ng); font-weight: 600; }
 .grid3.tight { gap: 3mm; }
 .grid3.tight .box { padding: 2.6mm 3.4mm; }
+/* Copyright, version and disclaimer under the footer of every page */
+.legal { position: absolute; left: 16mm; right: 16mm; bottom: 5mm; font-size: 6.4pt; line-height: 1.35; color: var(--subtle); }

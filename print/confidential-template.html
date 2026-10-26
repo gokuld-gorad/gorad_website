@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Gorad — confidential document</title>
+<link rel="stylesheet" href="print.css" />
+<!--
+  Template for confidential documents: proposals, quotations, pilot plans and reports.
+  This repository is PUBLIC. Never commit a filled-in copy. Copy this file to
+  print/<name>.confidential.html (git ignores that pattern), fill it in, and render it with
+  scripts/make-confidential.sh print/<name>.confidential.html (see print/README.md).
+-->
+<script>
+// ── Edit these once; every header, footer and watermark is filled from them. ──
+const DOC = {
+    customer: '[Customer name]',
+    title: 'Pilot proposal: [station or problem]',
+    date: '[26 October 2026]',
+    ref: 'GRD-[2026]-[001]',
+    nda: '[date of the NDA]',
+    version: '1.0',
+}
+</script>
+<style>
+/* Flowing pages (any length) instead of the brochure's fixed ones. */
+@page { size: A4; margin: 24mm 16mm 26mm; }
+body { font-size: 10pt; }
+.doc-band { margin: 0 0 8mm; padding: 7mm 8mm 6mm; border-radius: 3mm; background: var(--night); color: #f4f5f7; }
+.doc-band .top { margin-bottom: 6mm; }
+.conf-tag { font: 500 7.5pt "JetBrains Mono", monospace; letter-spacing: 0.12em; text-transform: uppercase; color: #ff5a4f; border: 1px solid rgb(255 90 79 / 0.6); border-radius: 99px; padding: 0.8mm 3mm; }
+.doc-band h1 { font-size: 20pt; color: #f4f5f7; margin-bottom: 3mm; }
+.doc-meta { display: grid; grid-template-columns: repeat(4, auto); gap: 2mm 8mm; justify-content: start; font-size: 8.5pt; color: #c9cdd6; }
+.doc-meta b { display: block; font: 500 6.8pt "JetBrains Mono", monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cyan); }
+h2 { margin-top: 8mm; break-after: avoid; }
+h2 .n { font: 500 9pt "JetBrains Mono", monospace; color: var(--signal); margin-right: 2.5mm; }
+p + p { margin-top: 2.5mm; }
+table, .box { break-inside: avoid; }
+.fill { background: #fff4c2; color: #6b5300; border-radius: 1mm; padding: 0 1mm; }
+.sign { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; margin-top: 6mm; }
+.sign div { border-top: 1px solid var(--ink); padding-top: 2mm; font-size: 8.5pt; color: var(--muted); }
+/* A faint diagonal watermark with the customer's name, repeated on every page. */
+.watermark {
+    position: fixed; top: 45%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg);
+    font: 700 34pt "Inter", sans-serif; letter-spacing: 0.05em; white-space: nowrap;
+    color: rgb(14 116 144 / 0.07); pointer-events: none; z-index: 0;
+}
+main { position: relative; z-index: 1; }
+</style>
+</head>
+<body>
+<div class="watermark" data-f="watermark"></div>
+<main>
+    <div class="doc-band">
+        <div class="top">
+            <div class="logo">
+                <svg width="22" height="22" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20.5" stroke="currentColor" stroke-width="3"/><path d="M24 11.5A12.5 12.5 0 1 0 36.5 24H30" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="24" r="4" fill="currentColor"/></svg>
+                <span>GORAD<span class="dot">.</span></span>
+            </div>
+            <span class="conf-tag">Confidential</span>
+        </div>
+        <h1 data-f="title"></h1>
+        <div class="doc-meta">
+            <div><b>Prepared for</b><span data-f="customer"></span></div>
+            <div><b>Date</b><span data-f="date"></span></div>
+            <div><b>Reference</b><span data-f="ref"></span></div>
+            <div><b>Version</b><span data-f="version"></span></div>
+        </div>
+    </div>
+
+    <h2><span class="n">01</span>Summary</h2>
+    <p><span class="fill">[Two or three sentences: the problem at the station, what the pilot will show, and the decision it leads to.]</span></p>
+
+    <h2><span class="n">02</span>The station and the problem</h2>
+    <p><span class="fill">[Part, line, cycle time, PLC, the defects to catch and how they are checked today. Use the customer's own words where possible.]</span></p>
+
+    <h2><span class="n">03</span>Scope</h2>
+    <table class="compact">
+        <tr><th>Included</th><td><span class="fill">[Inspections, number of cameras and views, PLC handshake, apps, training.]</span></td></tr>
+        <tr><th>Not included</th><td><span class="fill">[Anything the customer might assume is included but is not.]</span></td></tr>
+        <tr><th>From the customer</th><td><span class="fill">[Sample parts (good, defective, borderline), access to the line and PLC, a quality contact.]</span></td></tr>
+    </table>
+
+    <h2><span class="n">04</span>Success criteria</h2>
+    <p>Agreed before any results exist, and used for the decision at the end.</p>
+    <table class="compact">
+        <tr><th>Escapes</th><td><span class="fill">[e.g. no known defect of types A, B, C passed during the pilot period]</span></td></tr>
+        <tr><th>False rejects</th><td><span class="fill">[e.g. at most N % of good parts rejected, every reject reviewed]</span></td></tr>
+        <tr><th>Cycle time</th><td><span class="fill">[e.g. verdict to the PLC within N ms of the trigger]</span></td></tr>
+        <tr><th>Faults</th><td>Every fault test (camera unplugged, lens covered, PLC link broken, PC restarted) gives a reject or a stop, never an OK.</td></tr>
+    </table>
+
+    <h2><span class="n">05</span>Plan</h2>
+    <ol class="steps four">
+        <li><strong>Qualify</strong><span>Station, parts, defects and PLC confirmed.</span></li>
+        <li><strong>Prove on samples</strong><span>Inspection shown on your sample parts.</span></li>
+        <li><strong>Pilot on one station</strong><span>Installed, commissioned, team trained.</span></li>
+        <li><strong>Decide together</strong><span>Results reviewed against the criteria above.</span></li>
+    </ol>
+    <p style="margin-top:4mm"><span class="fill">[Dates or durations for each step.]</span></p>
+
+    <h2><span class="n">06</span>Commercials</h2>
+    <p><span class="fill">[Prices, payment terms, validity of this offer. Delete this section for a report.]</span></p>
+
+    <h2><span class="n">07</span>Acceptance</h2>
+    <div class="sign">
+        <div>For <span data-f="customer"></span><br />Name, role, date</div>
+        <div>For Gorad Pvt Ltd<br />Name, role, date</div>
+    </div>
+</main>
+
+<script>
+// Fill every [data-f] element, the watermark, and the running header and footer.
+const set = (k, v) => document.querySelectorAll(`[data-f="${k}"]`).forEach((el) => { el.textContent = v })
+Object.entries(DOC).forEach(([k, v]) => set(k, v))
+set('watermark', `Confidential · ${DOC.customer}`)
+document.title = `${DOC.title} — ${DOC.customer} — Confidential`
+const css = (s) => String(s).replace(/["\\]/g, '\\$&')
+const style = document.createElement('style')
+style.textContent = `@page {
+    @top-left { content: "CONFIDENTIAL · Prepared for ${css(DOC.customer)}"; font: 600 7.5pt Inter, sans-serif; color: #d92d20; }
+    @top-right { content: "${css(DOC.ref)} · ${css(DOC.date)}"; font: 7.5pt Inter, sans-serif; color: #696e7b; }
+    @bottom-left { content: "Confidential. Prepared for ${css(DOC.customer)} under the non-disclosure agreement dated ${css(DOC.nda)}. Do not share outside ${css(DOC.customer)} without written permission from Gorad Pvt Ltd. © 2026 Gorad Pvt Ltd · CIN U62099KA2026PTC214948"; font: 6.5pt Inter, sans-serif; color: #696e7b; width: 150mm; }
+    @bottom-right { content: "Page " counter(page) " of " counter(pages); font: 7.5pt Inter, sans-serif; color: #696e7b; }
+}`
+document.head.appendChild(style)
+</script>
+</body>
+</html>

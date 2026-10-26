@@ -33,3 +33,7 @@ __pycache__/
 
 # Original AI image renders (large). The optimised WebP copies live in public/images.
 docs/gemini_images/
+
+# Rendered confidential documents (never commit; this repository is public)
+confidential-out/
+print/*.confidential.html
