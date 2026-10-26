@@ -1,34 +1,13 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { Pause, Play } from 'lucide-react'
-import { useReducedMotion } from './hooks.js'
+import { useAutoplayVideo } from './hooks.js'
 
 // A 30-second screen recording of the Factory Platform running on demo data (recorded
 // from the sim demo; see docs/image-prompts.md). Muted and looping; it loads and plays
 // only while in view, has a pause button, and never autoplays with reduced motion.
 export default function PlatformTour() {
     const ref = useRef(null)
-    const reduced = useReducedMotion()
-    const [playing, setPlaying] = useState(false)
-    const [userPaused, setUserPaused] = useState(false)
-
-    useEffect(() => {
-        const video = ref.current
-        if (!video || reduced || userPaused || !('IntersectionObserver' in window)) return
-        const io = new IntersectionObserver(([e]) => {
-            if (e.isIntersecting) video.play().then(() => setPlaying(true)).catch(() => {})
-            else { video.pause(); setPlaying(false) }
-        }, { threshold: 0.35 })
-        io.observe(video)
-        return () => io.disconnect()
-    }, [reduced, userPaused])
-
-    const toggle = () => {
-        const video = ref.current
-        if (!video) return
-        if (video.paused) { setUserPaused(false); video.play().then(() => setPlaying(true)).catch(() => {}) }
-        else { setUserPaused(true); video.pause(); setPlaying(false) }
-    }
-
+    const { playing, toggle } = useAutoplayVideo(ref)
     return (
         <figure className="tour">
             <div className="screen-shot tour-frame">
@@ -46,7 +25,7 @@ export default function PlatformTour() {
                 >
                     <source src="/video/platform-tour.mp4" type="video/mp4" />
                 </video>
-                <button type="button" className="tour-toggle" onClick={toggle} aria-label={playing ? 'Pause the tour' : 'Play the tour'}>
+                <button type="button" className="video-toggle" onClick={toggle} aria-label={playing ? 'Pause the tour' : 'Play the tour'}>
                     {playing ? <Pause size={16} aria-hidden="true" /> : <Play size={16} aria-hidden="true" />}
                 </button>
             </div>

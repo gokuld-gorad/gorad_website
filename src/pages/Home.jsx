@@ -1,6 +1,7 @@
 import { ArrowRight, BarChart3, Cable, CircleCheck, ScanEye } from 'lucide-react'
 import HeroScan from '../components/HeroScan.jsx'
 import PlatformTour from '../components/PlatformTour.jsx'
+import LoopVideo from '../components/LoopVideo.jsx'
 import Roadmap from '../components/Roadmap.jsx'
 import { CtaBand, SectionHead, TextLink } from '../components/Blocks.jsx'
 import { hasImage } from '../components/SiteImage.jsx'
@@ -100,7 +101,8 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="section statement">
+            <section className="section statement has-video">
+                <LoopVideo src="/video/inspection-loop.mp4" poster="/video/inspection-loop-poster.webp" />
                 <div className="container">
                     <p className="statement-text">
                         If a camera, a check or the software fails, the part is rejected. <span className="accent">Never quietly passed.</span>

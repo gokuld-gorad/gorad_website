@@ -25,6 +25,32 @@
       900
     ]
   },
+  "usecases": {
+    "bearing-pin-count": [
+      1600,
+      900
+    ],
+    "brick-damage": [
+      1600,
+      900
+    ],
+    "catalyst-blockage": [
+      1600,
+      900
+    ],
+    "connecting-rod": [
+      1600,
+      900
+    ],
+    "igbt-variant": [
+      1600,
+      900
+    ],
+    "pcb-assembly": [
+      1600,
+      900
+    ]
+  },
   "screens": {
     "calibration-msa": [
       1600,

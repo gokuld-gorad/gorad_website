@@ -35,6 +35,7 @@ Save each file with **exactly** this name in `images-src/industries/` (PNG or JP
 | `packaging-logistics.png` | Sealed cardboard boxes with plain blank labels moving on a roller conveyor at a packing station, a camera on an arm above the line, dark warehouse background. |
 
 ### Checklist before you use an image
+- Gemini adds a small sparkle watermark near the bottom-right corner: crop it off before adding (the use-case images were cropped to the top-left 2560 × 1440; originals are kept in `images-src/usecases/originals/`).
 - No text, letters or fake logos anywhere (zoom in on labels, machines and walls).
 - The machinery makes mechanical sense: no floating parts, melted shapes or impossible cameras.
 - No people or hands slipped in.
@@ -66,7 +67,7 @@ Only if the result looks truly realistic; AI video artefacts are easier to spot 
 |---|---|---|
 | Section background (behind the "See. Connect. Improve." or industries section) | 8–10 s, seamless loop, 1920 × 1080, no audio | Slow dolly along a dark modern production line; generic machined metal parts pass under an industrial camera with a ring light; a faint cyan glow; very calm motion. No text, people, screens or logos. |
 
-Export as MP4 (H.264). It will be compressed to WebM/MP4 under 3 MB, shown muted and looping with an "Illustration" caption, and never played for visitors who prefer reduced motion. There is no slot for it yet: send it over and it gets one.
+Export as MP4 (H.264). It will be compressed to WebM/MP4 under 3 MB, shown muted and looping with an "Illustration" caption, and never played for visitors who prefer reduced motion. Added 2026-10-26 as `public/video/inspection-loop.mp4` (watermark cropped, sound removed, faded in and out so the loop is seamless), behind the homepage statement "If a camera, a check or the software fails…".
 
 ---
 
