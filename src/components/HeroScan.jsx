@@ -1,14 +1,18 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useInView, useReducedMotion, useStepper } from './hooks.js'
 
-// Homepage hero visual: a camera view where a scan line passes over a part and a
-// verdict appears. Plain enough for anyone: "the machine looks, then decides".
-// Each part takes two ticks: scanning, then the result. Part 3 of 4 has a defect.
+// Homepage visual: a camera view where a scan line passes over a part and a verdict
+// appears, for a run of different parts, so the first impression is "Gorad inspects my
+// part". Each part takes two ticks: scanning, then the result. The NG parts show their
+// defect in the image itself (a chipped brick corner, a chipped flange rim) and the
+// marker circles it. All images are illustrations.
 const PARTS = [
-    { n: 1041, ok: true },
-    { n: 1042, ok: true },
-    { n: 1043, ok: false },
-    { n: 1044, ok: true },
+    { img: 'hero-part', label: 'Flange #1041', ok: 'all checks passed' },
+    { img: 'scan-pcb', label: 'Board #2207', ok: 'all components present' },
+    { img: 'scan-brick', label: 'Brick #0412', ng: 'chipped corner found', mark: [444, 128, 25] },
+    { img: 'scan-bearing', label: 'Bearing #3318', ok: 'all rollers present' },
+    { img: 'hero-part-ng', label: 'Flange #1043', ng: 'chipped edge found', mark: [502, 148, 17] },
+    { img: 'scan-conrod', label: 'Conrod #5126', ok: 'all faces passed' },
 ]
 const TICK_MS = 1500
 
@@ -16,13 +20,17 @@ export default function HeroScan() {
     const ref = useRef(null)
     const inView = useInView(ref, 0.2)
     const reduced = useReducedMotion()
-    const [tick] = useStepper(PARTS.length * 2, TICK_MS, inView && !reduced)
+    // Only the first image is in the page HTML; the rest load once the scan is on screen.
+    const [loadAll, setLoadAll] = useState(false)
+    useEffect(() => { if (inView) setLoadAll(true) }, [inView])
+    const [tick] = useStepper(PARTS.length * 2, TICK_MS, inView && !reduced && loadAll)
+    const index = reduced ? 0 : Math.floor(tick / 2)
+    const part = PARTS[index]
     const scanning = !reduced && tick % 2 === 0
-    const part = PARTS[reduced ? 0 : Math.floor(tick / 2)]
-    const showNg = !scanning && !part.ok
+    const showNg = !scanning && Boolean(part.ng)
 
     return (
-        <figure className="hero-scan" ref={ref} aria-label="Illustration: a camera scans each part and marks it OK or NG.">
+        <figure className="hero-scan" ref={ref} aria-label="Illustration: a camera scans different parts one after another and marks each OK or NG.">
             <div className="hero-scan-frame">
                 <svg viewBox="0 0 720 300" className="hero-scan-svg" aria-hidden="true">
                     <defs>
@@ -38,10 +46,17 @@ export default function HeroScan() {
                         </linearGradient>
                     </defs>
 
-                    {/* The part: a flange photographed on an inspection stage */}
-                    <image href="/images/hero/hero-part.webp" x="0" y="0" width="720" height="300" preserveAspectRatio="xMidYMid slice" />
-                    {/* The same flange with a chipped rim, for the defective part; always loaded so it swaps without a flicker */}
-                    <image href="/images/hero/hero-part-ng.webp" x="0" y="0" width="720" height="300" preserveAspectRatio="xMidYMid slice" opacity={part.ok ? 0 : 1} />
+                    {/* The parts, stacked; the current one is shown */}
+                    {PARTS.map((p, i) => (i === 0 || loadAll) && (
+                        <image
+                            key={p.img}
+                            className="hero-part-img"
+                            href={`/images/hero/${p.img}.webp`}
+                            x="0" y="0" width="720" height="300"
+                            preserveAspectRatio="xMidYMid slice"
+                            opacity={i === index ? 1 : 0}
+                        />
+                    ))}
                     <rect width="720" height="300" fill="url(#hero-shade)" />
 
                     {/* Viewfinder corners */}
@@ -49,10 +64,12 @@ export default function HeroScan() {
                         <path key={`${x}${y}`} d={`M${x} ${y + 22 * dy} V${y} H${x + 22 * dx}`} fill="none" stroke="var(--signal)" strokeWidth="2" opacity="0.8" />
                     ))}
 
-                    {/* The verdict marks the chip on the NG part */}
-                    <g className={`hero-defect${showNg ? ' on' : ''}`}>
-                        <circle cx="502" cy="148" r="17" fill="none" stroke="var(--ng)" strokeWidth="2.5" />
-                    </g>
+                    {/* The verdict marks the defect on an NG part */}
+                    {part.mark && (
+                        <g className={`hero-defect${showNg ? ' on' : ''}`}>
+                            <circle cx={part.mark[0]} cy={part.mark[1]} r={part.mark[2]} fill="none" stroke="var(--ng)" strokeWidth="2.5" />
+                        </g>
+                    )}
 
                     {/* Scan beam */}
                     {scanning && (
@@ -64,18 +81,18 @@ export default function HeroScan() {
                 </svg>
 
                 <div className="hero-scan-bar">
-                    <span className="hero-scan-id">Part #{part.n} · illustration</span>
+                    <span className="hero-scan-id">{part.label} · illustration</span>
                     {scanning ? (
                         <span className="hero-chip scanning">Inspecting…</span>
-                    ) : part.ok ? (
-                        <span className="hero-chip ok">OK · all checks passed</span>
+                    ) : part.ng ? (
+                        <span className="hero-chip ng">NG · {part.ng}</span>
                     ) : (
-                        <span className="hero-chip ng">NG · chipped edge found</span>
+                        <span className="hero-chip ok">OK · {part.ok}</span>
                     )}
                 </div>
             </div>
             <figcaption className="sr-only">
-                Every part is inspected by camera. Good parts are marked OK; a part with a defect is marked NG and rejected.
+                Every part is inspected by camera: flanges, circuit boards, bricks, bearings and connecting rods. Good parts are marked OK; a part with a defect is marked NG and rejected.
             </figcaption>
         </figure>
     )

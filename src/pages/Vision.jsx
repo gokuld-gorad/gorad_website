@@ -1,5 +1,6 @@
 import { ArrowRight, ClipboardList, Eye, FileCheck2, HeartPulse, Layers, MonitorCheck, ScanSearch, Settings2, ShieldCheck, Workflow } from 'lucide-react'
 import CycleDiagram from '../components/CycleDiagram.jsx'
+import StationTypes from '../components/StationTypes.jsx'
 import LiveVerdictDemo from '../components/LiveVerdictDemo.jsx'
 import Roadmap from '../components/Roadmap.jsx'
 import UseCaseArt from '../components/UseCaseArt.jsx'
@@ -172,6 +173,9 @@ export default function Vision() {
                             </div>
                         ))}
                     </div>
+                    <h3 className="app-group-title station-types-title">Station types</h3>
+                    <StationTypes />
+                    <p className="fine-print">Parts moving continuously at very high speed (line-scan, more than 20 parts a second) are outside what Gorad Vision does today.</p>
                     <div className="grid grid-2" style={{ marginTop: 20 }}>
                         <div className="mini-card">
                             <span className="tag">Architecture</span>
