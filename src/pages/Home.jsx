@@ -1,4 +1,4 @@
-import { ArrowRight, BarChart3, Cable, CircleCheck, ScanEye } from 'lucide-react'
+import { ArrowRight, BarChart3, Cable, ChevronDown, CircleCheck, ScanEye } from 'lucide-react'
 import HeroScan from '../components/HeroScan.jsx'
 import PlatformTour from '../components/PlatformTour.jsx'
 import LoopVideo from '../components/LoopVideo.jsx'
@@ -65,9 +65,10 @@ export default function Home() {
                         <TextLink href="/factory-platform/">Explore the Factory Platform</TextLink>
                     </div>
                 </div>
+                <a className="scroll-cue" href="#proof" aria-label="Scroll to see how Gorad inspects"><ChevronDown size={22} aria-hidden="true" /></a>
             </section>
 
-            <section className="section proof" aria-label="How Gorad inspects, in one picture">
+            <section className="section proof" id="proof" aria-label="How Gorad inspects, in one picture">
                 <div className="container">
                     <HeroScan />
                     <p className="proof-caption">Good parts go on. Anything doubtful is rejected, with the image and reason saved.</p>
