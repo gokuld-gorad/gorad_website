@@ -7,7 +7,7 @@ export default function Privacy() {
             <div className="container prose">
                 <span className="eyebrow">Legal</span>
                 <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.6rem)', marginBottom: 12 }}>Privacy policy</h1>
-                <p>Last updated: 25 October 2026</p>
+                <p>Last updated: 26 October 2026</p>
 
                 <h2>Who we are</h2>
                 <p>
@@ -17,6 +17,7 @@ export default function Privacy() {
 
                 <h2>What we collect</h2>
                 <p>When you use the contact form, we collect what you enter: your name, work email, company, and, if you choose to give them, your phone number, country and details about your station. We do not use advertising or tracking cookies.</p>
+                <p>If you message us on WhatsApp, we see your phone number, your WhatsApp name and what you write. WhatsApp handles that conversation under its own privacy policy, and we use it only to reply to you.</p>
                 <p>Our hosting provider keeps standard server logs (such as IP address and pages requested) for security and operation. If we add visitor statistics, we will use a cookie-free service that does not identify you.</p>
 
                 <h2>Why we use it</h2>

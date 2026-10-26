@@ -34,6 +34,7 @@ function pageText(html) {
     const entities = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' }
     return main
         .replace(/<(svg|script|style|nav)[\s\S]*?<\/\1>/g, '')
+        .replace(/<aside[^>]*data-llms="skip"[\s\S]*?<\/aside>/g, '')
         .replace(/<span class="term-tip"[\s\S]*?<\/span><\/span>/g, '</span>')
         .replace(/<h([1-4])[^>]*>/g, (_, n) => `\n\n${'#'.repeat(Number(n) + 1)} `)
         .replace(/<\/h[1-4]>/g, '\n')
