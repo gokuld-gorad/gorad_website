@@ -1297,3 +1297,18 @@ html { scrollbar-width: thin; scrollbar-color: var(--border-strong) var(--bg); }
 /* The principle cards keep their cyan icon tiles (legacy style, bb4c6b5). */
 .principle-icon { background: var(--signal-soft); color: var(--signal); border: 0; }
 .principle { background: var(--card-bg); border-color: var(--card-border); border-radius: var(--card-radius); box-shadow: var(--card-shadow); }
+/* Optional AI image above a use case's checks (scripts/add-images.py, group "usecases") */
+.uc-photo { border-radius: var(--card-radius); border: 1px solid var(--card-border); margin-bottom: 8px; }
+
+/* Homepage: the platform tour video */
+.tour { max-width: 960px; margin: 0 auto; }
+.tour-frame { position: relative; margin-top: 0; }
+.tour-frame video { display: block; width: 100%; height: auto; background: var(--surface-sunken); }
+.tour-toggle {
+    position: absolute; right: 14px; bottom: 14px; width: 40px; height: 40px; border-radius: 50%;
+    display: grid; place-items: center; cursor: pointer; color: #f4f5f7;
+    background: rgb(5 5 6 / 0.7); border: 1px solid rgb(255 255 255 / 0.18); backdrop-filter: blur(6px);
+    transition: background-color 0.2s, border-color 0.2s;
+}
+.tour-toggle:hover { border-color: var(--signal); }
+.tour-caption { margin-top: 14px; text-align: center; font-size: 0.85rem; color: var(--text-subtle); }

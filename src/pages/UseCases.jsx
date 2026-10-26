@@ -1,5 +1,6 @@
 import UseCaseIcon from '../components/UseCaseIcon.jsx'
 import UseCaseArt from '../components/UseCaseArt.jsx'
+import SiteImage from '../components/SiteImage.jsx'
 import { CheckList, CtaBand, PageHero, SectionHead } from '../components/Blocks.jsx'
 import { inspectionUseCases, platformUseCases } from '../content/useCases.js'
 
@@ -19,12 +20,15 @@ function UseCase({ u, alt }) {
                         <div><dt>Apps</dt><dd>{u.apps.join(' · ')}</dd></div>
                     </dl>
                 </div>
+                <div>
+                <SiteImage group="usecases" name={u.id} variant="card" className="uc-photo" />
                 <div className="card">
                     <h4 style={{ marginBottom: 12 }}>{u.checksLabel || 'What is checked'}</h4>
                     <CheckList items={u.checks} />
                     <h4 style={{ margin: '20px 0 8px' }}>{u.onNgLabel || 'When a part fails'}</h4>
                     <p>{u.onNg}</p>
                     {u.note && <p className="uc-note">{u.note}</p>}
+                </div>
                 </div>
             </div>
         </section>

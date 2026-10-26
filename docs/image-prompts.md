@@ -43,6 +43,33 @@ Save each file with **exactly** this name in `images-src/industries/` (PNG or JP
 
 ---
 
+## Use-case images (these have slots on the site)
+
+One per worked example on the Use cases page. They appear above the "What is checked" panel, with an "Illustration" caption. Save each file with **exactly** this name in `images-src/usecases/` (PNG or JPG, at least 1600 × 900 px). Generic parts only: nothing that looks like a specific customer's product.
+
+| File name | Subject (add after the shared style) |
+|---|---|
+| `connecting-rod.png` | A single machined steel connecting rod on a dark precision fixture, three small industrial cameras on brackets around it pointing at different faces, cyan rim light along the rod's edges. |
+| `catalyst-blockage.png` | Close-up of the honeycomb face of a cylindrical ceramic catalyst or filter substrate, thousands of tiny square cells, a ring light reflected faintly, cyan light from one side. |
+| `pcb-assembly.png` | Top-down view of a populated green circuit board (generic components, no markings) under a square inspection light, sharp in the centre, edges falling into darkness. |
+| `igbt-variant.png` | A rectangular power-electronics module with screw terminals on a dark anti-static mat, a camera angled above it, metal terminals catching cyan light. Plain housing, no printed text. |
+| `bearing-pin-count.png` | A needle-roller bearing cage lying flat on a dark surface, rollers arranged in a ring, lit from above by a ring light so each roller shows a bright highlight. |
+| `brick-damage.png` | A single red clay brick on a moving conveyor, one corner slightly chipped, a camera above the line, warm kiln glow far behind and cyan light in front. |
+
+---
+
+## Optional: one short video loop
+
+Only if the result looks truly realistic; AI video artefacts are easier to spot than in stills.
+
+| Use | Length | Subject |
+|---|---|---|
+| Section background (behind the "See. Connect. Improve." or industries section) | 8–10 s, seamless loop, 1920 × 1080, no audio | Slow dolly along a dark modern production line; generic machined metal parts pass under an industrial camera with a ring light; a faint cyan glow; very calm motion. No text, people, screens or logos. |
+
+Export as MP4 (H.264). It will be compressed to WebM/MP4 under 3 MB, shown muted and looping with an "Illustration" caption, and never played for visitors who prefer reduced motion. There is no slot for it yet: send it over and it gets one.
+
+---
+
 ## Optional extras (no slot on the site yet)
 
 | Use | Size | Subject |
@@ -55,7 +82,7 @@ Save each file with **exactly** this name in `images-src/industries/` (PNG or JP
 
 ## Adding images to the site
 
-1. Put the generated files in `images-src/industries/` with the names above (this folder is not committed).
+1. Put the generated files in `images-src/industries/` or `images-src/usecases/` with the names above (this folder is not committed).
 2. Run:
    ```bash
    python3 scripts/add-images.py
@@ -96,3 +123,19 @@ To redo or add screens:
 2. Add demo data: `GORAD_DEMO_ADMIN_PASSWORD=… GORAD_DEMO_USER_PASSWORD=… python scripts/screens/extend_demo.py` (run with the platform's Python; the passwords are the ones the seed script prints).
 3. Capture: `GORAD_DEMO_ADMIN_PASSWORD=… PLAYWRIGHT_PATH=<platform>/node_modules/playwright/index.mjs node scripts/screens/capture.mjs <outDir> <spcCharacteristicId> <ncrId>`.
 4. Crop off the top bar, save the chosen shots as `images-src/screens/<app-slug>.png`, and run `python3 scripts/add-images.py`. A screen named after an app slug appears on that app's page automatically.
+
+### Platform tour video (homepage, recorded 2026-10-26)
+
+`public/video/platform-tour.mp4` is a 32-second screen recording of the real Factory Platform on demo data: Connect live values ticking, an SPC chart with its tooltip, the violations list, an NCR record, the NCR board and maintenance work orders. It plays muted and looping on the homepage ("Real software, demo data"), with `platform-tour-poster.webp` as its still frame.
+
+To re-record (e.g. once a station runs a signed program, so the LIVE screen can show real OK/NG verdicts):
+
+1. Start the scratch server, seed it, add the demo data and start the web UI, as in steps 1–2 above.
+2. In one terminal, post changing press readings (they are what a running press would send): `GORAD_GW_KEY=<Connect gateway key from the seed> python scripts/screens/demo-press.py <connection id> 120` (run with the platform's Python).
+3. In another, record: `GORAD_DEMO_ADMIN_PASSWORD=… PLAYWRIGHT_PATH=<platform>/node_modules/playwright/index.mjs node scripts/screens/record-tour.mjs <outDir> <spcCharacteristicId> <ncrId>`. It prints the video file and the second at which the tour starts.
+4. Encode (crop off the side menu, trim the start):
+   ```bash
+   ffmpeg -ss <startAt> -i <file>.webm -vf "crop=1200:900:240:0,fps=25" -an -c:v libx264 -preset slow -crf 27 -pix_fmt yuv420p -movflags +faststart public/video/platform-tour.mp4
+   ```
+   and save a still frame as `public/video/platform-tour-poster.webp`. Keep the MP4 under about 2 MB.
+

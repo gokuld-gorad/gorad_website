@@ -1,5 +1,6 @@
 import { ArrowRight, BarChart3, Cable, CircleCheck, ScanEye } from 'lucide-react'
 import HeroScan from '../components/HeroScan.jsx'
+import PlatformTour from '../components/PlatformTour.jsx'
 import Roadmap from '../components/Roadmap.jsx'
 import { CtaBand, SectionHead, TextLink } from '../components/Blocks.jsx'
 import { hasImage } from '../components/SiteImage.jsx'
@@ -87,6 +88,15 @@ export default function Home() {
                             </a>
                         ))}
                     </div>
+                </div>
+            </section>
+
+            <section className="section" id="tour">
+                <div className="container">
+                    <SectionHead eyebrow="Real screens" title="The software, as it runs" center>
+                        Live machine data, process control, non-conformances and maintenance, in 30 seconds.
+                    </SectionHead>
+                    <PlatformTour />
                 </div>
             </section>
 

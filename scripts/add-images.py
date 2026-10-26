@@ -8,6 +8,7 @@ Pages only show an image when its name is in the manifest.
 
 Groups:
   industries  AI-generated headers, centre-cropped to 16:9
+  usecases    AI-generated use-case images, centre-cropped to 16:9
   screens     real product screenshots, kept at their own aspect ratio
 
 Needs Pillow:  python3 scripts/add-images.py
@@ -21,7 +22,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "images-src"
 OUT = ROOT / "public" / "images"
 MANIFEST = ROOT / "src" / "content" / "imageManifest.json"
-GROUPS = {"industries": {"crop_16_9": True}, "screens": {"crop_16_9": False}}
+GROUPS = {"industries": {"crop_16_9": True}, "usecases": {"crop_16_9": True}, "screens": {"crop_16_9": False}}
 SIZES = {"": 1600, "-card": 800}
 EXTS = {".png", ".jpg", ".jpeg", ".webp"}
 
