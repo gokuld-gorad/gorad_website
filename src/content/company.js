@@ -1,7 +1,7 @@
 // Company statements, shared by the homepage, About and How we work.
-// Vision and mission are Gorad's own words from the company profile.
-export const VISION = 'To provide AI and automation solutions precisely tailored to your business needs.'
-export const MISSION = 'We build a better and smarter future for manufacturing and industry.'
+// Vision and mission are Gorad's own words (rewritten October 2026).
+export const VISION = 'Factories where every part is checked and every decision can be trusted and backed by data.'
+export const MISSION = 'We build inspection and factory software that is safe by design, runs inside the plant, and can be changed by the people who run the line.'
 
 import { Eye, Gauge, Handshake, Lightbulb, ShieldCheck } from 'lucide-react'
 

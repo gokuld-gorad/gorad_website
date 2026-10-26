@@ -4,6 +4,8 @@
 
 Key facts:
 
+- Company vision: Factories where every part is checked and every decision can be trusted and backed by data.
+- Company mission: We build inspection and factory software that is safe by design, runs inside the plant, and can be changed by the people who run the line.
 - Company: Gorad Pvt Ltd, CIN U62099KA2026PTC214948.
 - Founder: Gokulramesh Dhanasekar (https://www.linkedin.com/in/gokulramesh-d/), who has built and deployed more than 30 production vision inspection systems in aerospace, automotive and heavy engineering.
 - Platform Core: users and roles, offline licensing, site/line/station master data, append-only audit trail, event bus, updates and backup from the web interface.

@@ -1,6 +1,7 @@
 import { SITE_URL, COMPANY, PLATFORM, EMAIL_INFO, FOUNDER, CIN } from './site.js'
 import { homeFaqs } from './content/faqs.js'
 import { glossary } from './content/glossary.js'
+import { VISION } from './content/company.js'
 
 const esc = (s) =>
     String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
@@ -10,6 +11,7 @@ const organization = {
     '@id': `${SITE_URL}/#org`,
     name: COMPANY,
     alternateName: 'Gorad',
+    slogan: VISION,
     url: SITE_URL,
     logo: `${SITE_URL}/favicon.svg`,
     email: EMAIL_INFO,
