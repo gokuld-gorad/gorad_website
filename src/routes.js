@@ -1,5 +1,6 @@
 import { appIndex as appPages } from './content/appIndex.js'
 import { industries } from './content/industries.js'
+import { guides } from './content/guides.js'
 
 // One entry per page: URL, search title and description. Paths end in "/" because
 // each page is served from <path>/index.html on GitHub Pages.
@@ -9,6 +10,14 @@ const appRoutes = appPages.map((a) => ({
     slug: a.slug,
     title: a.seoTitle ?? `${a.fullName} — ${a.tagline}`,
     description: a.description,
+}))
+
+const guideRoutes = guides.map((g) => ({
+    path: `/guides/${g.slug}/`,
+    page: 'guide',
+    slug: g.slug,
+    title: g.seoTitle,
+    description: g.description,
 }))
 
 const industryRoutes = industries.map((i) => ({
@@ -85,6 +94,14 @@ export const routes = [
         description:
             'Plain-language definitions of inspection, machine data, quality and production terms: OEE, SPC, PLC, NCR, 8D, Gauge R&R, OPC UA and more.',
     },
+    {
+        path: '/guides/',
+        page: 'guides',
+        title: 'Guides — inspection, cameras, OEE and pilots | Gorad',
+        description:
+            'Practical guides: fail-closed inspection, rule-based or AI inspection, choosing cameras and lighting, OEE from PLC signals, and running a vision pilot.',
+    },
+    ...guideRoutes,
     {
         path: '/security/',
         page: 'security',

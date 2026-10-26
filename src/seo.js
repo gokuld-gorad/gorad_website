@@ -2,6 +2,7 @@ import { SITE_URL, COMPANY, PLATFORM, EMAIL_INFO, FOUNDER, CIN } from './site.js
 import { homeFaqs } from './content/faqs.js'
 import { glossary } from './content/glossary.js'
 import { VISION } from './content/company.js'
+import { GUIDES_REVIEWED, findGuide } from './content/guides.js'
 
 const esc = (s) =>
     String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
@@ -62,6 +63,19 @@ function jsonLd(route) {
             '@type': 'DefinedTermSet',
             name: 'Gorad glossary',
             hasDefinedTerm: Object.entries(glossary).map(([name, description]) => ({ '@type': 'DefinedTerm', name, description })),
+        })
+    }
+    if (route.page === 'guide') {
+        const g = findGuide(route.slug)
+        graph.push({
+            '@type': 'Article',
+            headline: g.title,
+            description: g.description,
+            datePublished: GUIDES_REVIEWED,
+            dateModified: GUIDES_REVIEWED,
+            author: { '@id': `${SITE_URL}/#org` },
+            publisher: { '@id': `${SITE_URL}/#org` },
+            mainEntityOfPage: `${SITE_URL}${route.path}`,
         })
     }
     // "<" is escaped so the JSON can never close the script tag.
